@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "657268050811",
+    "project_id": "bookmatch-dev",
+    "storage_bucket": "bookmatch-dev.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:657268050811:android:ab3bb8194f47f896014bde",
+        "android_client_info": {
+          "package_name": "com.bookmatch.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZf8DtwJkpJMQL8lzbq9LeXeLGBj4wCkc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:657268050811:android:83810792cbff2d4a014bde",
+        "android_client_info": {
+          "package_name": "com.bookmatch.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZf8DtwJkpJMQL8lzbq9LeXeLGBj4wCkc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:657268050811:android:08bb4200077bfbfe014bde",
+        "android_client_info": {
+          "package_name": "com.bookmatch.prod"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZf8DtwJkpJMQL8lzbq9LeXeLGBj4wCkc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
