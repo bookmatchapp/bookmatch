@@ -1,7 +1,15 @@
-import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
+import '/components/favorite_button/favorite_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:sticky_headers/sticky_headers.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:provider/provider.dart';
+import 'package:text_search/text_search.dart';
 import 'favorites_model.dart';
 export 'favorites_model.dart';
 
@@ -22,8 +30,17 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
     super.initState();
     _model = createModel(context, () => FavoritesModel());
 
-    _model.textController ??= TextEditingController();
-    _model.textFieldFocusNode ??= FocusNode();
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      FFAppState().favoriteBooks =
+          (currentUserDocument?.favoriteBooks.toList() ?? [])
+              .toList()
+              .cast<String>();
+      safeSetState(() {});
+    });
+
+    _model.searchBarTextController ??= TextEditingController();
+    _model.searchBarFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -37,700 +54,740 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-        appBar: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primary,
-          automaticallyImplyLeading: false,
-          leading: FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 30.0,
-            borderWidth: 1.0,
-            buttonSize: 60.0,
-            icon: const Icon(
-              Icons.arrow_back_rounded,
-              color: Colors.white,
-              size: 30.0,
-            ),
-            onPressed: () async {
-              context.pop();
-            },
-          ),
-          title: Text(
-            'Favorites',
-            style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Inter Tight',
-                  color: Colors.white,
-                  fontSize: 22.0,
-                  letterSpacing: 0.0,
-                ),
-          ),
-          actions: const [],
-          centerTitle: false,
-          elevation: 2.0,
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 0.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Material(
-                      color: Colors.transparent,
-                      elevation: 2.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                      ),
-                      child: Container(
-                        width: MediaQuery.sizeOf(context).width * 1.0,
-                        height: 50.0,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                          borderRadius: BorderRadius.circular(25.0),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 16.0, 0.0, 16.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Icon(
-                                Icons.search,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 24.0,
-                              ),
-                              Expanded(
-                                child: TextFormField(
-                                  controller: _model.textController,
-                                  focusNode: _model.textFieldFocusNode,
-                                  autofocus: false,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    hintText: 'Search for books...',
-                                    hintStyle: FlutterFlowTheme.of(context)
-                                        .bodyLarge
-                                        .override(
-                                          fontFamily: 'Inter',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    enabledBorder: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                    errorBorder: InputBorder.none,
-                                    focusedErrorBorder: InputBorder.none,
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Inter',
-                                        letterSpacing: 0.0,
-                                      ),
-                                  minLines: 1,
-                                  validator: _model.textControllerValidator
-                                      .asValidator(context),
-                                ),
-                              ),
-                            ].divide(const SizedBox(width: 16.0)),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Popular Books',
-                          style: FlutterFlowTheme.of(context)
-                              .headlineSmall
-                              .override(
-                                fontFamily: 'Inter Tight',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.w600,
-                              ),
-                        ),
-                        SizedBox(
-                          height: 250.0,
-                          child: ListView(
-                            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                            primary: false,
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            children: [
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Material(
-                                    color: Colors.transparent,
-                                    elevation: 4.0,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    child: Container(
-                                      width: 140.0,
-                                      height: 200.0,
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                        child: Image.network(
-                                          'https://images.unsplash.com/photo-1533327325824-76bc4e62d560?w=500&h=750',
-                                          width: 140.0,
-                                          height: 200.0,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Text(
-                                    'To Kill a Mockingbird',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Inter',
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                  ),
-                                  Text(
-                                    'Harper Lee',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodySmall
-                                        .override(
-                                          fontFamily: 'Inter',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                ].divide(const SizedBox(height: 8.0)),
-                              ),
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Material(
-                                    color: Colors.transparent,
-                                    elevation: 4.0,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    child: Container(
-                                      width: 140.0,
-                                      height: 200.0,
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                        child: Image.network(
-                                          'https://images.unsplash.com/photo-1421338443272-0dde2463976a?w=500&h=750',
-                                          width: 140.0,
-                                          height: 200.0,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Text(
-                                    '1984',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Inter',
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                  ),
-                                  Text(
-                                    'George Orwell',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodySmall
-                                        .override(
-                                          fontFamily: 'Inter',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                ].divide(const SizedBox(height: 8.0)),
-                              ),
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Material(
-                                    color: Colors.transparent,
-                                    elevation: 4.0,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    child: Container(
-                                      width: 140.0,
-                                      height: 200.0,
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                        child: Image.network(
-                                          'https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?w=500&h=750',
-                                          width: 140.0,
-                                          height: 200.0,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Text(
-                                    'The Great Gatsby',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Inter',
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                  ),
-                                  Text(
-                                    'F. Scott Fitzgerald',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodySmall
-                                        .override(
-                                          fontFamily: 'Inter',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          letterSpacing: 0.0,
-                                        ),
-                                  ),
-                                ].divide(const SizedBox(height: 8.0)),
-                              ),
-                            ].divide(const SizedBox(width: 16.0)),
-                          ),
-                        ),
-                      ].divide(const SizedBox(height: 16.0)),
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Genres',
-                          style: FlutterFlowTheme.of(context)
-                              .headlineSmall
-                              .override(
-                                fontFamily: 'Inter Tight',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.w600,
-                              ),
-                        ),
-                        Wrap(
-                          spacing: 8.0,
-                          runSpacing: 8.0,
-                          alignment: WrapAlignment.start,
-                          crossAxisAlignment: WrapCrossAlignment.start,
-                          direction: Axis.horizontal,
-                          runAlignment: WrapAlignment.start,
-                          verticalDirection: VerticalDirection.down,
-                          clipBehavior: Clip.none,
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFE3F2FD),
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 16.0, 8.0, 16.0),
-                                child: Text(
-                                  'Fiction',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Inter',
-                                        color: const Color(0xFF1565C0),
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                              ),
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFFFF3E0),
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 16.0, 8.0, 16.0),
-                                child: Text(
-                                  'Non-Fiction',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Inter',
-                                        color: const Color(0xFFEF6C00),
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                              ),
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFE8F5E9),
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 16.0, 8.0, 16.0),
-                                child: Text(
-                                  'Mystery',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Inter',
-                                        color: const Color(0xFF2E7D32),
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                              ),
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFFCE4EC),
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 16.0, 8.0, 16.0),
-                                child: Text(
-                                  'Romance',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Inter',
-                                        color: const Color(0xFFC2185B),
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                              ),
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFEDE7F6),
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    8.0, 16.0, 8.0, 16.0),
-                                child: Text(
-                                  'Sci-Fi',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Inter',
-                                        color: const Color(0xFF4527A0),
-                                        letterSpacing: 0.0,
-                                      ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ].divide(const SizedBox(height: 16.0)),
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'New Releases',
-                          style: FlutterFlowTheme.of(context)
-                              .headlineSmall
-                              .override(
-                                fontFamily: 'Inter Tight',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.w600,
-                              ),
-                        ),
-                        ListView(
-                          padding: EdgeInsets.zero,
-                          primary: false,
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Material(
-                                  color: Colors.transparent,
-                                  elevation: 2.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  child: Container(
-                                    width: 80.0,
-                                    height: 120.0,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      child: Image.network(
-                                        'https://images.unsplash.com/photo-1521056787327-165dc2a32836?w=500&h=750',
-                                        width: 80.0,
-                                        height: 120.0,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Project Hail Mary',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyLarge
-                                            .override(
-                                              fontFamily: 'Inter',
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                      ),
-                                      Text(
-                                        'Andy Weir',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodySmall
-                                            .override(
-                                              fontFamily: 'Inter',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          const Icon(
-                                            Icons.star,
-                                            color: Color(0xFFFFC107),
-                                            size: 16.0,
-                                          ),
-                                          Text(
-                                            '4.5',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Inter',
-                                                  color: const Color(0xFFFFC107),
-                                                  letterSpacing: 0.0,
-                                                ),
-                                          ),
-                                        ].divide(const SizedBox(width: 4.0)),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ].divide(const SizedBox(width: 16.0)),
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Material(
-                                  color: Colors.transparent,
-                                  elevation: 2.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  child: Container(
-                                    width: 80.0,
-                                    height: 120.0,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      child: Image.network(
-                                        'https://images.unsplash.com/photo-1535905496755-26ae35d0ae54?w=500&h=750',
-                                        width: 80.0,
-                                        height: 120.0,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'The Midnight Library',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyLarge
-                                            .override(
-                                              fontFamily: 'Inter',
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                      ),
-                                      Text(
-                                        'Matt Haig',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodySmall
-                                            .override(
-                                              fontFamily: 'Inter',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          const Icon(
-                                            Icons.star,
-                                            color: Color(0xFFFFC107),
-                                            size: 16.0,
-                                          ),
-                                          Text(
-                                            '4.2',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Inter',
-                                                  color: const Color(0xFFFFC107),
-                                                  letterSpacing: 0.0,
-                                                ),
-                                          ),
-                                        ].divide(const SizedBox(width: 4.0)),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ].divide(const SizedBox(width: 16.0)),
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Material(
-                                  color: Colors.transparent,
-                                  elevation: 2.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  child: Container(
-                                    width: 80.0,
-                                    height: 120.0,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      child: Image.network(
-                                        'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500&h=750',
-                                        width: 80.0,
-                                        height: 120.0,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'The Four Winds',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyLarge
-                                            .override(
-                                              fontFamily: 'Inter',
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                      ),
-                                      Text(
-                                        'Kristin Hannah',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodySmall
-                                            .override(
-                                              fontFamily: 'Inter',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          const Icon(
-                                            Icons.star,
-                                            color: Color(0xFFFFC107),
-                                            size: 16.0,
-                                          ),
-                                          Text(
-                                            '4.4',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Inter',
-                                                  color: const Color(0xFFFFC107),
-                                                  letterSpacing: 0.0,
-                                                ),
-                                          ),
-                                        ].divide(const SizedBox(width: 4.0)),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ].divide(const SizedBox(width: 16.0)),
-                            ),
-                          ].divide(const SizedBox(height: 16.0)),
-                        ),
-                      ].divide(const SizedBox(height: 16.0)),
-                    ),
-                  ].divide(const SizedBox(height: 24.0)),
+    context.watch<FFAppState>();
+
+    return StreamBuilder<List<BooksRecord>>(
+      stream: queryBooksRecord(
+        queryBuilder: (booksRecord) =>
+            booksRecord.whereIn('uid', FFAppState().favoriteBooks),
+      ),
+      builder: (context, snapshot) {
+        // Customize what your widget looks like when it's loading.
+        if (!snapshot.hasData) {
+          return Scaffold(
+            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+            body: Center(
+              child: SizedBox(
+                width: 50.0,
+                height: 50.0,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    FlutterFlowTheme.of(context).primary,
+                  ),
                 ),
               ),
-            ],
+            ),
+          );
+        }
+        List<BooksRecord> favoritesBooksRecordList = snapshot.data!;
+
+        return GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Scaffold(
+            key: scaffoldKey,
+            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+            appBar: AppBar(
+              backgroundColor: FlutterFlowTheme.of(context).primary,
+              automaticallyImplyLeading: false,
+              title: Text(
+                'Favorite Books',
+                style: FlutterFlowTheme.of(context).titleLarge.override(
+                      fontFamily: 'Inter Tight',
+                      color: FlutterFlowTheme.of(context).alternate,
+                      letterSpacing: 0.0,
+                    ),
+              ),
+              actions: const [],
+              centerTitle: false,
+              elevation: 2.0,
+            ),
+            body: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  StickyHeader(
+                    overlapHeaders: false,
+                    header: Container(
+                      width: double.infinity,
+                      height: 80.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).primaryBackground,
+                      ),
+                      alignment: const AlignmentDirectional(-1.0, 0.0),
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            16.0, 12.0, 8.0, 12.0),
+                        child: TextFormField(
+                          controller: _model.searchBarTextController,
+                          focusNode: _model.searchBarFocusNode,
+                          onChanged: (_) => EasyDebounce.debounce(
+                            '_model.searchBarTextController',
+                            const Duration(milliseconds: 2000),
+                            () async {
+                              FFAppState().searchMode = true;
+                              safeSetState(() {});
+                              if (_model.searchBarTextController.text != '') {
+                                safeSetState(() {
+                                  _model.simpleSearchResults = TextSearch(
+                                    favoritesBooksRecordList
+                                        .map(
+                                          (record) => TextSearchItem.fromTerms(
+                                              record, [
+                                            record.title,
+                                            record.author,
+                                            record.genre
+                                          ]),
+                                        )
+                                        .toList(),
+                                  )
+                                      .search(
+                                          _model.searchBarTextController.text)
+                                      .map((r) => r.object)
+                                      .toList();
+                                });
+                              } else {
+                                FFAppState().searchMode = false;
+                                safeSetState(() {});
+                              }
+                            },
+                          ),
+                          textCapitalization: TextCapitalization.words,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelText: 'Search (title, author, genre)',
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Inter',
+                                  letterSpacing: 0.0,
+                                ),
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Inter',
+                                  letterSpacing: 0.0,
+                                ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).alternate,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                            filled: true,
+                            fillColor:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                24.0, 24.0, 20.0, 24.0),
+                            prefixIcon: Icon(
+                              Icons.search,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 16.0,
+                            ),
+                            suffixIcon: _model
+                                    .searchBarTextController!.text.isNotEmpty
+                                ? InkWell(
+                                    onTap: () async {
+                                      _model.searchBarTextController?.clear();
+                                      FFAppState().searchMode = true;
+                                      safeSetState(() {});
+                                      if (_model.searchBarTextController.text !=
+                                          '') {
+                                        safeSetState(() {
+                                          _model.simpleSearchResults =
+                                              TextSearch(
+                                            favoritesBooksRecordList
+                                                .map(
+                                                  (record) =>
+                                                      TextSearchItem.fromTerms(
+                                                          record, [
+                                                    record.title,
+                                                    record.author,
+                                                    record.genre
+                                                  ]),
+                                                )
+                                                .toList(),
+                                          )
+                                                  .search(_model
+                                                      .searchBarTextController
+                                                      .text)
+                                                  .map((r) => r.object)
+                                                  .toList();
+                                        });
+                                      } else {
+                                        FFAppState().searchMode = false;
+                                        safeSetState(() {});
+                                      }
+
+                                      safeSetState(() {});
+                                    },
+                                    child: const Icon(
+                                      Icons.clear,
+                                      color: Color(0xFF757575),
+                                      size: 22.0,
+                                    ),
+                                  )
+                                : null,
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Inter',
+                                    letterSpacing: 0.0,
+                                  ),
+                          validator: _model.searchBarTextControllerValidator
+                              .asValidator(context),
+                        ),
+                      ),
+                    ),
+                    content: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        if (!FFAppState().searchMode)
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 12.0, 0.0, 0.0),
+                            child: Builder(
+                              builder: (context) {
+                                final allBooks =
+                                    favoritesBooksRecordList.toList();
+                                if (allBooks.isEmpty) {
+                                  return Center(
+                                    child: Image.asset(
+                                      'assets/images/4440881-200.png',
+                                    ),
+                                  );
+                                }
+
+                                return ListView.builder(
+                                  padding: EdgeInsets.zero,
+                                  primary: false,
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: allBooks.length,
+                                  itemBuilder: (context, allBooksIndex) {
+                                    final allBooksItem =
+                                        allBooks[allBooksIndex];
+                                    return Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 8.0, 16.0, 0.0),
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 140.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          boxShadow: const [
+                                            BoxShadow(
+                                              blurRadius: 4.0,
+                                              color: Color(0x320E151B),
+                                              offset: Offset(
+                                                0.0,
+                                                1.0,
+                                              ),
+                                            )
+                                          ],
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  12.0, 8.0, 8.0, 8.0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              context.pushNamed(
+                                                'BookDetails',
+                                                queryParameters: {
+                                                  'book': serializeParam(
+                                                    allBooksItem,
+                                                    ParamType.Document,
+                                                  ),
+                                                }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  'book': allBooksItem,
+                                                },
+                                              );
+                                            },
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Hero(
+                                                  tag: allBooksItem.coverPhoto,
+                                                  transitionOnUserGestures:
+                                                      true,
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12.0),
+                                                    child: Image.network(
+                                                      allBooksItem.coverPhoto,
+                                                      width: 80.0,
+                                                      height: 120.0,
+                                                      fit: BoxFit.fitWidth,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(12.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      8.0),
+                                                          child: Text(
+                                                            allBooksItem.title,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .titleLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter Tight',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          allBooksItem.genre,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Inter',
+                                                                fontSize: 12.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                              ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      8.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            allBooksItem.author
+                                                                .maybeHandleOverflow(
+                                                              maxChars: 20,
+                                                              replacement: '…',
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelSmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 10.0, 0.0),
+                                                  child: wrapWithModel(
+                                                    model: _model
+                                                        .favoriteButtonModels1
+                                                        .getModel(
+                                                      allBooksItem.reference.id,
+                                                      allBooksIndex,
+                                                    ),
+                                                    updateCallback: () =>
+                                                        safeSetState(() {}),
+                                                    updateOnChange: true,
+                                                    child: FavoriteButtonWidget(
+                                                      key: Key(
+                                                        'Keys52_${allBooksItem.reference.id}',
+                                                      ),
+                                                      selected: functions
+                                                          .checkIfBookIsInTheFavorites(
+                                                              allBooksItem
+                                                                  .reference
+                                                                  .id),
+                                                      onSelected: () async {
+                                                        await currentUserReference!
+                                                            .update({
+                                                          ...mapToFirestore(
+                                                            {
+                                                              'favoriteBooks':
+                                                                  FieldValue
+                                                                      .arrayUnion([
+                                                                allBooksItem
+                                                                    .reference
+                                                                    .id
+                                                              ]),
+                                                            },
+                                                          ),
+                                                        });
+                                                        FFAppState()
+                                                            .addToFavoriteBooks(
+                                                                allBooksItem
+                                                                    .reference
+                                                                    .id);
+                                                        safeSetState(() {});
+                                                      },
+                                                      onUnSelected: () async {
+                                                        await currentUserReference!
+                                                            .update({
+                                                          ...mapToFirestore(
+                                                            {
+                                                              'favoriteBooks':
+                                                                  FieldValue
+                                                                      .arrayRemove([
+                                                                allBooksItem
+                                                                    .reference
+                                                                    .id
+                                                              ]),
+                                                            },
+                                                          ),
+                                                        });
+                                                        FFAppState()
+                                                            .removeFromFavoriteBooks(
+                                                                allBooksItem
+                                                                    .reference
+                                                                    .id);
+                                                        safeSetState(() {});
+                                                      },
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                            ),
+                          ),
+                        if (FFAppState().searchMode)
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 12.0, 0.0, 0.0),
+                            child: Builder(
+                              builder: (context) {
+                                final searchResults =
+                                    _model.simpleSearchResults.toList();
+                                if (searchResults.isEmpty) {
+                                  return Center(
+                                    child: Image.asset(
+                                      'assets/images/4440881-200.png',
+                                    ),
+                                  );
+                                }
+
+                                return ListView.builder(
+                                  padding: EdgeInsets.zero,
+                                  primary: false,
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: searchResults.length,
+                                  itemBuilder: (context, searchResultsIndex) {
+                                    final searchResultsItem =
+                                        searchResults[searchResultsIndex];
+                                    return Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 8.0, 16.0, 0.0),
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 140.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          boxShadow: const [
+                                            BoxShadow(
+                                              blurRadius: 4.0,
+                                              color: Color(0x320E151B),
+                                              offset: Offset(
+                                                0.0,
+                                                1.0,
+                                              ),
+                                            )
+                                          ],
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  12.0, 8.0, 8.0, 8.0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              context.pushNamed(
+                                                'BookDetails',
+                                                queryParameters: {
+                                                  'book': serializeParam(
+                                                    searchResultsItem,
+                                                    ParamType.Document,
+                                                  ),
+                                                }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  'book': searchResultsItem,
+                                                },
+                                              );
+                                            },
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Hero(
+                                                  tag: searchResultsItem
+                                                      .coverPhoto,
+                                                  transitionOnUserGestures:
+                                                      true,
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12.0),
+                                                    child: Image.network(
+                                                      searchResultsItem
+                                                          .coverPhoto,
+                                                      width: 80.0,
+                                                      height: 120.0,
+                                                      fit: BoxFit.fitWidth,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(12.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      8.0),
+                                                          child: Text(
+                                                            searchResultsItem
+                                                                .title,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .titleLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter Tight',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          searchResultsItem
+                                                              .genre,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Inter',
+                                                                fontSize: 12.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                              ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      8.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            searchResultsItem
+                                                                .author
+                                                                .maybeHandleOverflow(
+                                                              maxChars: 20,
+                                                              replacement: '…',
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelSmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 10.0, 0.0),
+                                                  child: wrapWithModel(
+                                                    model: _model
+                                                        .favoriteButtonModels2
+                                                        .getModel(
+                                                      searchResultsItem
+                                                          .reference.id,
+                                                      searchResultsIndex,
+                                                    ),
+                                                    updateCallback: () =>
+                                                        safeSetState(() {}),
+                                                    updateOnChange: true,
+                                                    child: FavoriteButtonWidget(
+                                                      key: Key(
+                                                        'Keym61_${searchResultsItem.reference.id}',
+                                                      ),
+                                                      selected: functions
+                                                          .checkIfBookIsInTheFavorites(
+                                                              searchResultsItem
+                                                                  .reference
+                                                                  .id),
+                                                      onSelected: () async {
+                                                        await currentUserReference!
+                                                            .update({
+                                                          ...mapToFirestore(
+                                                            {
+                                                              'favoriteBooks':
+                                                                  FieldValue
+                                                                      .arrayUnion([
+                                                                searchResultsItem
+                                                                    .reference
+                                                                    .id
+                                                              ]),
+                                                            },
+                                                          ),
+                                                        });
+                                                        FFAppState()
+                                                            .addToFavoriteBooks(
+                                                                searchResultsItem
+                                                                    .reference
+                                                                    .id);
+                                                        safeSetState(() {});
+                                                      },
+                                                      onUnSelected: () async {
+                                                        await currentUserReference!
+                                                            .update({
+                                                          ...mapToFirestore(
+                                                            {
+                                                              'favoriteBooks':
+                                                                  FieldValue
+                                                                      .arrayRemove([
+                                                                searchResultsItem
+                                                                    .reference
+                                                                    .id
+                                                              ]),
+                                                            },
+                                                          ),
+                                                        });
+                                                        FFAppState()
+                                                            .removeFromFavoriteBooks(
+                                                                searchResultsItem
+                                                                    .reference
+                                                                    .id);
+                                                        safeSetState(() {});
+                                                      },
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

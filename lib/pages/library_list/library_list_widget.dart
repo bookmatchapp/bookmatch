@@ -87,16 +87,7 @@ class _LibraryListWidgetState extends State<LibraryListWidget> {
                   size: 30.0,
                 ),
                 onPressed: () async {
-                  context.pushNamed(
-                    'CreateEditBook',
-                    extra: <String, dynamic>{
-                      kTransitionInfoKey: const TransitionInfo(
-                        hasTransition: true,
-                        transitionType: PageTransitionType.leftToRight,
-                        duration: Duration(milliseconds: 220),
-                      ),
-                    },
-                  );
+                  context.safePop();
                 },
               ),
               title: Text(
@@ -236,345 +227,388 @@ class _LibraryListWidgetState extends State<LibraryListWidget> {
                     ),
                   ],
                 ),
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    if (!FFAppState().searchMode)
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                        child: Builder(
-                          builder: (context) {
-                            final allLibraries =
-                                libraryListLibrariesRecordList.toList();
-
-                            return ListView.builder(
-                              padding: EdgeInsets.zero,
-                              primary: false,
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              itemCount: allLibraries.length,
-                              itemBuilder: (context, allLibrariesIndex) {
-                                final allLibrariesItem =
-                                    allLibraries[allLibrariesIndex];
-                                return Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 8.0, 16.0, 0.0),
-                                  child: Container(
-                                    width: double.infinity,
-                                    height: 100.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      boxShadow: const [
-                                        BoxShadow(
-                                          blurRadius: 4.0,
-                                          color: Color(0x320E151B),
-                                          offset: Offset(
-                                            0.0,
-                                            1.0,
-                                          ),
-                                        )
-                                      ],
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          12.0, 8.0, 8.0, 8.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Hero(
-                                            tag: allLibrariesItem.coverPhoto,
-                                            transitionOnUserGestures: true,
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(12.0),
-                                              child: Image.network(
-                                                allLibrariesItem.coverPhoto,
-                                                width: 80.0,
-                                                fit: BoxFit.fitWidth,
-                                              ),
-                                            ),
-                                          ),
-                                          Expanded(
-                                            child: Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      12.0, 0.0, 0.0, 0.0),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 8.0),
-                                                    child: Text(
-                                                      allLibrariesItem.title,
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .titleLarge
-                                                          .override(
-                                                            fontFamily:
-                                                                'Inter Tight',
-                                                            letterSpacing: 0.0,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 8.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      allLibrariesItem
-                                                          .description
-                                                          .maybeHandleOverflow(
-                                                        maxChars: 20,
-                                                        replacement: '…',
-                                                      ),
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .labelSmall
-                                                          .override(
-                                                            fontFamily: 'Inter',
-                                                            letterSpacing: 0.0,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                          FlutterFlowIconButton(
-                                            borderColor: Colors.transparent,
-                                            borderRadius: 30.0,
-                                            borderWidth: 1.0,
-                                            buttonSize: 40.0,
-                                            icon: Icon(
-                                              Icons.edit_outlined,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 20.0,
-                                            ),
-                                            onPressed: () async {
-                                              context.pushNamed(
-                                                'CreateEditLibrary',
-                                                queryParameters: {
-                                                  'library': serializeParam(
-                                                    allLibrariesItem,
-                                                    ParamType.Document,
-                                                  ),
-                                                }.withoutNulls,
-                                                extra: <String, dynamic>{
-                                                  'library': allLibrariesItem,
-                                                },
-                                              );
-                                            },
-                                          ),
-                                          FlutterFlowIconButton(
-                                            borderColor: Colors.transparent,
-                                            borderRadius: 30.0,
-                                            borderWidth: 1.0,
-                                            buttonSize: 40.0,
-                                            icon: Icon(
-                                              Icons.delete_outline_rounded,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              size: 20.0,
-                                            ),
-                                            onPressed: () {
-                                              print('IconButton pressed ...');
-                                            },
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      if (!FFAppState().searchMode)
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 12.0, 0.0, 0.0),
+                          child: Builder(
+                            builder: (context) {
+                              final allLibraries =
+                                  libraryListLibrariesRecordList.toList();
+                              if (allLibraries.isEmpty) {
+                                return Center(
+                                  child: Image.asset(
+                                    'assets/images/4440881-200.png',
                                   ),
                                 );
-                              },
-                            );
-                          },
-                        ),
-                      ),
-                    if (FFAppState().searchMode)
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-                        child: Builder(
-                          builder: (context) {
-                            final searchResults =
-                                _model.simpleSearchResults.toList();
+                              }
 
-                            return ListView.builder(
-                              padding: EdgeInsets.zero,
-                              primary: false,
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              itemCount: searchResults.length,
-                              itemBuilder: (context, searchResultsIndex) {
-                                final searchResultsItem =
-                                    searchResults[searchResultsIndex];
-                                return Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 8.0, 16.0, 0.0),
-                                  child: Container(
-                                    width: double.infinity,
-                                    height: 100.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      boxShadow: const [
-                                        BoxShadow(
-                                          blurRadius: 4.0,
-                                          color: Color(0x320E151B),
-                                          offset: Offset(
-                                            0.0,
-                                            1.0,
-                                          ),
-                                        )
-                                      ],
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          12.0, 8.0, 8.0, 8.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Hero(
-                                            tag: searchResultsItem.coverPhoto,
-                                            transitionOnUserGestures: true,
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(12.0),
-                                              child: Image.network(
-                                                searchResultsItem.coverPhoto,
-                                                width: 80.0,
-                                                height: 80.0,
-                                                fit: BoxFit.fitWidth,
-                                              ),
+                              return ListView.builder(
+                                padding: EdgeInsets.zero,
+                                primary: false,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: allLibraries.length,
+                                itemBuilder: (context, allLibrariesIndex) {
+                                  final allLibrariesItem =
+                                      allLibraries[allLibrariesIndex];
+                                  return Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 8.0, 16.0, 0.0),
+                                    child: Container(
+                                      width: double.infinity,
+                                      height: 100.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        boxShadow: const [
+                                          BoxShadow(
+                                            blurRadius: 4.0,
+                                            color: Color(0x320E151B),
+                                            offset: Offset(
+                                              0.0,
+                                              1.0,
                                             ),
-                                          ),
-                                          Expanded(
-                                            child: Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      12.0, 0.0, 0.0, 0.0),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 8.0),
-                                                    child: Text(
-                                                      searchResultsItem.title,
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .titleLarge
-                                                          .override(
-                                                            fontFamily:
-                                                                'Inter Tight',
-                                                            letterSpacing: 0.0,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 8.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      searchResultsItem
-                                                          .description
-                                                          .maybeHandleOverflow(
-                                                        maxChars: 20,
-                                                        replacement: '…',
-                                                      ),
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .labelSmall
-                                                          .override(
-                                                            fontFamily: 'Inter',
-                                                            letterSpacing: 0.0,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                          FlutterFlowIconButton(
-                                            borderColor: Colors.transparent,
-                                            borderRadius: 30.0,
-                                            borderWidth: 1.0,
-                                            buttonSize: 40.0,
-                                            icon: Icon(
-                                              Icons.edit_outlined,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 20.0,
-                                            ),
-                                            onPressed: () async {
-                                              context.pushNamed(
-                                                'CreateEditLibrary',
-                                                queryParameters: {
-                                                  'library': serializeParam(
-                                                    searchResultsItem,
-                                                    ParamType.Document,
-                                                  ),
-                                                }.withoutNulls,
-                                                extra: <String, dynamic>{
-                                                  'library': searchResultsItem,
-                                                },
-                                              );
-                                            },
-                                          ),
-                                          FlutterFlowIconButton(
-                                            borderColor: Colors.transparent,
-                                            borderRadius: 30.0,
-                                            borderWidth: 1.0,
-                                            buttonSize: 40.0,
-                                            icon: Icon(
-                                              Icons.delete_outline_rounded,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              size: 20.0,
-                                            ),
-                                            onPressed: () {
-                                              print('IconButton pressed ...');
-                                            },
-                                          ),
+                                          )
                                         ],
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            12.0, 8.0, 8.0, 8.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Hero(
+                                              tag: allLibrariesItem.coverPhoto,
+                                              transitionOnUserGestures: true,
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
+                                                child: Image.network(
+                                                  allLibrariesItem.coverPhoto,
+                                                  width: 80.0,
+                                                  fit: BoxFit.fitWidth,
+                                                ),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        12.0, 0.0, 0.0, 0.0),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  8.0),
+                                                      child: Text(
+                                                        allLibrariesItem.title,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter Tight',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  8.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        allLibrariesItem
+                                                            .description
+                                                            .maybeHandleOverflow(
+                                                          maxChars: 20,
+                                                          replacement: '…',
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelSmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            FlutterFlowIconButton(
+                                              borderColor: Colors.transparent,
+                                              borderRadius: 30.0,
+                                              borderWidth: 1.0,
+                                              buttonSize: 40.0,
+                                              icon: Icon(
+                                                Icons.edit_outlined,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                size: 20.0,
+                                              ),
+                                              onPressed: () async {
+                                                context.pushNamed(
+                                                  'CreateEditLibrary',
+                                                  queryParameters: {
+                                                    'library': serializeParam(
+                                                      allLibrariesItem,
+                                                      ParamType.Document,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'library': allLibrariesItem,
+                                                  },
+                                                );
+                                              },
+                                            ),
+                                            FlutterFlowIconButton(
+                                              borderColor: Colors.transparent,
+                                              borderRadius: 30.0,
+                                              borderWidth: 1.0,
+                                              buttonSize: 40.0,
+                                              icon: Icon(
+                                                Icons.delete_outline_rounded,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                size: 20.0,
+                                              ),
+                                              onPressed: () {
+                                                print('IconButton pressed ...');
+                                              },
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                      if (FFAppState().searchMode)
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 12.0, 0.0, 0.0),
+                          child: Builder(
+                            builder: (context) {
+                              final searchResults =
+                                  _model.simpleSearchResults.toList();
+                              if (searchResults.isEmpty) {
+                                return Center(
+                                  child: Image.asset(
+                                    'assets/images/4440881-200.png',
                                   ),
                                 );
-                              },
-                            );
-                          },
+                              }
+
+                              return ListView.builder(
+                                padding: EdgeInsets.zero,
+                                primary: false,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: searchResults.length,
+                                itemBuilder: (context, searchResultsIndex) {
+                                  final searchResultsItem =
+                                      searchResults[searchResultsIndex];
+                                  return Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 8.0, 16.0, 0.0),
+                                    child: Container(
+                                      width: double.infinity,
+                                      height: 100.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        boxShadow: const [
+                                          BoxShadow(
+                                            blurRadius: 4.0,
+                                            color: Color(0x320E151B),
+                                            offset: Offset(
+                                              0.0,
+                                              1.0,
+                                            ),
+                                          )
+                                        ],
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            12.0, 8.0, 8.0, 8.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Hero(
+                                              tag: searchResultsItem.coverPhoto,
+                                              transitionOnUserGestures: true,
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
+                                                child: Image.network(
+                                                  searchResultsItem.coverPhoto,
+                                                  width: 80.0,
+                                                  height: 80.0,
+                                                  fit: BoxFit.fitWidth,
+                                                ),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        12.0, 0.0, 0.0, 0.0),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  8.0),
+                                                      child: Text(
+                                                        searchResultsItem.title,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter Tight',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  8.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        searchResultsItem
+                                                            .description
+                                                            .maybeHandleOverflow(
+                                                          maxChars: 20,
+                                                          replacement: '…',
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelSmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            FlutterFlowIconButton(
+                                              borderColor: Colors.transparent,
+                                              borderRadius: 30.0,
+                                              borderWidth: 1.0,
+                                              buttonSize: 40.0,
+                                              icon: Icon(
+                                                Icons.edit_outlined,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                size: 20.0,
+                                              ),
+                                              onPressed: () async {
+                                                context.pushNamed(
+                                                  'CreateEditLibrary',
+                                                  queryParameters: {
+                                                    'library': serializeParam(
+                                                      searchResultsItem,
+                                                      ParamType.Document,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'library':
+                                                        searchResultsItem,
+                                                  },
+                                                );
+                                              },
+                                            ),
+                                            FlutterFlowIconButton(
+                                              borderColor: Colors.transparent,
+                                              borderRadius: 30.0,
+                                              borderWidth: 1.0,
+                                              buttonSize: 40.0,
+                                              icon: Icon(
+                                                Icons.delete_outline_rounded,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                size: 20.0,
+                                              ),
+                                              onPressed: () {
+                                                print('IconButton pressed ...');
+                                              },
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          ),
                         ),
-                      ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),

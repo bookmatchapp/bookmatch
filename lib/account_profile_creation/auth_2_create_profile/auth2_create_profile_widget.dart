@@ -1,5 +1,5 @@
 import '/account_profile_creation/edit_profile_auth_2/edit_profile_auth2_widget.dart';
-import '/components/logox_widget.dart';
+import '/components/logox/logox_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';

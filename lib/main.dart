@@ -128,7 +128,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPageName = 'HomePage';
+  String _currentPageName = 'Swipe';
   late Widget? _currentPage;
 
   @override
@@ -141,8 +141,10 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'HomePage': const HomePageWidget(),
+      'BookSearch': const BookSearchWidget(),
       'Favorites': const FavoritesWidget(),
+      'Swipe': const SwipeWidget(),
+      'BookMessages': const BookMessagesWidget(),
       'auth_2_Profile': const Auth2ProfileWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
@@ -164,21 +166,34 @@ class _NavBarPageState extends State<NavBarPage> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home_outlined,
+              Icons.saved_search,
               size: 24.0,
             ),
-            activeIcon: Icon(
-              Icons.home,
+            label: 'Search',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.loyalty,
               size: 24.0,
             ),
-            label: 'Home',
+            label: 'Favorites',
             tooltip: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.favorite,
+              size: 24.0,
             ),
-            label: 'Favorites',
+            label: 'Swipe',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.forum_outlined,
+              size: 24.0,
+            ),
+            label: 'Messages',
             tooltip: '',
           ),
           BottomNavigationBarItem(

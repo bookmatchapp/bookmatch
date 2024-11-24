@@ -1,4 +1,4 @@
-import '/components/logox_widget.dart';
+import '/components/logox/logox_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'auth2_forgot_password_widget.dart' show Auth2ForgotPasswordWidget;
 import 'package:flutter/material.dart';

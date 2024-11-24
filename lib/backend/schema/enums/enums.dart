@@ -27,7 +27,9 @@ enum BookGenre {
 }
 
 enum Libraries {
-  QuezonCityLIbrary,
+  QuezonCityPublicLibrary,
+  AteneoRizalLibrary,
+  UPLibrary,
 }
 
 extension FFEnumExtensions<T extends Enum> on T {

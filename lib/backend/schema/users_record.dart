@@ -66,6 +66,16 @@ class UsersRecord extends FirestoreRecord {
   Roles? get role => _role;
   bool hasRole() => _role != null;
 
+  // "favoriteBooks" field.
+  List<String>? _favoriteBooks;
+  List<String> get favoriteBooks => _favoriteBooks ?? const [];
+  bool hasFavoriteBooks() => _favoriteBooks != null;
+
+  // "swipedBooks" field.
+  List<String>? _swipedBooks;
+  List<String> get swipedBooks => _swipedBooks ?? const [];
+  bool hasSwipedBooks() => _swipedBooks != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -77,6 +87,8 @@ class UsersRecord extends FirestoreRecord {
     _lastActiveTime = snapshotData['last_active_time'] as DateTime?;
     _title = snapshotData['title'] as String?;
     _role = deserializeEnum<Roles>(snapshotData['role']);
+    _favoriteBooks = getDataList(snapshotData['favoriteBooks']);
+    _swipedBooks = getDataList(snapshotData['swipedBooks']);
   }
 
   static CollectionReference get collection =>
@@ -147,6 +159,7 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
 
   @override
   bool equals(UsersRecord? e1, UsersRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.email == e2?.email &&
         e1?.displayName == e2?.displayName &&
         e1?.photoUrl == e2?.photoUrl &&
@@ -156,7 +169,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.shortDescription == e2?.shortDescription &&
         e1?.lastActiveTime == e2?.lastActiveTime &&
         e1?.title == e2?.title &&
-        e1?.role == e2?.role;
+        e1?.role == e2?.role &&
+        listEquality.equals(e1?.favoriteBooks, e2?.favoriteBooks) &&
+        listEquality.equals(e1?.swipedBooks, e2?.swipedBooks);
   }
 
   @override
@@ -170,7 +185,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.shortDescription,
         e?.lastActiveTime,
         e?.title,
-        e?.role
+        e?.role,
+        e?.favoriteBooks,
+        e?.swipedBooks
       ]);
 
   @override

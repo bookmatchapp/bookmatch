@@ -48,7 +48,7 @@ class CreateEditLibraryModel extends FlutterFlowModel<CreateEditLibraryWidget> {
   // Stores action output result for [Validate Form] action in Button widget.
   bool? lFormValidation;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
-  BooksRecord? addBook;
+  LibrariesRecord? addBook;
 
   @override
   void initState(BuildContext context) {

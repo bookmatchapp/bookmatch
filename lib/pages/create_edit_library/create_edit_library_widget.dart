@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -99,7 +98,7 @@ class _CreateEditLibraryWidgetState extends State<CreateEditLibraryWidget>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                widget.library != null ? 'Edit Book' : 'Add Book',
+                widget.library != null ? 'Edit Library' : 'Add Library',
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Inter Tight',
                       letterSpacing: 0.0,
@@ -623,25 +622,24 @@ class _CreateEditLibraryWidgetState extends State<CreateEditLibraryWidget>
                                 );
                               }
                             } else {
-                              var booksRecordReference =
-                                  BooksRecord.collection.doc();
-                              await booksRecordReference
-                                  .set(createBooksRecordData(
+                              var librariesRecordReference =
+                                  LibrariesRecord.collection.doc();
+                              await librariesRecordReference
+                                  .set(createLibrariesRecordData(
                                 title: _model.titleTextController.text,
                                 description:
                                     _model.descriptionTextController.text,
                                 coverPhoto: _model.uploadedFileUrl,
-                                author: currentUserUid,
                               ));
-                              _model.addBook = BooksRecord.getDocumentFromData(
-                                  createBooksRecordData(
-                                    title: _model.titleTextController.text,
-                                    description:
-                                        _model.descriptionTextController.text,
-                                    coverPhoto: _model.uploadedFileUrl,
-                                    author: currentUserUid,
-                                  ),
-                                  booksRecordReference);
+                              _model.addBook =
+                                  LibrariesRecord.getDocumentFromData(
+                                      createLibrariesRecordData(
+                                        title: _model.titleTextController.text,
+                                        description: _model
+                                            .descriptionTextController.text,
+                                        coverPhoto: _model.uploadedFileUrl,
+                                      ),
+                                      librariesRecordReference);
                               if (_model.addBook != null) {
                                 context.goNamed('LibraryList');
                               } else {

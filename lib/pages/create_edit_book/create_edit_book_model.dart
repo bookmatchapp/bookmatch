@@ -29,6 +29,18 @@ class CreateEditBookModel extends FlutterFlowModel<CreateEditBookWidget> {
     return null;
   }
 
+  // State field(s) for author widget.
+  FocusNode? authorFocusNode;
+  TextEditingController? authorTextController;
+  String? Function(BuildContext, String?)? authorTextControllerValidator;
+  String? _authorTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for description widget.
   FocusNode? descriptionFocusNode;
   TextEditingController? descriptionTextController;
@@ -49,14 +61,18 @@ class CreateEditBookModel extends FlutterFlowModel<CreateEditBookWidget> {
   // State field(s) for genre widget.
   String? genreValue;
   FormFieldController<String>? genreValueController;
+  // State field(s) for lib widget.
+  String? libValue;
+  FormFieldController<String>? libValueController;
   // Stores action output result for [Validate Form] action in Button widget.
   bool? formValidation;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
-  LibrariesRecord? addLibrary;
+  BooksRecord? addBook;
 
   @override
   void initState(BuildContext context) {
     titleTextControllerValidator = _titleTextControllerValidator;
+    authorTextControllerValidator = _authorTextControllerValidator;
     descriptionTextControllerValidator = _descriptionTextControllerValidator;
   }
 
@@ -64,6 +80,9 @@ class CreateEditBookModel extends FlutterFlowModel<CreateEditBookWidget> {
   void dispose() {
     titleFocusNode?.dispose();
     titleTextController?.dispose();
+
+    authorFocusNode?.dispose();
+    authorTextController?.dispose();
 
     descriptionFocusNode?.dispose();
     descriptionTextController?.dispose();

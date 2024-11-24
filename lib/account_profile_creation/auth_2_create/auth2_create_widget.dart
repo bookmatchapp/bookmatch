@@ -1,5 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/components/logox_widget.dart';
+import '/components/logox/logox_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -478,7 +478,7 @@ class _Auth2CreateWidgetState extends State<Auth2CreateWidget>
                                       }
 
                                       context.goNamedAuth(
-                                          'HomePage', context.mounted);
+                                          'Swipe', context.mounted);
                                     },
                                     text: 'Continue with Google',
                                     icon: const FaIcon(
@@ -532,7 +532,7 @@ class _Auth2CreateWidgetState extends State<Auth2CreateWidget>
                                             }
 
                                             context.goNamedAuth(
-                                                'HomePage', context.mounted);
+                                                'Swipe', context.mounted);
                                           },
                                           text: 'Continue with Apple',
                                           icon: const FaIcon(

@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'home_page_widget.dart' show HomePageWidget;
+import 'book_messages_widget.dart' show BookMessagesWidget;
 import 'package:flutter/material.dart';
 
-class HomePageModel extends FlutterFlowModel<HomePageWidget> {
+class BookMessagesModel extends FlutterFlowModel<BookMessagesWidget> {
   @override
   void initState(BuildContext context) {}
 

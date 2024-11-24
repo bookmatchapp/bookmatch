@@ -2,11 +2,9 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/backend/schema/enums/enums.dart';
-import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -305,47 +303,6 @@ class _EditProfileAuth2WidgetState extends State<EditProfileAuth2Widget> {
           Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 12.0),
             child: AuthUserStreamWidget(
-              builder: (context) => FlutterFlowDropDown<String>(
-                controller: _model.dropDownValueController ??=
-                    FormFieldController<String>(
-                  _model.dropDownValue ??= currentUserDocument?.role?.name,
-                ),
-                options: const [
-                  'Owner/Founder',
-                  'Director',
-                  'Manager',
-                  'Mid-Manager',
-                  'Employee'
-                ],
-                onChanged: (val) =>
-                    safeSetState(() => _model.dropDownValue = val),
-                width: double.infinity,
-                height: 44.0,
-                textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Inter',
-                      letterSpacing: 0.0,
-                    ),
-                hintText: 'Your Role',
-                icon: Icon(
-                  Icons.keyboard_arrow_down_rounded,
-                  color: FlutterFlowTheme.of(context).secondaryText,
-                  size: 24.0,
-                ),
-                fillColor: FlutterFlowTheme.of(context).primaryBackground,
-                elevation: 2.0,
-                borderColor: FlutterFlowTheme.of(context).alternate,
-                borderWidth: 2.0,
-                borderRadius: 8.0,
-                margin: const EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
-                hidesUnderline: true,
-                isSearchable: false,
-                isMultiSelect: false,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 12.0),
-            child: AuthUserStreamWidget(
               builder: (context) => TextFormField(
                 controller: _model.myBioTextController,
                 focusNode: _model.myBioFocusNode,
@@ -459,6 +416,7 @@ class _EditProfileAuth2WidgetState extends State<EditProfileAuth2Widget> {
                   color: FlutterFlowTheme.of(context).primary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Inter Tight',
+                        color: FlutterFlowTheme.of(context).alternate,
                         letterSpacing: 0.0,
                       ),
                   elevation: 3.0,

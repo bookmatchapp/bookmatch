@@ -4,12 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 
-
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
 import '/main.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -84,12 +82,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? const NavBarPage() : const Auth2LoginWidget(),
         ),
         FFRoute(
-          name: 'HomePage',
-          path: '/homePage',
+          name: 'Swipe',
+          path: '/home',
           requireAuth: true,
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'HomePage')
-              : const HomePageWidget(),
+          builder: (context, params) =>
+              params.isEmpty ? const NavBarPage(initialPage: 'Swipe') : const SwipeWidget(),
         ),
         FFRoute(
           name: 'auth_2_Create',
@@ -125,12 +122,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const Auth2EditProfileWidget(),
         ),
         FFRoute(
-          name: 'Favorites',
-          path: '/favorites',
+          name: 'Favorites2',
+          path: '/favorites1',
           requireAuth: true,
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'Favorites')
-              : const FavoritesWidget(),
+          builder: (context, params) => const Favorites2Widget(),
         ),
         FFRoute(
           name: 'CreateEditBook',
@@ -171,6 +166,71 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/libraryList',
           requireAuth: true,
           builder: (context, params) => const LibraryListWidget(),
+        ),
+        FFRoute(
+          name: 'PrivacyPolicy',
+          path: '/privacyPolicy',
+          builder: (context, params) => const PrivacyPolicyWidget(),
+        ),
+        FFRoute(
+          name: 'TermsOfService',
+          path: '/termsOfService',
+          builder: (context, params) => const TermsOfServiceWidget(),
+        ),
+        FFRoute(
+          name: 'BookSearch',
+          path: '/bookSearch',
+          requireAuth: true,
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'BookSearch')
+              : const BookSearchWidget(),
+        ),
+        FFRoute(
+          name: 'BookMessages',
+          path: '/bookMessages',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'BookMessages')
+              : const BookMessagesWidget(),
+        ),
+        FFRoute(
+          name: 'BookDetails',
+          path: '/bookDetails',
+          requireAuth: true,
+          asyncParams: {
+            'book': getDoc(['books'], BooksRecord.fromSnapshot),
+          },
+          builder: (context, params) => BookDetailsWidget(
+            book: params.getParam(
+              'book',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'Favorites',
+          path: '/favorites',
+          requireAuth: true,
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'Favorites')
+              : const FavoritesWidget(),
+        ),
+        FFRoute(
+          name: 'BookMessageDetails',
+          path: '/bookMessageDetails',
+          asyncParams: {
+            'book': getDoc(['books'], BooksRecord.fromSnapshot),
+          },
+          builder: (context, params) => BookMessageDetailsWidget(
+            book: params.getParam(
+              'book',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'Details01YogaClass',
+          path: '/details01YogaClass',
+          builder: (context, params) => const Details01YogaClassWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -290,6 +350,7 @@ class FFParameters {
     ParamType type, {
     bool isList = false,
     List<String>? collectionNamePath,
+    StructBuilder<T>? structBuilder,
   }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -308,6 +369,7 @@ class FFParameters {
       type,
       isList,
       collectionNamePath: collectionNamePath,
+      structBuilder: structBuilder,
     );
   }
 }
@@ -355,14 +417,14 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
-                      ),
+              ? Container(
+                  color: const Color(0xFFB1E3DD),
+                  child: Center(
+                    child: Image.asset(
+                      'assets/images/bm_icon.png',
+                      width: MediaQuery.sizeOf(context).width * 0.5,
+                      height: MediaQuery.sizeOf(context).height * 0.5,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 )

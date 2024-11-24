@@ -1,4 +1,4 @@
-import '/components/logox_widget.dart';
+import '/components/logox/logox_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'auth2_create_widget.dart' show Auth2CreateWidget;
 import 'package:flutter/material.dart';

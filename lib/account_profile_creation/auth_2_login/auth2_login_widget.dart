@@ -1,5 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/components/logox_widget.dart';
+import '/components/logox/logox_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -393,8 +393,7 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                                     return;
                                   }
 
-                                  context.goNamedAuth(
-                                      'HomePage', context.mounted);
+                                  context.goNamedAuth('Swipe', context.mounted);
                                 },
                                 text: 'Sign In',
                                 options: FFButtonOptions(
@@ -453,7 +452,7 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                                     }
 
                                     context.goNamedAuth(
-                                        'HomePage', context.mounted);
+                                        'Swipe', context.mounted);
                                   },
                                   text: 'Continue with Google',
                                   icon: const FaIcon(
@@ -506,7 +505,7 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                                           }
 
                                           context.goNamedAuth(
-                                              'HomePage', context.mounted);
+                                              'Swipe', context.mounted);
                                         },
                                         text: 'Continue with Apple',
                                         icon: const FaIcon(

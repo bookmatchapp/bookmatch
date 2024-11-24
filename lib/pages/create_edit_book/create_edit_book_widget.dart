@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'create_edit_book_model.dart';
@@ -42,6 +43,10 @@ class _CreateEditBookWidgetState extends State<CreateEditBookWidget>
     _model.titleTextController ??=
         TextEditingController(text: widget.book?.title);
     _model.titleFocusNode ??= FocusNode();
+
+    _model.authorTextController ??=
+        TextEditingController(text: widget.book?.author);
+    _model.authorFocusNode ??= FocusNode();
 
     _model.descriptionTextController ??=
         TextEditingController(text: widget.book?.description);
@@ -373,6 +378,12 @@ class _CreateEditBookWidgetState extends State<CreateEditBookWidget>
                                           controller:
                                               _model.titleTextController,
                                           focusNode: _model.titleFocusNode,
+                                          onChanged: (_) =>
+                                              EasyDebounce.debounce(
+                                            '_model.titleTextController',
+                                            const Duration(milliseconds: 2000),
+                                            () => safeSetState(() {}),
+                                          ),
                                           autofocus: true,
                                           textCapitalization:
                                               TextCapitalization.words,
@@ -446,6 +457,22 @@ class _CreateEditBookWidgetState extends State<CreateEditBookWidget>
                                             contentPadding:
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 20.0, 16.0, 20.0),
+                                            suffixIcon: _model
+                                                    .titleTextController!
+                                                    .text
+                                                    .isNotEmpty
+                                                ? InkWell(
+                                                    onTap: () async {
+                                                      _model.titleTextController
+                                                          ?.clear();
+                                                      safeSetState(() {});
+                                                    },
+                                                    child: const Icon(
+                                                      Icons.clear,
+                                                      size: 24.0,
+                                                    ),
+                                                  )
+                                                : null,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .headlineMedium
@@ -464,9 +491,131 @@ class _CreateEditBookWidgetState extends State<CreateEditBookWidget>
                                         ),
                                         TextFormField(
                                           controller:
+                                              _model.authorTextController,
+                                          focusNode: _model.authorFocusNode,
+                                          onChanged: (_) =>
+                                              EasyDebounce.debounce(
+                                            '_model.authorTextController',
+                                            const Duration(milliseconds: 2000),
+                                            () => safeSetState(() {}),
+                                          ),
+                                          autofocus: true,
+                                          textCapitalization:
+                                              TextCapitalization.words,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            labelText: 'Author...',
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Inter',
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            errorStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Inter',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      fontSize: 12.0,
+                                                      letterSpacing: 0.0,
+                                                    ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                            ),
+                                            filled: true,
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
+                                            contentPadding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 20.0, 16.0, 20.0),
+                                            suffixIcon: _model
+                                                    .authorTextController!
+                                                    .text
+                                                    .isNotEmpty
+                                                ? InkWell(
+                                                    onTap: () async {
+                                                      _model
+                                                          .authorTextController
+                                                          ?.clear();
+                                                      safeSetState(() {});
+                                                    },
+                                                    child: const Icon(
+                                                      Icons.clear,
+                                                      size: 24.0,
+                                                    ),
+                                                  )
+                                                : null,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .headlineMedium
+                                              .override(
+                                                fontFamily: 'Inter Tight',
+                                                fontSize: 16.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                          cursorColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                          validator: _model
+                                              .authorTextControllerValidator
+                                              .asValidator(context),
+                                        ),
+                                        TextFormField(
+                                          controller:
                                               _model.descriptionTextController,
                                           focusNode:
                                               _model.descriptionFocusNode,
+                                          onChanged: (_) =>
+                                              EasyDebounce.debounce(
+                                            '_model.descriptionTextController',
+                                            const Duration(milliseconds: 2000),
+                                            () => safeSetState(() {}),
+                                          ),
                                           autofocus: true,
                                           textCapitalization:
                                               TextCapitalization.words,
@@ -548,6 +697,23 @@ class _CreateEditBookWidgetState extends State<CreateEditBookWidget>
                                             contentPadding:
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 16.0, 16.0, 16.0),
+                                            suffixIcon: _model
+                                                    .descriptionTextController!
+                                                    .text
+                                                    .isNotEmpty
+                                                ? InkWell(
+                                                    onTap: () async {
+                                                      _model
+                                                          .descriptionTextController
+                                                          ?.clear();
+                                                      safeSetState(() {});
+                                                    },
+                                                    child: const Icon(
+                                                      Icons.clear,
+                                                      size: 24.0,
+                                                    ),
+                                                  )
+                                                : null,
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
@@ -618,7 +784,131 @@ class _CreateEditBookWidgetState extends State<CreateEditBookWidget>
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Inter',
-                                                    fontSize: 16.0,
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          hintText: 'Select...',
+                                          searchHintText: 'Search...',
+                                          icon: Icon(
+                                            Icons.keyboard_arrow_down_rounded,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 24.0,
+                                          ),
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          elevation: 2.0,
+                                          borderColor: Colors.transparent,
+                                          borderWidth: 0.0,
+                                          borderRadius: 8.0,
+                                          margin:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  12.0, 0.0, 12.0, 0.0),
+                                          hidesUnderline: true,
+                                          isOverButton: false,
+                                          isSearchable: true,
+                                          isMultiSelect: false,
+                                        ),
+                                        if (responsiveVisibility(
+                                          context: context,
+                                          phone: false,
+                                          tablet: false,
+                                        ))
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 12.0, 16.0, 12.0),
+                                            child: FFButtonWidget(
+                                              onPressed: () {
+                                                print('Button pressed ...');
+                                              },
+                                              text: 'Create Book',
+                                              options: FFButtonOptions(
+                                                width: double.infinity,
+                                                height: 48.0,
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        24.0, 0.0, 24.0, 0.0),
+                                                iconPadding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Inter Tight',
+                                                          color: Colors.white,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                elevation: 3.0,
+                                                borderSide: const BorderSide(
+                                                  color: Colors.transparent,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                            ),
+                                          ),
+                                      ].divide(const SizedBox(height: 12.0)),
+                                    ),
+                                  ),
+                                  Container(
+                                    constraints: const BoxConstraints(
+                                      maxWidth: 570.0,
+                                    ),
+                                    decoration: const BoxDecoration(),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Library',
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily: 'Inter',
+                                                letterSpacing: 0.0,
+                                              ),
+                                        ),
+                                        FlutterFlowDropDown<String>(
+                                          controller:
+                                              _model.libValueController ??=
+                                                  FormFieldController<String>(
+                                            _model.libValue ??=
+                                                widget.book?.libraryName,
+                                          ),
+                                          options: Libraries.values
+                                              .map((e) => e.name)
+                                              .toList(),
+                                          onChanged: (val) => safeSetState(
+                                              () => _model.libValue = val),
+                                          height: 40.0,
+                                          searchHintTextStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Inter',
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          searchTextStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Inter',
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Inter',
                                                     letterSpacing: 0.0,
                                                   ),
                                           hintText: 'Select...',
@@ -744,13 +1034,17 @@ class _CreateEditBookWidgetState extends State<CreateEditBookWidget>
                               await widget.book!.reference
                                   .update(createBooksRecordData(
                                 title: _model.titleTextController.text,
-                                coverPhoto: _model.uploadedFileUrl,
+                                coverPhoto: _model.uploadedFileUrl != ''
+                                    ? _model.uploadedFileUrl
+                                    : widget.book?.coverPhoto,
                                 description:
                                     _model.descriptionTextController.text,
                                 genre: _model.genreValue,
+                                author: _model.authorTextController.text,
+                                libraryName: _model.libValue,
                               ));
                               if (true) {
-                                context.goNamed('LibraryList');
+                                context.goNamed('BookList');
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
@@ -763,31 +1057,44 @@ class _CreateEditBookWidgetState extends State<CreateEditBookWidget>
                                     ),
                                     duration: const Duration(milliseconds: 4000),
                                     backgroundColor:
-                                        FlutterFlowTheme.of(context).secondary,
+                                        FlutterFlowTheme.of(context).tertiary,
                                   ),
                                 );
                               }
                             } else {
-                              var librariesRecordReference =
-                                  LibrariesRecord.collection.doc();
-                              await librariesRecordReference
-                                  .set(createLibrariesRecordData(
+                              var booksRecordReference =
+                                  BooksRecord.collection.doc();
+                              await booksRecordReference
+                                  .set(createBooksRecordData(
                                 title: _model.titleTextController.text,
                                 description:
                                     _model.descriptionTextController.text,
                                 coverPhoto: _model.uploadedFileUrl,
+                                genre: _model.genreValue,
+                                author: _model.authorTextController.text,
+                                libraryName: _model.libValue,
                               ));
-                              _model.addLibrary =
-                                  LibrariesRecord.getDocumentFromData(
-                                      createLibrariesRecordData(
-                                        title: _model.titleTextController.text,
-                                        description: _model
-                                            .descriptionTextController.text,
-                                        coverPhoto: _model.uploadedFileUrl,
-                                      ),
-                                      librariesRecordReference);
-                              if (_model.addLibrary != null) {
-                                context.goNamed('LibraryList');
+                              _model.addBook = BooksRecord.getDocumentFromData(
+                                  createBooksRecordData(
+                                    title: _model.titleTextController.text,
+                                    description:
+                                        _model.descriptionTextController.text,
+                                    coverPhoto: _model.uploadedFileUrl,
+                                    genre: _model.genreValue,
+                                    author: _model.authorTextController.text,
+                                    libraryName: _model.libValue,
+                                  ),
+                                  booksRecordReference);
+                              FFAppState().createdBook =
+                                  _model.addBook?.reference;
+                              safeSetState(() {});
+
+                              await _model.addBook!.reference
+                                  .update(createBooksRecordData(
+                                uid: _model.addBook?.reference.id,
+                              ));
+                              if (_model.addBook != null) {
+                                context.goNamed('BookList');
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
@@ -800,7 +1107,7 @@ class _CreateEditBookWidgetState extends State<CreateEditBookWidget>
                                     ),
                                     duration: const Duration(milliseconds: 4000),
                                     backgroundColor:
-                                        FlutterFlowTheme.of(context).secondary,
+                                        FlutterFlowTheme.of(context).tertiary,
                                   ),
                                 );
                               }
@@ -817,7 +1124,7 @@ class _CreateEditBookWidgetState extends State<CreateEditBookWidget>
                                 ),
                                 duration: const Duration(milliseconds: 4000),
                                 backgroundColor:
-                                    FlutterFlowTheme.of(context).secondary,
+                                    FlutterFlowTheme.of(context).tertiary,
                               ),
                             );
                           }

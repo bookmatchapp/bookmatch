@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/enums/enums.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -40,12 +41,42 @@ class BooksRecord extends FirestoreRecord {
   String get author => _author ?? '';
   bool hasAuthor() => _author != null;
 
+  // "library" field.
+  DocumentReference? _library;
+  DocumentReference? get library => _library;
+  bool hasLibrary() => _library != null;
+
+  // "libraryName" field.
+  String? _libraryName;
+  String get libraryName => _libraryName ?? '';
+  bool hasLibraryName() => _libraryName != null;
+
+  // "isbn" field.
+  String? _isbn;
+  String get isbn => _isbn ?? '';
+  bool hasIsbn() => _isbn != null;
+
+  // "uid" field.
+  String? _uid;
+  String get uid => _uid ?? '';
+  bool hasUid() => _uid != null;
+
+  // "libCode" field.
+  Libraries? _libCode;
+  Libraries? get libCode => _libCode;
+  bool hasLibCode() => _libCode != null;
+
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _coverPhoto = snapshotData['cover_photo'] as String?;
     _description = snapshotData['description'] as String?;
     _genre = snapshotData['genre'] as String?;
     _author = snapshotData['author'] as String?;
+    _library = snapshotData['library'] as DocumentReference?;
+    _libraryName = snapshotData['libraryName'] as String?;
+    _isbn = snapshotData['isbn'] as String?;
+    _uid = snapshotData['uid'] as String?;
+    _libCode = deserializeEnum<Libraries>(snapshotData['libCode']);
   }
 
   static CollectionReference get collection =>
@@ -87,6 +118,11 @@ Map<String, dynamic> createBooksRecordData({
   String? description,
   String? genre,
   String? author,
+  DocumentReference? library,
+  String? libraryName,
+  String? isbn,
+  String? uid,
+  Libraries? libCode,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -95,6 +131,11 @@ Map<String, dynamic> createBooksRecordData({
       'description': description,
       'genre': genre,
       'author': author,
+      'library': library,
+      'libraryName': libraryName,
+      'isbn': isbn,
+      'uid': uid,
+      'libCode': libCode,
     }.withoutNulls,
   );
 
@@ -110,12 +151,27 @@ class BooksRecordDocumentEquality implements Equality<BooksRecord> {
         e1?.coverPhoto == e2?.coverPhoto &&
         e1?.description == e2?.description &&
         e1?.genre == e2?.genre &&
-        e1?.author == e2?.author;
+        e1?.author == e2?.author &&
+        e1?.library == e2?.library &&
+        e1?.libraryName == e2?.libraryName &&
+        e1?.isbn == e2?.isbn &&
+        e1?.uid == e2?.uid &&
+        e1?.libCode == e2?.libCode;
   }
 
   @override
-  int hash(BooksRecord? e) => const ListEquality()
-      .hash([e?.title, e?.coverPhoto, e?.description, e?.genre, e?.author]);
+  int hash(BooksRecord? e) => const ListEquality().hash([
+        e?.title,
+        e?.coverPhoto,
+        e?.description,
+        e?.genre,
+        e?.author,
+        e?.library,
+        e?.libraryName,
+        e?.isbn,
+        e?.uid,
+        e?.libCode
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is BooksRecord;

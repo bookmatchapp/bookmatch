@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/enums/enums.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -30,10 +31,28 @@ class LibrariesRecord extends FirestoreRecord {
   String get description => _description ?? '';
   bool hasDescription() => _description != null;
 
+  // "borrowing_policy" field.
+  String? _borrowingPolicy;
+  String get borrowingPolicy => _borrowingPolicy ?? '';
+  bool hasBorrowingPolicy() => _borrowingPolicy != null;
+
+  // "location" field.
+  String? _location;
+  String get location => _location ?? '';
+  bool hasLocation() => _location != null;
+
+  // "code" field.
+  Libraries? _code;
+  Libraries? get code => _code;
+  bool hasCode() => _code != null;
+
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _coverPhoto = snapshotData['cover_photo'] as String?;
     _description = snapshotData['description'] as String?;
+    _borrowingPolicy = snapshotData['borrowing_policy'] as String?;
+    _location = snapshotData['location'] as String?;
+    _code = deserializeEnum<Libraries>(snapshotData['code']);
   }
 
   static CollectionReference get collection =>
@@ -74,12 +93,18 @@ Map<String, dynamic> createLibrariesRecordData({
   String? title,
   String? coverPhoto,
   String? description,
+  String? borrowingPolicy,
+  String? location,
+  Libraries? code,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'title': title,
       'cover_photo': coverPhoto,
       'description': description,
+      'borrowing_policy': borrowingPolicy,
+      'location': location,
+      'code': code,
     }.withoutNulls,
   );
 
@@ -93,12 +118,21 @@ class LibrariesRecordDocumentEquality implements Equality<LibrariesRecord> {
   bool equals(LibrariesRecord? e1, LibrariesRecord? e2) {
     return e1?.title == e2?.title &&
         e1?.coverPhoto == e2?.coverPhoto &&
-        e1?.description == e2?.description;
+        e1?.description == e2?.description &&
+        e1?.borrowingPolicy == e2?.borrowingPolicy &&
+        e1?.location == e2?.location &&
+        e1?.code == e2?.code;
   }
 
   @override
-  int hash(LibrariesRecord? e) =>
-      const ListEquality().hash([e?.title, e?.coverPhoto, e?.description]);
+  int hash(LibrariesRecord? e) => const ListEquality().hash([
+        e?.title,
+        e?.coverPhoto,
+        e?.description,
+        e?.borrowingPolicy,
+        e?.location,
+        e?.code
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is LibrariesRecord;
