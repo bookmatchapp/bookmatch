@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'edit_profile_auth2_widget.dart' show EditProfileAuth2Widget;
+import 'edit_profile_auth_widget.dart' show EditProfileAuthWidget;
 import 'package:flutter/material.dart';
 
-class EditProfileAuth2Model extends FlutterFlowModel<EditProfileAuth2Widget> {
+class EditProfileAuthModel extends FlutterFlowModel<EditProfileAuthWidget> {
   ///  State fields for stateful widgets in this component.
 
   final formKey = GlobalKey<FormState>();

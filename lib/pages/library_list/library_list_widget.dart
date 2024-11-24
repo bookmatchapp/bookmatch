@@ -379,7 +379,7 @@ class _LibraryListWidgetState extends State<LibraryListWidget> {
                                               ),
                                               onPressed: () async {
                                                 context.pushNamed(
-                                                  'CreateEditLibrary',
+                                                  'LibraryCreateEdit',
                                                   queryParameters: {
                                                     'library': serializeParam(
                                                       allLibrariesItem,
@@ -567,7 +567,7 @@ class _LibraryListWidgetState extends State<LibraryListWidget> {
                                               ),
                                               onPressed: () async {
                                                 context.pushNamed(
-                                                  'CreateEditLibrary',
+                                                  'LibraryCreateEdit',
                                                   queryParameters: {
                                                     'library': serializeParam(
                                                       searchResultsItem,

@@ -1,23 +1,22 @@
 // Export pages
 export '/pages/swipe/swipe_widget.dart' show SwipeWidget;
-export '/account_profile_creation/auth_2_create/auth2_create_widget.dart'
-    show Auth2CreateWidget;
-export '/account_profile_creation/auth_2_login/auth2_login_widget.dart'
-    show Auth2LoginWidget;
-export '/account_profile_creation/auth_2_forgot_password/auth2_forgot_password_widget.dart'
-    show Auth2ForgotPasswordWidget;
-export '/account_profile_creation/auth_2_create_profile/auth2_create_profile_widget.dart'
-    show Auth2CreateProfileWidget;
-export '/account_profile_creation/auth_2_profile/auth2_profile_widget.dart'
-    show Auth2ProfileWidget;
-export '/account_profile_creation/auth_2_edit_profile/auth2_edit_profile_widget.dart'
-    show Auth2EditProfileWidget;
-export '/pages/favorites2/favorites2_widget.dart' show Favorites2Widget;
-export '/pages/create_edit_book/create_edit_book_widget.dart'
-    show CreateEditBookWidget;
+export '/account_profile_creation/auth_create/auth_create_widget.dart'
+    show AuthCreateWidget;
+export '/account_profile_creation/auth_login/auth_login_widget.dart'
+    show AuthLoginWidget;
+export '/account_profile_creation/auth_forgot_password/auth_forgot_password_widget.dart'
+    show AuthForgotPasswordWidget;
+export '/account_profile_creation/auth_create_profile/auth_create_profile_widget.dart'
+    show AuthCreateProfileWidget;
+export '/account_profile_creation/auth_profile/auth_profile_widget.dart'
+    show AuthProfileWidget;
+export '/account_profile_creation/auth_edit_profile/auth_edit_profile_widget.dart'
+    show AuthEditProfileWidget;
+export '/pages/book_create_edit/book_create_edit_widget.dart'
+    show BookCreateEditWidget;
 export '/pages/book_list/book_list_widget.dart' show BookListWidget;
-export '/pages/create_edit_library/create_edit_library_widget.dart'
-    show CreateEditLibraryWidget;
+export '/pages/library_create_edit/library_create_edit_widget.dart'
+    show LibraryCreateEditWidget;
 export '/pages/library_list/library_list_widget.dart' show LibraryListWidget;
 export '/pages/privacy_policy/privacy_policy_widget.dart'
     show PrivacyPolicyWidget;
@@ -29,5 +28,3 @@ export '/pages/book_details/book_details_widget.dart' show BookDetailsWidget;
 export '/pages/favorites/favorites_widget.dart' show FavoritesWidget;
 export '/pages/book_message_details/book_message_details_widget.dart'
     show BookMessageDetailsWidget;
-export '/details01_yoga_class/details01_yoga_class_widget.dart'
-    show Details01YogaClassWidget;

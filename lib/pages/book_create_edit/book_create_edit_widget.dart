@@ -12,11 +12,11 @@ import '/flutter_flow/upload_data.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'create_edit_book_model.dart';
-export 'create_edit_book_model.dart';
+import 'book_create_edit_model.dart';
+export 'book_create_edit_model.dart';
 
-class CreateEditBookWidget extends StatefulWidget {
-  const CreateEditBookWidget({
+class BookCreateEditWidget extends StatefulWidget {
+  const BookCreateEditWidget({
     super.key,
     this.book,
   });
@@ -24,12 +24,12 @@ class CreateEditBookWidget extends StatefulWidget {
   final BooksRecord? book;
 
   @override
-  State<CreateEditBookWidget> createState() => _CreateEditBookWidgetState();
+  State<BookCreateEditWidget> createState() => _BookCreateEditWidgetState();
 }
 
-class _CreateEditBookWidgetState extends State<CreateEditBookWidget>
+class _BookCreateEditWidgetState extends State<BookCreateEditWidget>
     with TickerProviderStateMixin {
-  late CreateEditBookModel _model;
+  late BookCreateEditModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -38,7 +38,7 @@ class _CreateEditBookWidgetState extends State<CreateEditBookWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => CreateEditBookModel());
+    _model = createModel(context, () => BookCreateEditModel());
 
     _model.titleTextController ??=
         TextEditingController(text: widget.book?.title);

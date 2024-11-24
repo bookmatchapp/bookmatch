@@ -145,7 +145,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'Favorites': const FavoritesWidget(),
       'Swipe': const SwipeWidget(),
       'BookMessages': const BookMessagesWidget(),
-      'auth_2_Profile': const Auth2ProfileWidget(),
+      'AuthProfile': const AuthProfileWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 

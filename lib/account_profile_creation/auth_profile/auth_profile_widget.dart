@@ -7,19 +7,19 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'auth2_profile_model.dart';
-export 'auth2_profile_model.dart';
+import 'auth_profile_model.dart';
+export 'auth_profile_model.dart';
 
-class Auth2ProfileWidget extends StatefulWidget {
-  const Auth2ProfileWidget({super.key});
+class AuthProfileWidget extends StatefulWidget {
+  const AuthProfileWidget({super.key});
 
   @override
-  State<Auth2ProfileWidget> createState() => _Auth2ProfileWidgetState();
+  State<AuthProfileWidget> createState() => _AuthProfileWidgetState();
 }
 
-class _Auth2ProfileWidgetState extends State<Auth2ProfileWidget>
+class _AuthProfileWidgetState extends State<AuthProfileWidget>
     with TickerProviderStateMixin {
-  late Auth2ProfileModel _model;
+  late AuthProfileModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -28,7 +28,7 @@ class _Auth2ProfileWidgetState extends State<Auth2ProfileWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => Auth2ProfileModel());
+    _model = createModel(context, () => AuthProfileModel());
 
     animationsMap.addAll({
       'containerOnPageLoadAnimation': AnimationInfo(
@@ -251,7 +251,7 @@ class _Auth2ProfileWidgetState extends State<Auth2ProfileWidget>
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        context.pushNamed('auth_2_EditProfile');
+                        context.pushNamed('AuthEditProfile');
                       },
                       child: Container(
                         width: double.infinity,
@@ -412,7 +412,7 @@ class _Auth2ProfileWidgetState extends State<Auth2ProfileWidget>
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             context.pushNamed(
-                              'CreateEditBook',
+                              'BookCreateEdit',
                               extra: <String, dynamic>{
                                 kTransitionInfoKey: const TransitionInfo(
                                   hasTransition: true,
@@ -499,7 +499,7 @@ class _Auth2ProfileWidgetState extends State<Auth2ProfileWidget>
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             context.pushNamed(
-                              'CreateEditLibrary',
+                              'LibraryCreateEdit',
                               queryParameters: {
                                 'library': serializeParam(
                                   null,
@@ -927,7 +927,7 @@ class _Auth2ProfileWidgetState extends State<Auth2ProfileWidget>
                           await authManager.signOut();
                           GoRouter.of(context).clearRedirectLocation();
 
-                          context.goNamedAuth('auth_2_Login', context.mounted);
+                          context.goNamedAuth('AuthLogin', context.mounted);
                         },
                         text: 'Log Out',
                         options: FFButtonOptions(

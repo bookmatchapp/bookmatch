@@ -7,19 +7,19 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'auth2_login_model.dart';
-export 'auth2_login_model.dart';
+import 'auth_login_model.dart';
+export 'auth_login_model.dart';
 
-class Auth2LoginWidget extends StatefulWidget {
-  const Auth2LoginWidget({super.key});
+class AuthLoginWidget extends StatefulWidget {
+  const AuthLoginWidget({super.key});
 
   @override
-  State<Auth2LoginWidget> createState() => _Auth2LoginWidgetState();
+  State<AuthLoginWidget> createState() => _AuthLoginWidgetState();
 }
 
-class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
+class _AuthLoginWidgetState extends State<AuthLoginWidget>
     with TickerProviderStateMixin {
-  late Auth2LoginModel _model;
+  late AuthLoginModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -28,7 +28,7 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => Auth2LoginModel());
+    _model = createModel(context, () => AuthLoginModel());
 
     _model.emailAddressTextController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
@@ -561,7 +561,7 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
                                     context.pushNamed(
-                                      'auth_2_Create',
+                                      'AuthCreate',
                                       extra: <String, dynamic>{
                                         kTransitionInfoKey: const TransitionInfo(
                                           hasTransition: true,
@@ -611,7 +611,7 @@ class _Auth2LoginWidgetState extends State<Auth2LoginWidget>
                                   0.0, 16.0, 0.0, 0.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
-                                  context.pushNamed('auth_2_ForgotPassword');
+                                  context.pushNamed('AuthForgotPassword');
                                 },
                                 text: 'Forgot password?',
                                 options: FFButtonOptions(

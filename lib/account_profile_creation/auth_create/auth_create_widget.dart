@@ -7,19 +7,19 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'auth2_create_model.dart';
-export 'auth2_create_model.dart';
+import 'auth_create_model.dart';
+export 'auth_create_model.dart';
 
-class Auth2CreateWidget extends StatefulWidget {
-  const Auth2CreateWidget({super.key});
+class AuthCreateWidget extends StatefulWidget {
+  const AuthCreateWidget({super.key});
 
   @override
-  State<Auth2CreateWidget> createState() => _Auth2CreateWidgetState();
+  State<AuthCreateWidget> createState() => _AuthCreateWidgetState();
 }
 
-class _Auth2CreateWidgetState extends State<Auth2CreateWidget>
+class _AuthCreateWidgetState extends State<AuthCreateWidget>
     with TickerProviderStateMixin {
-  late Auth2CreateModel _model;
+  late AuthCreateModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -28,7 +28,7 @@ class _Auth2CreateWidgetState extends State<Auth2CreateWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => Auth2CreateModel());
+    _model = createModel(context, () => AuthCreateModel());
 
     _model.emailAddressTextController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
@@ -410,7 +410,7 @@ class _Auth2CreateWidgetState extends State<Auth2CreateWidget>
                                     }
 
                                     context.goNamedAuth(
-                                      'auth_2_createProfile',
+                                      'AuthCreateProfile',
                                       context.mounted,
                                       extra: <String, dynamic>{
                                         kTransitionInfoKey: const TransitionInfo(
@@ -590,7 +590,7 @@ class _Auth2CreateWidgetState extends State<Auth2CreateWidget>
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
                                       context.pushNamed(
-                                        'auth_2_Login',
+                                        'AuthLogin',
                                         extra: <String, dynamic>{
                                           kTransitionInfoKey: const TransitionInfo(
                                             hasTransition: true,

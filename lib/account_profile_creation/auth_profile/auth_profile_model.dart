@@ -1,9 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'details01_yoga_class_widget.dart' show Details01YogaClassWidget;
+import 'auth_profile_widget.dart' show AuthProfileWidget;
 import 'package:flutter/material.dart';
 
-class Details01YogaClassModel
-    extends FlutterFlowModel<Details01YogaClassWidget> {
+class AuthProfileModel extends FlutterFlowModel<AuthProfileWidget> {
   @override
   void initState(BuildContext context) {}
 

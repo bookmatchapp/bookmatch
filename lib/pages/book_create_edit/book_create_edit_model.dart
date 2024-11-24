@@ -1,9 +1,10 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'create_edit_library_widget.dart' show CreateEditLibraryWidget;
+import '/flutter_flow/form_field_controller.dart';
+import 'book_create_edit_widget.dart' show BookCreateEditWidget;
 import 'package:flutter/material.dart';
 
-class CreateEditLibraryModel extends FlutterFlowModel<CreateEditLibraryWidget> {
+class BookCreateEditModel extends FlutterFlowModel<BookCreateEditWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
@@ -28,6 +29,18 @@ class CreateEditLibraryModel extends FlutterFlowModel<CreateEditLibraryWidget> {
     return null;
   }
 
+  // State field(s) for author widget.
+  FocusNode? authorFocusNode;
+  TextEditingController? authorTextController;
+  String? Function(BuildContext, String?)? authorTextControllerValidator;
+  String? _authorTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for description widget.
   FocusNode? descriptionFocusNode;
   TextEditingController? descriptionTextController;
@@ -45,14 +58,21 @@ class CreateEditLibraryModel extends FlutterFlowModel<CreateEditLibraryWidget> {
     return null;
   }
 
+  // State field(s) for genre widget.
+  String? genreValue;
+  FormFieldController<String>? genreValueController;
+  // State field(s) for lib widget.
+  String? libValue;
+  FormFieldController<String>? libValueController;
   // Stores action output result for [Validate Form] action in Button widget.
-  bool? lFormValidation;
+  bool? formValidation;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
-  LibrariesRecord? addBook;
+  BooksRecord? addBook;
 
   @override
   void initState(BuildContext context) {
     titleTextControllerValidator = _titleTextControllerValidator;
+    authorTextControllerValidator = _authorTextControllerValidator;
     descriptionTextControllerValidator = _descriptionTextControllerValidator;
   }
 
@@ -60,6 +80,9 @@ class CreateEditLibraryModel extends FlutterFlowModel<CreateEditLibraryWidget> {
   void dispose() {
     titleFocusNode?.dispose();
     titleTextController?.dispose();
+
+    authorFocusNode?.dispose();
+    authorTextController?.dispose();
 
     descriptionFocusNode?.dispose();
     descriptionTextController?.dispose();

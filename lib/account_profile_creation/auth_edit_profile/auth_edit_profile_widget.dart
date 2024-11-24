@@ -1,23 +1,23 @@
-import '/account_profile_creation/edit_profile_auth_2/edit_profile_auth2_widget.dart';
+import '/components/edit_profile_auth/edit_profile_auth_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'auth2_edit_profile_model.dart';
-export 'auth2_edit_profile_model.dart';
+import 'auth_edit_profile_model.dart';
+export 'auth_edit_profile_model.dart';
 
-class Auth2EditProfileWidget extends StatefulWidget {
-  const Auth2EditProfileWidget({super.key});
+class AuthEditProfileWidget extends StatefulWidget {
+  const AuthEditProfileWidget({super.key});
 
   @override
-  State<Auth2EditProfileWidget> createState() => _Auth2EditProfileWidgetState();
+  State<AuthEditProfileWidget> createState() => _AuthEditProfileWidgetState();
 }
 
-class _Auth2EditProfileWidgetState extends State<Auth2EditProfileWidget>
+class _AuthEditProfileWidgetState extends State<AuthEditProfileWidget>
     with TickerProviderStateMixin {
-  late Auth2EditProfileModel _model;
+  late AuthEditProfileModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -26,7 +26,7 @@ class _Auth2EditProfileWidgetState extends State<Auth2EditProfileWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => Auth2EditProfileModel());
+    _model = createModel(context, () => AuthEditProfileModel());
 
     animationsMap.addAll({
       'containerOnPageLoadAnimation': AnimationInfo(
@@ -140,9 +140,9 @@ class _Auth2EditProfileWidgetState extends State<Auth2EditProfileWidget>
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
                 child: wrapWithModel(
-                  model: _model.editProfileAuth2Model,
+                  model: _model.editProfileAuthModel,
                   updateCallback: () => safeSetState(() {}),
-                  child: EditProfileAuth2Widget(
+                  child: EditProfileAuthWidget(
                     title: 'Edit Profile',
                     confirmButtonText: 'Save Changes',
                     navigateAction: () async {

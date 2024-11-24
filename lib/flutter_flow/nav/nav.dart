@@ -73,13 +73,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const NavBarPage() : const Auth2LoginWidget(),
+          appStateNotifier.loggedIn ? const NavBarPage() : const AuthLoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const NavBarPage() : const Auth2LoginWidget(),
+              appStateNotifier.loggedIn ? const NavBarPage() : const AuthLoginWidget(),
         ),
         FFRoute(
           name: 'Swipe',
@@ -89,52 +89,46 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               params.isEmpty ? const NavBarPage(initialPage: 'Swipe') : const SwipeWidget(),
         ),
         FFRoute(
-          name: 'auth_2_Create',
-          path: '/auth2Create',
-          builder: (context, params) => const Auth2CreateWidget(),
+          name: 'AuthCreate',
+          path: '/authCreate',
+          builder: (context, params) => const AuthCreateWidget(),
         ),
         FFRoute(
-          name: 'auth_2_Login',
-          path: '/auth2Login',
-          builder: (context, params) => const Auth2LoginWidget(),
+          name: 'AuthLogin',
+          path: '/authLogin',
+          builder: (context, params) => const AuthLoginWidget(),
         ),
         FFRoute(
-          name: 'auth_2_ForgotPassword',
-          path: '/auth2ForgotPassword',
-          builder: (context, params) => const Auth2ForgotPasswordWidget(),
+          name: 'AuthForgotPassword',
+          path: '/authForgotPassword',
+          builder: (context, params) => const AuthForgotPasswordWidget(),
         ),
         FFRoute(
-          name: 'auth_2_createProfile',
-          path: '/auth2CreateProfile',
-          builder: (context, params) => const Auth2CreateProfileWidget(),
+          name: 'AuthCreateProfile',
+          path: '/authCreateProfile',
+          builder: (context, params) => const AuthCreateProfileWidget(),
         ),
         FFRoute(
-          name: 'auth_2_Profile',
-          path: '/auth2Profile',
+          name: 'AuthProfile',
+          path: '/authProfile',
           requireAuth: true,
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'auth_2_Profile')
-              : const Auth2ProfileWidget(),
+              ? const NavBarPage(initialPage: 'AuthProfile')
+              : const AuthProfileWidget(),
         ),
         FFRoute(
-          name: 'auth_2_EditProfile',
-          path: '/auth2EditProfile',
-          builder: (context, params) => const Auth2EditProfileWidget(),
+          name: 'AuthEditProfile',
+          path: '/authEditProfile',
+          builder: (context, params) => const AuthEditProfileWidget(),
         ),
         FFRoute(
-          name: 'Favorites2',
-          path: '/favorites1',
-          requireAuth: true,
-          builder: (context, params) => const Favorites2Widget(),
-        ),
-        FFRoute(
-          name: 'CreateEditBook',
-          path: '/createEditBook',
+          name: 'BookCreateEdit',
+          path: '/bookCreateEdit',
           requireAuth: true,
           asyncParams: {
             'book': getDoc(['books'], BooksRecord.fromSnapshot),
           },
-          builder: (context, params) => CreateEditBookWidget(
+          builder: (context, params) => BookCreateEditWidget(
             book: params.getParam(
               'book',
               ParamType.Document,
@@ -148,13 +142,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const BookListWidget(),
         ),
         FFRoute(
-          name: 'CreateEditLibrary',
-          path: '/createEditLibrary',
+          name: 'LibraryCreateEdit',
+          path: '/libraryCreateEdit',
           requireAuth: true,
           asyncParams: {
             'library': getDoc(['libraries'], LibrariesRecord.fromSnapshot),
           },
-          builder: (context, params) => CreateEditLibraryWidget(
+          builder: (context, params) => LibraryCreateEditWidget(
             library: params.getParam(
               'library',
               ParamType.Document,
@@ -226,11 +220,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.Document,
             ),
           ),
-        ),
-        FFRoute(
-          name: 'Details01YogaClass',
-          path: '/details01YogaClass',
-          builder: (context, params) => const Details01YogaClassWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -403,7 +392,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/auth2Login';
+            return '/authLogin';
           }
           return null;
         },

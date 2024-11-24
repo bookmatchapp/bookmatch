@@ -8,11 +8,11 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'create_edit_library_model.dart';
-export 'create_edit_library_model.dart';
+import 'library_create_edit_model.dart';
+export 'library_create_edit_model.dart';
 
-class CreateEditLibraryWidget extends StatefulWidget {
-  const CreateEditLibraryWidget({
+class LibraryCreateEditWidget extends StatefulWidget {
+  const LibraryCreateEditWidget({
     super.key,
     this.library,
   });
@@ -20,13 +20,13 @@ class CreateEditLibraryWidget extends StatefulWidget {
   final LibrariesRecord? library;
 
   @override
-  State<CreateEditLibraryWidget> createState() =>
-      _CreateEditLibraryWidgetState();
+  State<LibraryCreateEditWidget> createState() =>
+      _LibraryCreateEditWidgetState();
 }
 
-class _CreateEditLibraryWidgetState extends State<CreateEditLibraryWidget>
+class _LibraryCreateEditWidgetState extends State<LibraryCreateEditWidget>
     with TickerProviderStateMixin {
-  late CreateEditLibraryModel _model;
+  late LibraryCreateEditModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -35,7 +35,7 @@ class _CreateEditLibraryWidgetState extends State<CreateEditLibraryWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => CreateEditLibraryModel());
+    _model = createModel(context, () => LibraryCreateEditModel());
 
     _model.titleTextController ??=
         TextEditingController(text: widget.library?.title);

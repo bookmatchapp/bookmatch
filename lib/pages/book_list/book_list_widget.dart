@@ -272,7 +272,7 @@ class _BookListWidgetState extends State<BookListWidget> {
                             ),
                             onPressed: () async {
                               context.pushNamed(
-                                'CreateEditBook',
+                                'BookCreateEdit',
                                 queryParameters: {
                                   'book': serializeParam(
                                     null,
@@ -453,7 +453,7 @@ class _BookListWidgetState extends State<BookListWidget> {
                                               ),
                                               onPressed: () async {
                                                 context.pushNamed(
-                                                  'CreateEditBook',
+                                                  'BookCreateEdit',
                                                   queryParameters: {
                                                     'book': serializeParam(
                                                       allBooksItem,
@@ -654,7 +654,7 @@ class _BookListWidgetState extends State<BookListWidget> {
                                               ),
                                               onPressed: () async {
                                                 context.pushNamed(
-                                                  'CreateEditBook',
+                                                  'BookCreateEdit',
                                                   queryParameters: {
                                                     'book': serializeParam(
                                                       searchResultsItem,

@@ -1,9 +1,9 @@
 import '/components/logox/logox_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'auth2_login_widget.dart' show Auth2LoginWidget;
+import 'auth_create_widget.dart' show AuthCreateWidget;
 import 'package:flutter/material.dart';
 
-class Auth2LoginModel extends FlutterFlowModel<Auth2LoginWidget> {
+class AuthCreateModel extends FlutterFlowModel<AuthCreateWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();

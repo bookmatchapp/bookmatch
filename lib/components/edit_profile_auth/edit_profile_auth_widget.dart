@@ -8,11 +8,11 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'edit_profile_auth2_model.dart';
-export 'edit_profile_auth2_model.dart';
+import 'edit_profile_auth_model.dart';
+export 'edit_profile_auth_model.dart';
 
-class EditProfileAuth2Widget extends StatefulWidget {
-  const EditProfileAuth2Widget({
+class EditProfileAuthWidget extends StatefulWidget {
+  const EditProfileAuthWidget({
     super.key,
     String? title,
     String? confirmButtonText,
@@ -25,11 +25,11 @@ class EditProfileAuth2Widget extends StatefulWidget {
   final Future Function()? navigateAction;
 
   @override
-  State<EditProfileAuth2Widget> createState() => _EditProfileAuth2WidgetState();
+  State<EditProfileAuthWidget> createState() => _EditProfileAuthWidgetState();
 }
 
-class _EditProfileAuth2WidgetState extends State<EditProfileAuth2Widget> {
-  late EditProfileAuth2Model _model;
+class _EditProfileAuthWidgetState extends State<EditProfileAuthWidget> {
+  late EditProfileAuthModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -40,7 +40,7 @@ class _EditProfileAuth2WidgetState extends State<EditProfileAuth2Widget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => EditProfileAuth2Model());
+    _model = createModel(context, () => EditProfileAuthModel());
 
     _model.yourNameTextController ??=
         TextEditingController(text: currentUserDisplayName);

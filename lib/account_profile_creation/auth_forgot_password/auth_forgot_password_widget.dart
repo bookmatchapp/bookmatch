@@ -7,20 +7,20 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'auth2_forgot_password_model.dart';
-export 'auth2_forgot_password_model.dart';
+import 'auth_forgot_password_model.dart';
+export 'auth_forgot_password_model.dart';
 
-class Auth2ForgotPasswordWidget extends StatefulWidget {
-  const Auth2ForgotPasswordWidget({super.key});
+class AuthForgotPasswordWidget extends StatefulWidget {
+  const AuthForgotPasswordWidget({super.key});
 
   @override
-  State<Auth2ForgotPasswordWidget> createState() =>
-      _Auth2ForgotPasswordWidgetState();
+  State<AuthForgotPasswordWidget> createState() =>
+      _AuthForgotPasswordWidgetState();
 }
 
-class _Auth2ForgotPasswordWidgetState extends State<Auth2ForgotPasswordWidget>
+class _AuthForgotPasswordWidgetState extends State<AuthForgotPasswordWidget>
     with TickerProviderStateMixin {
-  late Auth2ForgotPasswordModel _model;
+  late AuthForgotPasswordModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -29,7 +29,7 @@ class _Auth2ForgotPasswordWidgetState extends State<Auth2ForgotPasswordWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => Auth2ForgotPasswordModel());
+    _model = createModel(context, () => AuthForgotPasswordModel());
 
     _model.emailAddressTextController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();

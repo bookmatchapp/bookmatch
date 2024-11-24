@@ -1,24 +1,24 @@
-import '/account_profile_creation/edit_profile_auth_2/edit_profile_auth2_widget.dart';
+import '/components/edit_profile_auth/edit_profile_auth_widget.dart';
 import '/components/logox/logox_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'auth2_create_profile_model.dart';
-export 'auth2_create_profile_model.dart';
+import 'auth_create_profile_model.dart';
+export 'auth_create_profile_model.dart';
 
-class Auth2CreateProfileWidget extends StatefulWidget {
-  const Auth2CreateProfileWidget({super.key});
+class AuthCreateProfileWidget extends StatefulWidget {
+  const AuthCreateProfileWidget({super.key});
 
   @override
-  State<Auth2CreateProfileWidget> createState() =>
-      _Auth2CreateProfileWidgetState();
+  State<AuthCreateProfileWidget> createState() =>
+      _AuthCreateProfileWidgetState();
 }
 
-class _Auth2CreateProfileWidgetState extends State<Auth2CreateProfileWidget>
+class _AuthCreateProfileWidgetState extends State<AuthCreateProfileWidget>
     with TickerProviderStateMixin {
-  late Auth2CreateProfileModel _model;
+  late AuthCreateProfileModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -27,7 +27,7 @@ class _Auth2CreateProfileWidgetState extends State<Auth2CreateProfileWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => Auth2CreateProfileModel());
+    _model = createModel(context, () => AuthCreateProfileModel());
 
     animationsMap.addAll({
       'containerOnPageLoadAnimation': AnimationInfo(
@@ -150,13 +150,13 @@ class _Auth2CreateProfileWidgetState extends State<Auth2CreateProfileWidget>
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 24.0),
                       child: wrapWithModel(
-                        model: _model.editProfileAuth2Model,
+                        model: _model.editProfileAuthModel,
                         updateCallback: () => safeSetState(() {}),
-                        child: EditProfileAuth2Widget(
+                        child: EditProfileAuthWidget(
                           title: 'Create Profile',
                           confirmButtonText: 'Save & Continue',
                           navigateAction: () async {
-                            context.pushNamed('auth_2_Profile');
+                            context.pushNamed('AuthProfile');
                           },
                         ),
                       ),
