@@ -263,57 +263,609 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                     content: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        if (!FFAppState().searchMode)
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 12.0, 0.0, 0.0),
-                            child: Builder(
-                              builder: (context) {
-                                final allBooks =
-                                    favoritesBooksRecordList.toList();
-                                if (allBooks.isEmpty) {
-                                  return Center(
-                                    child: Image.asset(
-                                      'assets/images/4440881-200.png',
-                                    ),
-                                  );
-                                }
-
-                                return ListView.builder(
-                                  padding: EdgeInsets.zero,
-                                  primary: false,
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: allBooks.length,
-                                  itemBuilder: (context, allBooksIndex) {
-                                    final allBooksItem =
-                                        allBooks[allBooksIndex];
-                                    return Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 8.0, 16.0, 0.0),
-                                      child: Container(
-                                        width: double.infinity,
-                                        height: 140.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          boxShadow: const [
-                                            BoxShadow(
-                                              blurRadius: 4.0,
-                                              color: Color(0x320E151B),
-                                              offset: Offset(
-                                                0.0,
-                                                1.0,
-                                              ),
-                                            )
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
+                        Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            if (!FFAppState().searchMode)
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 12.0, 0.0, 0.0),
+                                child: Builder(
+                                  builder: (context) {
+                                    final allBooks =
+                                        favoritesBooksRecordList.toList();
+                                    if (allBooks.isEmpty) {
+                                      return Center(
+                                        child: Image.asset(
+                                          'assets/images/4440881-200.png',
                                         ),
-                                        child: Padding(
+                                      );
+                                    }
+
+                                    return ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      primary: false,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: allBooks.length,
+                                      itemBuilder: (context, allBooksIndex) {
+                                        final allBooksItem =
+                                            allBooks[allBooksIndex];
+                                        return Padding(
                                           padding:
                                               const EdgeInsetsDirectional.fromSTEB(
-                                                  12.0, 8.0, 8.0, 8.0),
+                                                  16.0, 8.0, 16.0, 0.0),
+                                          child: Container(
+                                            width: double.infinity,
+                                            height: 140.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              boxShadow: const [
+                                                BoxShadow(
+                                                  blurRadius: 4.0,
+                                                  color: Color(0x320E151B),
+                                                  offset: Offset(
+                                                    0.0,
+                                                    1.0,
+                                                  ),
+                                                )
+                                              ],
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      12.0, 8.0, 8.0, 8.0),
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  context.pushNamed(
+                                                    'BookDetails',
+                                                    queryParameters: {
+                                                      'book': serializeParam(
+                                                        allBooksItem,
+                                                        ParamType.Document,
+                                                      ),
+                                                    }.withoutNulls,
+                                                    extra: <String, dynamic>{
+                                                      'book': allBooksItem,
+                                                    },
+                                                  );
+                                                },
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Hero(
+                                                      tag: allBooksItem
+                                                          .coverPhoto,
+                                                      transitionOnUserGestures:
+                                                          true,
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12.0),
+                                                        child: Image.network(
+                                                          allBooksItem
+                                                              .coverPhoto,
+                                                          width: 80.0,
+                                                          height: 120.0,
+                                                          fit: BoxFit.fitWidth,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    12.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          8.0),
+                                                              child: Text(
+                                                                allBooksItem
+                                                                    .title,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleLarge
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Inter Tight',
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                            Text(
+                                                              allBooksItem
+                                                                  .genre,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Inter',
+                                                                    fontSize:
+                                                                        12.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                  ),
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          8.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              child: Text(
+                                                                allBooksItem
+                                                                    .author
+                                                                    .maybeHandleOverflow(
+                                                                  maxChars: 20,
+                                                                  replacement:
+                                                                      '…',
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Inter',
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: wrapWithModel(
+                                                        model: _model
+                                                            .favoriteButtonModels1
+                                                            .getModel(
+                                                          allBooksItem
+                                                              .reference.id,
+                                                          allBooksIndex,
+                                                        ),
+                                                        updateCallback: () =>
+                                                            safeSetState(() {}),
+                                                        updateOnChange: true,
+                                                        child:
+                                                            FavoriteButtonWidget(
+                                                          key: Key(
+                                                            'Keys52_${allBooksItem.reference.id}',
+                                                          ),
+                                                          selected: functions
+                                                              .checkIfBookIsInTheFavorites(
+                                                                  allBooksItem
+                                                                      .reference
+                                                                      .id),
+                                                          onSelected: () async {
+                                                            await currentUserReference!
+                                                                .update({
+                                                              ...mapToFirestore(
+                                                                {
+                                                                  'favoriteBooks':
+                                                                      FieldValue
+                                                                          .arrayUnion([
+                                                                    allBooksItem
+                                                                        .reference
+                                                                        .id
+                                                                  ]),
+                                                                },
+                                                              ),
+                                                            });
+                                                            FFAppState()
+                                                                .addToFavoriteBooks(
+                                                                    allBooksItem
+                                                                        .reference
+                                                                        .id);
+                                                            safeSetState(() {});
+                                                          },
+                                                          onUnSelected:
+                                                              () async {
+                                                            await currentUserReference!
+                                                                .update({
+                                                              ...mapToFirestore(
+                                                                {
+                                                                  'favoriteBooks':
+                                                                      FieldValue
+                                                                          .arrayRemove([
+                                                                    allBooksItem
+                                                                        .reference
+                                                                        .id
+                                                                  ]),
+                                                                },
+                                                              ),
+                                                            });
+                                                            FFAppState()
+                                                                .removeFromFavoriteBooks(
+                                                                    allBooksItem
+                                                                        .reference
+                                                                        .id);
+                                                            safeSetState(() {});
+                                                          },
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
+                              ),
+                            if (FFAppState().searchMode)
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 12.0, 0.0, 0.0),
+                                child: Builder(
+                                  builder: (context) {
+                                    final searchResults =
+                                        _model.simpleSearchResults.toList();
+                                    if (searchResults.isEmpty) {
+                                      return Center(
+                                        child: Image.asset(
+                                          'assets/images/4440881-200.png',
+                                        ),
+                                      );
+                                    }
+
+                                    return ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      primary: false,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: searchResults.length,
+                                      itemBuilder:
+                                          (context, searchResultsIndex) {
+                                        final searchResultsItem =
+                                            searchResults[searchResultsIndex];
+                                        return Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 8.0, 16.0, 0.0),
+                                          child: Container(
+                                            width: double.infinity,
+                                            height: 140.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              boxShadow: const [
+                                                BoxShadow(
+                                                  blurRadius: 4.0,
+                                                  color: Color(0x320E151B),
+                                                  offset: Offset(
+                                                    0.0,
+                                                    1.0,
+                                                  ),
+                                                )
+                                              ],
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      12.0, 8.0, 8.0, 8.0),
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  context.pushNamed(
+                                                    'BookDetails',
+                                                    queryParameters: {
+                                                      'book': serializeParam(
+                                                        searchResultsItem,
+                                                        ParamType.Document,
+                                                      ),
+                                                    }.withoutNulls,
+                                                    extra: <String, dynamic>{
+                                                      'book': searchResultsItem,
+                                                    },
+                                                  );
+                                                },
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Hero(
+                                                      tag: searchResultsItem
+                                                          .coverPhoto,
+                                                      transitionOnUserGestures:
+                                                          true,
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12.0),
+                                                        child: Image.network(
+                                                          searchResultsItem
+                                                              .coverPhoto,
+                                                          width: 80.0,
+                                                          height: 120.0,
+                                                          fit: BoxFit.fitWidth,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    12.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          8.0),
+                                                              child: Text(
+                                                                searchResultsItem
+                                                                    .title,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleLarge
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Inter Tight',
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                            Text(
+                                                              searchResultsItem
+                                                                  .genre,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Inter',
+                                                                    fontSize:
+                                                                        12.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                  ),
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          8.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              child: Text(
+                                                                searchResultsItem
+                                                                    .author
+                                                                    .maybeHandleOverflow(
+                                                                  maxChars: 20,
+                                                                  replacement:
+                                                                      '…',
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Inter',
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: wrapWithModel(
+                                                        model: _model
+                                                            .favoriteButtonModels2
+                                                            .getModel(
+                                                          searchResultsItem
+                                                              .reference.id,
+                                                          searchResultsIndex,
+                                                        ),
+                                                        updateCallback: () =>
+                                                            safeSetState(() {}),
+                                                        updateOnChange: true,
+                                                        child:
+                                                            FavoriteButtonWidget(
+                                                          key: Key(
+                                                            'Keym61_${searchResultsItem.reference.id}',
+                                                          ),
+                                                          selected: functions
+                                                              .checkIfBookIsInTheFavorites(
+                                                                  searchResultsItem
+                                                                      .reference
+                                                                      .id),
+                                                          onSelected: () async {
+                                                            await currentUserReference!
+                                                                .update({
+                                                              ...mapToFirestore(
+                                                                {
+                                                                  'favoriteBooks':
+                                                                      FieldValue
+                                                                          .arrayUnion([
+                                                                    searchResultsItem
+                                                                        .reference
+                                                                        .id
+                                                                  ]),
+                                                                },
+                                                              ),
+                                                            });
+                                                            FFAppState()
+                                                                .addToFavoriteBooks(
+                                                                    searchResultsItem
+                                                                        .reference
+                                                                        .id);
+                                                            safeSetState(() {});
+                                                          },
+                                                          onUnSelected:
+                                                              () async {
+                                                            await currentUserReference!
+                                                                .update({
+                                                              ...mapToFirestore(
+                                                                {
+                                                                  'favoriteBooks':
+                                                                      FieldValue
+                                                                          .arrayRemove([
+                                                                    searchResultsItem
+                                                                        .reference
+                                                                        .id
+                                                                  ]),
+                                                                },
+                                                              ),
+                                                            });
+                                                            FFAppState()
+                                                                .removeFromFavoriteBooks(
+                                                                    searchResultsItem
+                                                                        .reference
+                                                                        .id);
+                                                            safeSetState(() {});
+                                                          },
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
+                              ),
+                          ],
+                        ),
+                        Stack(
+                          children: [
+                            if (FFAppState().searchMode == false)
+                              Builder(
+                                builder: (context) {
+                                  final allBooks =
+                                      favoritesBooksRecordList.toList();
+
+                                  return GridView.builder(
+                                    padding: EdgeInsets.zero,
+                                    gridDelegate:
+                                        const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 3,
+                                      crossAxisSpacing: 1.0,
+                                      mainAxisSpacing: 1.0,
+                                      childAspectRatio: 1.0,
+                                    ),
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: allBooks.length,
+                                    itemBuilder: (context, allBooksIndex) {
+                                      final allBooksItem =
+                                          allBooks[allBooksIndex];
+                                      return Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 8.0, 16.0, 0.0),
+                                        child: Container(
+                                          width: double.infinity,
+                                          height: 140.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            boxShadow: const [
+                                              BoxShadow(
+                                                blurRadius: 4.0,
+                                                color: Color(0x33000000),
+                                                offset: Offset(
+                                                  0.0,
+                                                  2.0,
+                                                ),
+                                              )
+                                            ],
+                                            borderRadius:
+                                                BorderRadius.circular(0.0),
+                                          ),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
                                             focusColor: Colors.transparent,
@@ -333,11 +885,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                 },
                                               );
                                             },
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
+                                            child: Stack(
                                               children: [
                                                 Hero(
                                                   tag: allBooksItem.coverPhoto,
@@ -346,229 +894,129 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                   child: ClipRRect(
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            12.0),
+                                                            0.0),
                                                     child: Image.network(
                                                       allBooksItem.coverPhoto,
-                                                      width: 80.0,
+                                                      width: double.infinity,
                                                       height: 120.0,
-                                                      fit: BoxFit.fitWidth,
+                                                      fit: BoxFit.contain,
                                                     ),
                                                   ),
                                                 ),
-                                                Expanded(
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(12.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      8.0),
-                                                          child: Text(
-                                                            allBooksItem.title,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .titleLarge
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Inter Tight',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                        Text(
-                                                          allBooksItem.genre,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                fontSize: 12.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                              ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      8.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            allBooksItem.author
-                                                                .maybeHandleOverflow(
-                                                              maxChars: 20,
-                                                              replacement: '…',
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelSmall
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Inter',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
+                                                wrapWithModel(
+                                                  model: _model
+                                                      .favoriteButtonModels3
+                                                      .getModel(
+                                                    allBooksItem.reference.id,
+                                                    allBooksIndex,
                                                   ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 10.0, 0.0),
-                                                  child: wrapWithModel(
-                                                    model: _model
-                                                        .favoriteButtonModels1
-                                                        .getModel(
-                                                      allBooksItem.reference.id,
-                                                      allBooksIndex,
+                                                  updateCallback: () =>
+                                                      safeSetState(() {}),
+                                                  updateOnChange: true,
+                                                  child: FavoriteButtonWidget(
+                                                    key: Key(
+                                                      'Keycuh_${allBooksItem.reference.id}',
                                                     ),
-                                                    updateCallback: () =>
-                                                        safeSetState(() {}),
-                                                    updateOnChange: true,
-                                                    child: FavoriteButtonWidget(
-                                                      key: Key(
-                                                        'Keys52_${allBooksItem.reference.id}',
-                                                      ),
-                                                      selected: functions
-                                                          .checkIfBookIsInTheFavorites(
+                                                    selected: functions
+                                                        .checkIfBookIsInTheFavorites(
+                                                            allBooksItem
+                                                                .reference.id),
+                                                    onSelected: () async {
+                                                      await currentUserReference!
+                                                          .update({
+                                                        ...mapToFirestore(
+                                                          {
+                                                            'favoriteBooks':
+                                                                FieldValue
+                                                                    .arrayUnion([
+                                                              allBooksItem
+                                                                  .reference.id
+                                                            ]),
+                                                          },
+                                                        ),
+                                                      });
+                                                      FFAppState()
+                                                          .addToFavoriteBooks(
                                                               allBooksItem
                                                                   .reference
-                                                                  .id),
-                                                      onSelected: () async {
-                                                        await currentUserReference!
-                                                            .update({
-                                                          ...mapToFirestore(
-                                                            {
-                                                              'favoriteBooks':
-                                                                  FieldValue
-                                                                      .arrayUnion([
-                                                                allBooksItem
-                                                                    .reference
-                                                                    .id
-                                                              ]),
-                                                            },
-                                                          ),
-                                                        });
-                                                        FFAppState()
-                                                            .addToFavoriteBooks(
-                                                                allBooksItem
-                                                                    .reference
-                                                                    .id);
-                                                        safeSetState(() {});
-                                                      },
-                                                      onUnSelected: () async {
-                                                        await currentUserReference!
-                                                            .update({
-                                                          ...mapToFirestore(
-                                                            {
-                                                              'favoriteBooks':
-                                                                  FieldValue
-                                                                      .arrayRemove([
-                                                                allBooksItem
-                                                                    .reference
-                                                                    .id
-                                                              ]),
-                                                            },
-                                                          ),
-                                                        });
-                                                        FFAppState()
-                                                            .removeFromFavoriteBooks(
-                                                                allBooksItem
-                                                                    .reference
-                                                                    .id);
-                                                        safeSetState(() {});
-                                                      },
-                                                    ),
+                                                                  .id);
+                                                      safeSetState(() {});
+                                                    },
+                                                    onUnSelected: () async {
+                                                      await currentUserReference!
+                                                          .update({
+                                                        ...mapToFirestore(
+                                                          {
+                                                            'favoriteBooks':
+                                                                FieldValue
+                                                                    .arrayRemove([
+                                                              allBooksItem
+                                                                  .reference.id
+                                                            ]),
+                                                          },
+                                                        ),
+                                                      });
+                                                      FFAppState()
+                                                          .removeFromFavoriteBooks(
+                                                              allBooksItem
+                                                                  .reference
+                                                                  .id);
+                                                      safeSetState(() {});
+                                                    },
                                                   ),
                                                 ),
                                               ],
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    );
-                                  },
-                                );
-                              },
-                            ),
-                          ),
-                        if (FFAppState().searchMode)
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 12.0, 0.0, 0.0),
-                            child: Builder(
-                              builder: (context) {
-                                final searchResults =
-                                    _model.simpleSearchResults.toList();
-                                if (searchResults.isEmpty) {
-                                  return Center(
-                                    child: Image.asset(
-                                      'assets/images/4440881-200.png',
-                                    ),
+                                      );
+                                    },
                                   );
-                                }
+                                },
+                              ),
+                            if (FFAppState().searchMode == true)
+                              Builder(
+                                builder: (context) {
+                                  final searchResults =
+                                      _model.simpleSearchResults.toList();
 
-                                return ListView.builder(
-                                  padding: EdgeInsets.zero,
-                                  primary: false,
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  itemCount: searchResults.length,
-                                  itemBuilder: (context, searchResultsIndex) {
-                                    final searchResultsItem =
-                                        searchResults[searchResultsIndex];
-                                    return Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 8.0, 16.0, 0.0),
-                                      child: Container(
-                                        width: double.infinity,
-                                        height: 140.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          boxShadow: const [
-                                            BoxShadow(
-                                              blurRadius: 4.0,
-                                              color: Color(0x320E151B),
-                                              offset: Offset(
-                                                0.0,
-                                                1.0,
-                                              ),
-                                            )
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  12.0, 8.0, 8.0, 8.0),
+                                  return GridView.builder(
+                                    padding: EdgeInsets.zero,
+                                    gridDelegate:
+                                        const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 3,
+                                      crossAxisSpacing: 1.0,
+                                      mainAxisSpacing: 1.0,
+                                      childAspectRatio: 1.0,
+                                    ),
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: searchResults.length,
+                                    itemBuilder: (context, searchResultsIndex) {
+                                      final searchResultsItem =
+                                          searchResults[searchResultsIndex];
+                                      return Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 8.0, 16.0, 0.0),
+                                        child: Container(
+                                          width: double.infinity,
+                                          height: 140.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            boxShadow: const [
+                                              BoxShadow(
+                                                blurRadius: 4.0,
+                                                color: Color(0x33000000),
+                                                offset: Offset(
+                                                  0.0,
+                                                  2.0,
+                                                ),
+                                              )
+                                            ],
+                                            borderRadius:
+                                                BorderRadius.circular(0.0),
+                                          ),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
                                             focusColor: Colors.transparent,
@@ -588,11 +1036,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                 },
                                               );
                                             },
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
+                                            child: Stack(
                                               children: [
                                                 Hero(
                                                   tag: searchResultsItem
@@ -602,183 +1046,90 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                   child: ClipRRect(
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            12.0),
+                                                            0.0),
                                                     child: Image.network(
                                                       searchResultsItem
                                                           .coverPhoto,
-                                                      width: 80.0,
+                                                      width: double.infinity,
                                                       height: 120.0,
-                                                      fit: BoxFit.fitWidth,
+                                                      fit: BoxFit.contain,
                                                     ),
                                                   ),
                                                 ),
-                                                Expanded(
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(12.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      8.0),
-                                                          child: Text(
-                                                            searchResultsItem
-                                                                .title,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .titleLarge
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Inter Tight',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                        Text(
-                                                          searchResultsItem
-                                                              .genre,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                fontSize: 12.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                              ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      8.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            searchResultsItem
-                                                                .author
-                                                                .maybeHandleOverflow(
-                                                              maxChars: 20,
-                                                              replacement: '…',
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelSmall
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Inter',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
+                                                wrapWithModel(
+                                                  model: _model
+                                                      .favoriteButtonModels4
+                                                      .getModel(
+                                                    searchResultsItem
+                                                        .reference.id,
+                                                    searchResultsIndex,
                                                   ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 10.0, 0.0),
-                                                  child: wrapWithModel(
-                                                    model: _model
-                                                        .favoriteButtonModels2
-                                                        .getModel(
-                                                      searchResultsItem
-                                                          .reference.id,
-                                                      searchResultsIndex,
+                                                  updateCallback: () =>
+                                                      safeSetState(() {}),
+                                                  updateOnChange: true,
+                                                  child: FavoriteButtonWidget(
+                                                    key: Key(
+                                                      'Keylrv_${searchResultsItem.reference.id}',
                                                     ),
-                                                    updateCallback: () =>
-                                                        safeSetState(() {}),
-                                                    updateOnChange: true,
-                                                    child: FavoriteButtonWidget(
-                                                      key: Key(
-                                                        'Keym61_${searchResultsItem.reference.id}',
-                                                      ),
-                                                      selected: functions
-                                                          .checkIfBookIsInTheFavorites(
+                                                    selected: functions
+                                                        .checkIfBookIsInTheFavorites(
+                                                            searchResultsItem
+                                                                .reference.id),
+                                                    onSelected: () async {
+                                                      await currentUserReference!
+                                                          .update({
+                                                        ...mapToFirestore(
+                                                          {
+                                                            'favoriteBooks':
+                                                                FieldValue
+                                                                    .arrayUnion([
+                                                              searchResultsItem
+                                                                  .reference.id
+                                                            ]),
+                                                          },
+                                                        ),
+                                                      });
+                                                      FFAppState()
+                                                          .addToFavoriteBooks(
                                                               searchResultsItem
                                                                   .reference
-                                                                  .id),
-                                                      onSelected: () async {
-                                                        await currentUserReference!
-                                                            .update({
-                                                          ...mapToFirestore(
-                                                            {
-                                                              'favoriteBooks':
-                                                                  FieldValue
-                                                                      .arrayUnion([
-                                                                searchResultsItem
-                                                                    .reference
-                                                                    .id
-                                                              ]),
-                                                            },
-                                                          ),
-                                                        });
-                                                        FFAppState()
-                                                            .addToFavoriteBooks(
-                                                                searchResultsItem
-                                                                    .reference
-                                                                    .id);
-                                                        safeSetState(() {});
-                                                      },
-                                                      onUnSelected: () async {
-                                                        await currentUserReference!
-                                                            .update({
-                                                          ...mapToFirestore(
-                                                            {
-                                                              'favoriteBooks':
-                                                                  FieldValue
-                                                                      .arrayRemove([
-                                                                searchResultsItem
-                                                                    .reference
-                                                                    .id
-                                                              ]),
-                                                            },
-                                                          ),
-                                                        });
-                                                        FFAppState()
-                                                            .removeFromFavoriteBooks(
-                                                                searchResultsItem
-                                                                    .reference
-                                                                    .id);
-                                                        safeSetState(() {});
-                                                      },
-                                                    ),
+                                                                  .id);
+                                                      safeSetState(() {});
+                                                    },
+                                                    onUnSelected: () async {
+                                                      await currentUserReference!
+                                                          .update({
+                                                        ...mapToFirestore(
+                                                          {
+                                                            'favoriteBooks':
+                                                                FieldValue
+                                                                    .arrayRemove([
+                                                              searchResultsItem
+                                                                  .reference.id
+                                                            ]),
+                                                          },
+                                                        ),
+                                                      });
+                                                      FFAppState()
+                                                          .removeFromFavoriteBooks(
+                                                              searchResultsItem
+                                                                  .reference
+                                                                  .id);
+                                                      safeSetState(() {});
+                                                    },
                                                   ),
                                                 ),
                                               ],
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    );
-                                  },
-                                );
-                              },
-                            ),
-                          ),
+                                      );
+                                    },
+                                  );
+                                },
+                              ),
+                          ],
+                        ),
                       ],
                     ),
                   ),

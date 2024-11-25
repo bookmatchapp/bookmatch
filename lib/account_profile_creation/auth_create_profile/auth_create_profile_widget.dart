@@ -155,6 +155,7 @@ class _AuthCreateProfileWidgetState extends State<AuthCreateProfileWidget>
                         child: EditProfileAuthWidget(
                           title: 'Create Profile',
                           confirmButtonText: 'Save & Continue',
+                          create: true,
                           navigateAction: () async {
                             context.pushNamed('AuthProfile');
                           },

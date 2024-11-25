@@ -28,3 +28,5 @@ export '/pages/book_details/book_details_widget.dart' show BookDetailsWidget;
 export '/pages/favorites/favorites_widget.dart' show FavoritesWidget;
 export '/pages/book_message_details/book_message_details_widget.dart'
     show BookMessageDetailsWidget;
+export '/pages/favorites_grid/favorites_grid_widget.dart'
+    show FavoritesGridWidget;

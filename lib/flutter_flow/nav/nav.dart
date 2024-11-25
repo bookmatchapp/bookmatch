@@ -204,9 +204,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Favorites',
           path: '/favorites',
           requireAuth: true,
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'Favorites')
-              : const FavoritesWidget(),
+          builder: (context, params) => const FavoritesWidget(),
         ),
         FFRoute(
           name: 'BookMessageDetails',
@@ -220,6 +218,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.Document,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'FavoritesGrid',
+          path: '/favorites2',
+          requireAuth: true,
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'FavoritesGrid')
+              : const FavoritesGridWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

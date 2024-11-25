@@ -69,10 +69,7 @@ class _BookDetailsWidgetState extends State<BookDetailsWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                valueOrDefault<String>(
-                  widget.book?.title,
-                  'Book Details',
-                ),
+                'Book Details',
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Inter Tight',
                       letterSpacing: 0.0,
@@ -145,29 +142,34 @@ class _BookDetailsWidgetState extends State<BookDetailsWidget> {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Container(
-                                          width: double.infinity,
-                                          height: 330.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryBackground,
-                                            borderRadius:
-                                                BorderRadius.circular(12.0),
-                                            border: Border.all(
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(0.0, 0.0),
+                                          child: Container(
+                                            width: 100.0,
+                                            height: 140.0,
+                                            decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                            ),
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(4.0),
-                                            child: ClipRRect(
+                                                      .primaryBackground,
                                               borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: Image.network(
-                                                widget.book!.coverPhoto,
-                                                height: double.infinity,
-                                                fit: BoxFit.cover,
+                                                  BorderRadius.circular(12.0),
+                                              border: Border.all(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                              ),
+                                            ),
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(4.0),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                child: Image.network(
+                                                  widget.book!.coverPhoto,
+                                                  height: double.infinity,
+                                                  fit: BoxFit.contain,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -727,52 +729,6 @@ class _BookDetailsWidgetState extends State<BookDetailsWidget> {
                     ),
                   ),
                 ),
-                if (responsiveVisibility(
-                  context: context,
-                  tabletLandscape: false,
-                  desktop: false,
-                ))
-                  Container(
-                    constraints: const BoxConstraints(
-                      maxWidth: 770.0,
-                    ),
-                    decoration: const BoxDecoration(),
-                    child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
-                          16.0, 12.0, 16.0, 12.0),
-                      child: FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
-                        },
-                        text: 'Save',
-                        icon: const Icon(
-                          Icons.favorite_rounded,
-                          size: 15.0,
-                        ),
-                        options: FFButtonOptions(
-                          width: double.infinity,
-                          height: 48.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              24.0, 0.0, 24.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Inter Tight',
-                                    color: Colors.white,
-                                    letterSpacing: 0.0,
-                                  ),
-                          elevation: 3.0,
-                          borderSide: const BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                      ),
-                    ),
-                  ),
               ],
             ),
           ),

@@ -145,6 +145,7 @@ class _AuthEditProfileWidgetState extends State<AuthEditProfileWidget>
                   child: EditProfileAuthWidget(
                     title: 'Edit Profile',
                     confirmButtonText: 'Save Changes',
+                    create: false,
                     navigateAction: () async {
                       context.safePop();
                     },

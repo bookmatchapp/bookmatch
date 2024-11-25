@@ -142,9 +142,9 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'BookSearch': const BookSearchWidget(),
-      'Favorites': const FavoritesWidget(),
       'Swipe': const SwipeWidget(),
       'BookMessages': const BookMessagesWidget(),
+      'FavoritesGrid': const FavoritesGridWidget(),
       'AuthProfile': const AuthProfileWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
@@ -174,14 +174,6 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.loyalty,
-              size: 24.0,
-            ),
-            label: 'Favorites',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
               Icons.favorite,
               size: 24.0,
             ),
@@ -194,6 +186,14 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24.0,
             ),
             label: 'Messages',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.loyalty,
+              size: 24.0,
+            ),
+            label: 'Favorites',
             tooltip: '',
           ),
           BottomNavigationBarItem(

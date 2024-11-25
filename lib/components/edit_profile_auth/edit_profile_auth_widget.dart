@@ -17,12 +17,14 @@ class EditProfileAuthWidget extends StatefulWidget {
     String? title,
     String? confirmButtonText,
     required this.navigateAction,
+    required this.create,
   })  : title = title ?? 'Edit Profile',
         confirmButtonText = confirmButtonText ?? 'Save Changes';
 
   final String title;
   final String confirmButtonText;
   final Future Function()? navigateAction;
+  final bool? create;
 
   @override
   State<EditProfileAuthWidget> createState() => _EditProfileAuthWidgetState();
@@ -129,15 +131,19 @@ class _EditProfileAuthWidgetState extends State<EditProfileAuthWidget> {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(4.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(60.0),
-                          child: CachedNetworkImage(
-                            fadeInDuration: const Duration(milliseconds: 200),
-                            fadeOutDuration: const Duration(milliseconds: 200),
-                            imageUrl: _model.uploadedFileUrl,
-                            width: 300.0,
-                            height: 200.0,
-                            fit: BoxFit.cover,
+                        child: AuthUserStreamWidget(
+                          builder: (context) => ClipRRect(
+                            borderRadius: BorderRadius.circular(60.0),
+                            child: CachedNetworkImage(
+                              fadeInDuration: const Duration(milliseconds: 200),
+                              fadeOutDuration: const Duration(milliseconds: 200),
+                              imageUrl: _model.uploadedFileUrl != ''
+                                  ? _model.uploadedFileUrl
+                                  : currentUserPhoto,
+                              width: 300.0,
+                              height: 200.0,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
@@ -388,7 +394,9 @@ class _EditProfileAuthWidgetState extends State<EditProfileAuthWidget> {
                         : currentUserPhoto,
                     shortDescription: _model.myBioTextController.text,
                     lastActiveTime: getCurrentTimestamp,
-                    role: Roles.basic_user,
+                    role: widget.create!
+                        ? Roles.basic_user
+                        : currentUserDocument?.role,
                   ));
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
