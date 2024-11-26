@@ -76,7 +76,7 @@ class _EditProfileAuthWidgetState extends State<EditProfileAuthWidget> {
             child: Text(
               widget.title,
               style: FlutterFlowTheme.of(context).displaySmall.override(
-                    fontFamily: 'Inter Tight',
+                    fontFamily: 'Montserrat',
                     letterSpacing: 0.0,
                   ),
             ),
@@ -86,7 +86,7 @@ class _EditProfileAuthWidgetState extends State<EditProfileAuthWidget> {
             child: Text(
               'Adjust the content below to update your profile.',
               style: FlutterFlowTheme.of(context).labelLarge.override(
-                    fontFamily: 'Inter',
+                    fontFamily: 'Livvic',
                     letterSpacing: 0.0,
                   ),
             ),
@@ -236,7 +236,7 @@ class _EditProfileAuthWidgetState extends State<EditProfileAuthWidget> {
                       const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).primaryBackground,
                   textStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Inter',
+                        fontFamily: 'Livvic',
                         letterSpacing: 0.0,
                       ),
                   elevation: 1.0,
@@ -261,16 +261,16 @@ class _EditProfileAuthWidgetState extends State<EditProfileAuthWidget> {
                 decoration: InputDecoration(
                   labelText: 'Full Name',
                   labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                        fontFamily: 'Inter',
+                        fontFamily: 'Livvic',
                         letterSpacing: 0.0,
                       ),
                   hintText: 'Your full name...',
                   hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                        fontFamily: 'Inter',
+                        fontFamily: 'Livvic',
                         letterSpacing: 0.0,
                       ),
                   errorStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Inter',
+                        fontFamily: 'Livvic',
                         color: FlutterFlowTheme.of(context).error,
                         letterSpacing: 0.0,
                       ),
@@ -308,7 +308,7 @@ class _EditProfileAuthWidgetState extends State<EditProfileAuthWidget> {
                       const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 12.0),
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Inter',
+                      fontFamily: 'Livvic',
                       letterSpacing: 0.0,
                     ),
                 cursorColor: FlutterFlowTheme.of(context).primary,
@@ -328,16 +328,16 @@ class _EditProfileAuthWidgetState extends State<EditProfileAuthWidget> {
                 decoration: InputDecoration(
                   labelText: 'Short Description',
                   labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                        fontFamily: 'Inter',
+                        fontFamily: 'Livvic',
                         letterSpacing: 0.0,
                       ),
                   hintText: 'A little about you...',
                   hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                        fontFamily: 'Inter',
+                        fontFamily: 'Livvic',
                         letterSpacing: 0.0,
                       ),
                   errorStyle: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Inter',
+                        fontFamily: 'Livvic',
                         color: FlutterFlowTheme.of(context).error,
                         letterSpacing: 0.0,
                       ),
@@ -375,7 +375,7 @@ class _EditProfileAuthWidgetState extends State<EditProfileAuthWidget> {
                       const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 0.0, 12.0),
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Inter',
+                      fontFamily: 'Livvic',
                       letterSpacing: 0.0,
                     ),
                 textAlign: TextAlign.start,
@@ -414,7 +414,7 @@ class _EditProfileAuthWidgetState extends State<EditProfileAuthWidget> {
                       content: Text(
                         'Profile has been updated!',
                         style: FlutterFlowTheme.of(context).titleSmall.override(
-                              fontFamily: 'Inter Tight',
+                              fontFamily: 'Montserrat',
                               color: FlutterFlowTheme.of(context).info,
                               letterSpacing: 0.0,
                             ),
@@ -434,7 +434,7 @@ class _EditProfileAuthWidgetState extends State<EditProfileAuthWidget> {
                       const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).primary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Inter Tight',
+                        fontFamily: 'Montserrat',
                         color: FlutterFlowTheme.of(context).alternate,
                         letterSpacing: 0.0,
                       ),

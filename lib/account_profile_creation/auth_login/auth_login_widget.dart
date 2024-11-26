@@ -160,7 +160,7 @@ class _AuthLoginWidgetState extends State<AuthLoginWidget>
                               style: FlutterFlowTheme.of(context)
                                   .displaySmall
                                   .override(
-                                    fontFamily: 'Inter Tight',
+                                    fontFamily: 'Montserrat',
                                     letterSpacing: 0.0,
                                   ),
                             ),
@@ -173,7 +173,7 @@ class _AuthLoginWidgetState extends State<AuthLoginWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .labelLarge
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Livvic',
                                       letterSpacing: 0.0,
                                     ),
                               ),
@@ -202,7 +202,7 @@ class _AuthLoginWidgetState extends State<AuthLoginWidget>
                                               FlutterFlowTheme.of(context)
                                                   .labelLarge
                                                   .override(
-                                                    fontFamily: 'Inter',
+                                                    fontFamily: 'Livvic',
                                                     letterSpacing: 0.0,
                                                   ),
                                           enabledBorder: OutlineInputBorder(
@@ -254,7 +254,7 @@ class _AuthLoginWidgetState extends State<AuthLoginWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Livvic',
                                               letterSpacing: 0.0,
                                             ),
                                         keyboardType:
@@ -286,7 +286,7 @@ class _AuthLoginWidgetState extends State<AuthLoginWidget>
                                               FlutterFlowTheme.of(context)
                                                   .labelLarge
                                                   .override(
-                                                    fontFamily: 'Inter',
+                                                    fontFamily: 'Livvic',
                                                     letterSpacing: 0.0,
                                                   ),
                                           enabledBorder: OutlineInputBorder(
@@ -356,7 +356,7 @@ class _AuthLoginWidgetState extends State<AuthLoginWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
-                                              fontFamily: 'Inter',
+                                              fontFamily: 'Livvic',
                                               letterSpacing: 0.0,
                                             ),
                                         cursorColor:
@@ -407,7 +407,7 @@ class _AuthLoginWidgetState extends State<AuthLoginWidget>
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
-                                        fontFamily: 'Inter Tight',
+                                        fontFamily: 'Montserrat',
                                         color: Colors.white,
                                         letterSpacing: 0.0,
                                       ),
@@ -432,7 +432,7 @@ class _AuthLoginWidgetState extends State<AuthLoginWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .labelMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Livvic',
                                           letterSpacing: 0.0,
                                         ),
                                   ),
@@ -471,7 +471,7 @@ class _AuthLoginWidgetState extends State<AuthLoginWidget>
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Inter Tight',
+                                          fontFamily: 'Montserrat',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           letterSpacing: 0.0,
@@ -527,7 +527,7 @@ class _AuthLoginWidgetState extends State<AuthLoginWidget>
                                                   context)
                                               .titleSmall
                                               .override(
-                                                fontFamily: 'Inter Tight',
+                                                fontFamily: 'Montserrat',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
@@ -586,7 +586,7 @@ class _AuthLoginWidgetState extends State<AuthLoginWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Inter',
+                                                fontFamily: 'Livvic',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primary,
@@ -598,7 +598,7 @@ class _AuthLoginWidgetState extends State<AuthLoginWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            fontFamily: 'Livvic',
                                             letterSpacing: 0.0,
                                           ),
                                     ),
@@ -626,7 +626,7 @@ class _AuthLoginWidgetState extends State<AuthLoginWidget>
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
-                                        fontFamily: 'Inter Tight',
+                                        fontFamily: 'Montserrat',
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
                                         letterSpacing: 0.0,

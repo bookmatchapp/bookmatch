@@ -92,7 +92,7 @@ class _FavoritesGridWidgetState extends State<FavoritesGridWidget> {
               title: Text(
                 'Favorite Books',
                 style: FlutterFlowTheme.of(context).titleLarge.override(
-                      fontFamily: 'Inter Tight',
+                      fontFamily: 'Montserrat',
                       color: FlutterFlowTheme.of(context).alternate,
                       letterSpacing: 0.0,
                     ),
@@ -158,13 +158,13 @@ class _FavoritesGridWidgetState extends State<FavoritesGridWidget> {
                             labelStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Livvic',
                                   letterSpacing: 0.0,
                                 ),
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Livvic',
                                   letterSpacing: 0.0,
                                 ),
                             enabledBorder: OutlineInputBorder(
@@ -252,7 +252,7 @@ class _FavoritesGridWidgetState extends State<FavoritesGridWidget> {
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Livvic',
                                     letterSpacing: 0.0,
                                   ),
                           validator: _model.searchBarTextControllerValidator

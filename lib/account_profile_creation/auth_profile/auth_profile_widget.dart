@@ -96,7 +96,7 @@ class _AuthProfileWidgetState extends State<AuthProfileWidget>
           title: Text(
             'Profile',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Inter Tight',
+                  fontFamily: 'Montserrat',
                   color: Colors.white,
                   fontSize: 22.0,
                   letterSpacing: 0.0,
@@ -213,7 +213,7 @@ class _AuthProfileWidgetState extends State<AuthProfileWidget>
                         currentUserDisplayName,
                         style:
                             FlutterFlowTheme.of(context).displaySmall.override(
-                                  fontFamily: 'Inter Tight',
+                                  fontFamily: 'Montserrat',
                                   letterSpacing: 0.0,
                                 ),
                       ),
@@ -228,7 +228,7 @@ class _AuthProfileWidgetState extends State<AuthProfileWidget>
                         'hello@bookmatch.com',
                       ),
                       style: FlutterFlowTheme.of(context).labelLarge.override(
-                            fontFamily: 'Inter',
+                            fontFamily: 'Livvic',
                             color: FlutterFlowTheme.of(context).primary,
                             letterSpacing: 0.0,
                           ),
@@ -240,7 +240,7 @@ class _AuthProfileWidgetState extends State<AuthProfileWidget>
                     child: Text(
                       'Your Account',
                       style: FlutterFlowTheme.of(context).labelMedium.override(
-                            fontFamily: 'Inter',
+                            fontFamily: 'Livvic',
                             letterSpacing: 0.0,
                           ),
                     ),
@@ -298,7 +298,7 @@ class _AuthProfileWidgetState extends State<AuthProfileWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .labelLarge
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Livvic',
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -381,7 +381,7 @@ class _AuthProfileWidgetState extends State<AuthProfileWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .labelLarge
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Livvic',
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -409,7 +409,7 @@ class _AuthProfileWidgetState extends State<AuthProfileWidget>
                     child: Text(
                       'General',
                       style: FlutterFlowTheme.of(context).labelMedium.override(
-                            fontFamily: 'Inter',
+                            fontFamily: 'Livvic',
                             letterSpacing: 0.0,
                           ),
                     ),
@@ -467,7 +467,7 @@ class _AuthProfileWidgetState extends State<AuthProfileWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .labelLarge
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Livvic',
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -542,7 +542,7 @@ class _AuthProfileWidgetState extends State<AuthProfileWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .labelLarge
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Livvic',
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -573,7 +573,7 @@ class _AuthProfileWidgetState extends State<AuthProfileWidget>
                           'Admin',
                           style:
                               FlutterFlowTheme.of(context).labelMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Livvic',
                                     letterSpacing: 0.0,
                                   ),
                         ),
@@ -643,7 +643,7 @@ class _AuthProfileWidgetState extends State<AuthProfileWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .labelLarge
                                           .override(
-                                            fontFamily: 'Inter',
+                                            fontFamily: 'Livvic',
                                             letterSpacing: 0.0,
                                           ),
                                     ),
@@ -737,7 +737,7 @@ class _AuthProfileWidgetState extends State<AuthProfileWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .labelLarge
                                           .override(
-                                            fontFamily: 'Inter',
+                                            fontFamily: 'Livvic',
                                             letterSpacing: 0.0,
                                           ),
                                     ),
@@ -824,7 +824,7 @@ class _AuthProfileWidgetState extends State<AuthProfileWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .labelLarge
                                           .override(
-                                            fontFamily: 'Inter',
+                                            fontFamily: 'Livvic',
                                             letterSpacing: 0.0,
                                           ),
                                     ),
@@ -911,7 +911,7 @@ class _AuthProfileWidgetState extends State<AuthProfileWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .labelLarge
                                           .override(
-                                            fontFamily: 'Inter',
+                                            fontFamily: 'Livvic',
                                             letterSpacing: 0.0,
                                           ),
                                     ),
@@ -958,7 +958,7 @@ class _AuthProfileWidgetState extends State<AuthProfileWidget>
                           color: FlutterFlowTheme.of(context).primaryBackground,
                           textStyle:
                               FlutterFlowTheme.of(context).bodyLarge.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Livvic',
                                     letterSpacing: 0.0,
                                   ),
                           elevation: 0.0,

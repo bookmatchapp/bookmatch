@@ -71,7 +71,7 @@ class _BookDetailsWidgetState extends State<BookDetailsWidget> {
               Text(
                 'Book Details',
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily: 'Inter Tight',
+                      fontFamily: 'Montserrat',
                       letterSpacing: 0.0,
                     ),
               ),
@@ -189,14 +189,14 @@ class _BookDetailsWidgetState extends State<BookDetailsWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium
                                                     .override(
-                                                      fontFamily: 'Inter',
+                                                      fontFamily: 'Livvic',
                                                       letterSpacing: 0.0,
                                                     ),
                                             errorStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
                                                     .override(
-                                                      fontFamily: 'Inter',
+                                                      fontFamily: 'Livvic',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -256,7 +256,7 @@ class _BookDetailsWidgetState extends State<BookDetailsWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .headlineMedium
                                               .override(
-                                                fontFamily: 'Inter Tight',
+                                                fontFamily: 'Montserrat',
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.normal,
@@ -283,14 +283,14 @@ class _BookDetailsWidgetState extends State<BookDetailsWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium
                                                     .override(
-                                                      fontFamily: 'Inter',
+                                                      fontFamily: 'Livvic',
                                                       letterSpacing: 0.0,
                                                     ),
                                             errorStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
                                                     .override(
-                                                      fontFamily: 'Inter',
+                                                      fontFamily: 'Livvic',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -350,7 +350,7 @@ class _BookDetailsWidgetState extends State<BookDetailsWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .headlineMedium
                                               .override(
-                                                fontFamily: 'Inter Tight',
+                                                fontFamily: 'Montserrat',
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.normal,
@@ -378,7 +378,7 @@ class _BookDetailsWidgetState extends State<BookDetailsWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .labelLarge
                                                     .override(
-                                                      fontFamily: 'Inter',
+                                                      fontFamily: 'Livvic',
                                                       letterSpacing: 0.0,
                                                     ),
                                             alignLabelWithHint: true,
@@ -386,14 +386,14 @@ class _BookDetailsWidgetState extends State<BookDetailsWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium
                                                     .override(
-                                                      fontFamily: 'Inter',
+                                                      fontFamily: 'Livvic',
                                                       letterSpacing: 0.0,
                                                     ),
                                             errorStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
                                                     .override(
-                                                      fontFamily: 'Inter',
+                                                      fontFamily: 'Livvic',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -453,7 +453,7 @@ class _BookDetailsWidgetState extends State<BookDetailsWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(
-                                                fontFamily: 'Inter',
+                                                fontFamily: 'Livvic',
                                                 letterSpacing: 0.0,
                                               ),
                                           maxLines: 9,
@@ -483,7 +483,7 @@ class _BookDetailsWidgetState extends State<BookDetailsWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .labelMedium
                                               .override(
-                                                fontFamily: 'Inter',
+                                                fontFamily: 'Livvic',
                                                 letterSpacing: 0.0,
                                               ),
                                         ),
@@ -504,21 +504,21 @@ class _BookDetailsWidgetState extends State<BookDetailsWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .labelMedium
                                                   .override(
-                                                    fontFamily: 'Inter',
+                                                    fontFamily: 'Livvic',
                                                     letterSpacing: 0.0,
                                                   ),
                                           searchTextStyle:
                                               FlutterFlowTheme.of(context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Inter',
+                                                    fontFamily: 'Livvic',
                                                     letterSpacing: 0.0,
                                                   ),
                                           textStyle:
                                               FlutterFlowTheme.of(context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Inter',
+                                                    fontFamily: 'Livvic',
                                                     letterSpacing: 0.0,
                                                   ),
                                           hintText: 'Select...',
@@ -577,7 +577,7 @@ class _BookDetailsWidgetState extends State<BookDetailsWidget> {
                                                         .titleSmall
                                                         .override(
                                                           fontFamily:
-                                                              'Inter Tight',
+                                                              'Montserrat',
                                                           color: Colors.white,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -609,7 +609,7 @@ class _BookDetailsWidgetState extends State<BookDetailsWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .labelMedium
                                               .override(
-                                                fontFamily: 'Inter',
+                                                fontFamily: 'Livvic',
                                                 letterSpacing: 0.0,
                                               ),
                                         ),
@@ -630,21 +630,21 @@ class _BookDetailsWidgetState extends State<BookDetailsWidget> {
                                               FlutterFlowTheme.of(context)
                                                   .labelMedium
                                                   .override(
-                                                    fontFamily: 'Inter',
+                                                    fontFamily: 'Livvic',
                                                     letterSpacing: 0.0,
                                                   ),
                                           searchTextStyle:
                                               FlutterFlowTheme.of(context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Inter',
+                                                    fontFamily: 'Livvic',
                                                     letterSpacing: 0.0,
                                                   ),
                                           textStyle:
                                               FlutterFlowTheme.of(context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Inter',
+                                                    fontFamily: 'Livvic',
                                                     letterSpacing: 0.0,
                                                   ),
                                           hintText: 'Select...',
@@ -703,7 +703,7 @@ class _BookDetailsWidgetState extends State<BookDetailsWidget> {
                                                         .titleSmall
                                                         .override(
                                                           fontFamily:
-                                                              'Inter Tight',
+                                                              'Montserrat',
                                                           color: Colors.white,
                                                           letterSpacing: 0.0,
                                                         ),

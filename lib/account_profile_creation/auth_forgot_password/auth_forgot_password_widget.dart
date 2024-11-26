@@ -192,7 +192,7 @@ class _AuthForgotPasswordWidgetState extends State<AuthForgotPasswordWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .displaySmall
                                     .override(
-                                      fontFamily: 'Inter Tight',
+                                      fontFamily: 'Montserrat',
                                       letterSpacing: 0.0,
                                     ),
                               ),
@@ -206,7 +206,7 @@ class _AuthForgotPasswordWidgetState extends State<AuthForgotPasswordWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .labelLarge
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Livvic',
                                       letterSpacing: 0.0,
                                     ),
                               ),
@@ -227,7 +227,7 @@ class _AuthForgotPasswordWidgetState extends State<AuthForgotPasswordWidget>
                                     labelStyle: FlutterFlowTheme.of(context)
                                         .labelLarge
                                         .override(
-                                          fontFamily: 'Inter',
+                                          fontFamily: 'Livvic',
                                           letterSpacing: 0.0,
                                         ),
                                     enabledBorder: OutlineInputBorder(
@@ -269,7 +269,7 @@ class _AuthForgotPasswordWidgetState extends State<AuthForgotPasswordWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .bodyLarge
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Livvic',
                                         letterSpacing: 0.0,
                                       ),
                                   keyboardType: TextInputType.emailAddress,
@@ -315,7 +315,7 @@ class _AuthForgotPasswordWidgetState extends State<AuthForgotPasswordWidget>
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
-                                        fontFamily: 'Inter Tight',
+                                        fontFamily: 'Montserrat',
                                         color: Colors.white,
                                         letterSpacing: 0.0,
                                       ),

@@ -90,7 +90,7 @@ class _BookListWidgetState extends State<BookListWidget> {
               title: Text(
                 'Books',
                 style: FlutterFlowTheme.of(context).titleLarge.override(
-                      fontFamily: 'Inter Tight',
+                      fontFamily: 'Montserrat',
                       letterSpacing: 0.0,
                     ),
               ),
@@ -153,13 +153,13 @@ class _BookListWidgetState extends State<BookListWidget> {
                               labelStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Livvic',
                                     letterSpacing: 0.0,
                                   ),
                               hintStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Livvic',
                                     letterSpacing: 0.0,
                                   ),
                               enabledBorder: OutlineInputBorder(
@@ -249,7 +249,7 @@ class _BookListWidgetState extends State<BookListWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Livvic',
                                   letterSpacing: 0.0,
                                 ),
                             validator: _model.searchBarTextControllerValidator
@@ -390,7 +390,7 @@ class _BookListWidgetState extends State<BookListWidget> {
                                                                 .titleLarge
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter Tight',
+                                                                      'Montserrat',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -402,7 +402,8 @@ class _BookListWidgetState extends State<BookListWidget> {
                                                               .of(context)
                                                           .labelMedium
                                                           .override(
-                                                            fontFamily: 'Inter',
+                                                            fontFamily:
+                                                                'Livvic',
                                                             fontSize: 12.0,
                                                             letterSpacing: 0.0,
                                                             fontWeight:
@@ -429,7 +430,7 @@ class _BookListWidgetState extends State<BookListWidget> {
                                                                 .labelSmall
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Livvic',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -590,7 +591,7 @@ class _BookListWidgetState extends State<BookListWidget> {
                                                                 .titleLarge
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter Tight',
+                                                                      'Montserrat',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -602,7 +603,8 @@ class _BookListWidgetState extends State<BookListWidget> {
                                                               .of(context)
                                                           .labelMedium
                                                           .override(
-                                                            fontFamily: 'Inter',
+                                                            fontFamily:
+                                                                'Livvic',
                                                             fontSize: 12.0,
                                                             letterSpacing: 0.0,
                                                             fontWeight:
@@ -630,7 +632,7 @@ class _BookListWidgetState extends State<BookListWidget> {
                                                                 .labelSmall
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Livvic',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),

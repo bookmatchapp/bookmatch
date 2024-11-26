@@ -73,7 +73,7 @@ class _BookMessagesWidgetState extends State<BookMessagesWidget> {
                 automaticallyImplyLeading: false,
                 title: AnimatedDefaultTextStyle(
                   style: FlutterFlowTheme.of(context).headlineLarge.override(
-                        fontFamily: 'Inter Tight',
+                        fontFamily: 'Montserrat',
                         letterSpacing: 0.0,
                       ),
                   duration: const Duration(milliseconds: 600),
@@ -100,7 +100,7 @@ class _BookMessagesWidgetState extends State<BookMessagesWidget> {
                           'Below are messages with your swiped books.',
                           style:
                               FlutterFlowTheme.of(context).labelMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Livvic',
                                     letterSpacing: 0.0,
                                   ),
                         ),
@@ -235,7 +235,7 @@ class _BookMessagesWidgetState extends State<BookMessagesWidget> {
                                                                   .bodyLarge
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Inter',
+                                                                        'Livvic',
                                                                     letterSpacing:
                                                                         0.0,
                                                                   ),
@@ -265,7 +265,7 @@ class _BookMessagesWidgetState extends State<BookMessagesWidget> {
                                                                     .labelMedium
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter',
+                                                                          'Livvic',
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),
@@ -297,7 +297,7 @@ class _BookMessagesWidgetState extends State<BookMessagesWidget> {
                                                                         .labelSmall
                                                                         .override(
                                                                           fontFamily:
-                                                                              'Inter',
+                                                                              'Livvic',
                                                                           letterSpacing:
                                                                               0.0,
                                                                         ),

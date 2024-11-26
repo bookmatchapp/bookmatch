@@ -53,7 +53,7 @@ class _LogoxWidgetState extends State<LogoxWidget> {
         Text(
           'bookmatch',
           style: FlutterFlowTheme.of(context).displaySmall.override(
-                fontFamily: 'Inter Tight',
+                fontFamily: 'Montserrat',
                 color: FlutterFlowTheme.of(context).info,
                 letterSpacing: 0.0,
               ),

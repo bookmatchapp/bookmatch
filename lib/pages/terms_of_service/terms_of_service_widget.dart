@@ -58,7 +58,7 @@ class _TermsOfServiceWidgetState extends State<TermsOfServiceWidget> {
           title: Text(
             'Terms of Service',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Inter Tight',
+                  fontFamily: 'Montserrat',
                   letterSpacing: 0.0,
                 ),
           ),
@@ -78,7 +78,7 @@ class _TermsOfServiceWidgetState extends State<TermsOfServiceWidget> {
                   Text(
                     'BookMatch Terms of Service',
                     style: FlutterFlowTheme.of(context).headlineSmall.override(
-                          fontFamily: 'Inter Tight',
+                          fontFamily: 'Montserrat',
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w600,
                         ),
@@ -86,7 +86,7 @@ class _TermsOfServiceWidgetState extends State<TermsOfServiceWidget> {
                   Text(
                     'Last Updated: November 17, 2024',
                     style: FlutterFlowTheme.of(context).bodySmall.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Livvic',
                           color: FlutterFlowTheme.of(context).secondaryText,
                           letterSpacing: 0.0,
                         ),
@@ -98,7 +98,7 @@ class _TermsOfServiceWidgetState extends State<TermsOfServiceWidget> {
                       Text(
                         '1. Acceptance of Terms',
                         style: FlutterFlowTheme.of(context).bodyLarge.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'Livvic',
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
                             ),
@@ -106,14 +106,14 @@ class _TermsOfServiceWidgetState extends State<TermsOfServiceWidget> {
                       Text(
                         'By accessing or using BookMatch, you agree to be bound by these Terms of Service and all applicable laws and regulations.',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'Livvic',
                               letterSpacing: 0.0,
                             ),
                       ),
                       Text(
                         '2. User Accounts',
                         style: FlutterFlowTheme.of(context).bodyLarge.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'Livvic',
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
                             ),
@@ -121,14 +121,14 @@ class _TermsOfServiceWidgetState extends State<TermsOfServiceWidget> {
                       Text(
                         'You are responsible for maintaining the confidentiality of your account credentials and for all activities under your account. You must be at least 13 years old to use BookMatch.',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'Livvic',
                               letterSpacing: 0.0,
                             ),
                       ),
                       Text(
                         '3. Privacy',
                         style: FlutterFlowTheme.of(context).bodyLarge.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'Livvic',
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
                             ),
@@ -136,14 +136,14 @@ class _TermsOfServiceWidgetState extends State<TermsOfServiceWidget> {
                       Text(
                         'Your use of BookMatch is also governed by our Privacy Policy, which can be found in the app settings.',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'Livvic',
                               letterSpacing: 0.0,
                             ),
                       ),
                       Text(
                         '4. Content',
                         style: FlutterFlowTheme.of(context).bodyLarge.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'Livvic',
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
                             ),
@@ -151,14 +151,14 @@ class _TermsOfServiceWidgetState extends State<TermsOfServiceWidget> {
                       Text(
                         'Users retain ownership of their content but grant BookMatch a license to use, store, and share the content in accordance with your privacy settings.',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'Livvic',
                               letterSpacing: 0.0,
                             ),
                       ),
                       Text(
                         '5. Prohibited Activities',
                         style: FlutterFlowTheme.of(context).bodyLarge.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'Livvic',
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
                             ),
@@ -166,14 +166,14 @@ class _TermsOfServiceWidgetState extends State<TermsOfServiceWidget> {
                       Text(
                         'Users may not:\n• Post inappropriate or offensive content\n• Impersonate others\n• Engage in unauthorized data collection\n• Attempt to breach security measures',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'Livvic',
                               letterSpacing: 0.0,
                             ),
                       ),
                       Text(
                         '6. Termination',
                         style: FlutterFlowTheme.of(context).bodyLarge.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'Livvic',
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
                             ),
@@ -181,14 +181,14 @@ class _TermsOfServiceWidgetState extends State<TermsOfServiceWidget> {
                       Text(
                         'BookMatch reserves the right to terminate or suspend accounts that violate these terms or for any other reason at our discretion.',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'Livvic',
                               letterSpacing: 0.0,
                             ),
                       ),
                       Text(
                         '7. Changes to Terms',
                         style: FlutterFlowTheme.of(context).bodyLarge.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'Livvic',
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
                             ),
@@ -196,14 +196,14 @@ class _TermsOfServiceWidgetState extends State<TermsOfServiceWidget> {
                       Text(
                         'We may modify these terms at any time. Continued use of BookMatch after changes constitutes acceptance of the modified terms.',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'Livvic',
                               letterSpacing: 0.0,
                             ),
                       ),
                       Text(
                         '8. Contact Us',
                         style: FlutterFlowTheme.of(context).bodyLarge.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'Livvic',
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
                             ),
@@ -211,7 +211,7 @@ class _TermsOfServiceWidgetState extends State<TermsOfServiceWidget> {
                       Text(
                         'For questions about these terms, please contact us at support@bookmatch.com',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
+                              fontFamily: 'Livvic',
                               letterSpacing: 0.0,
                             ),
                       ),
@@ -241,7 +241,7 @@ class _TermsOfServiceWidgetState extends State<TermsOfServiceWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Livvic',
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryText,
                                     letterSpacing: 0.0,
@@ -263,7 +263,7 @@ class _TermsOfServiceWidgetState extends State<TermsOfServiceWidget> {
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
-                                      fontFamily: 'Inter Tight',
+                                      fontFamily: 'Montserrat',
                                       color: FlutterFlowTheme.of(context).info,
                                       letterSpacing: 0.0,
                                     ),

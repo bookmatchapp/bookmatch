@@ -92,7 +92,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
               title: Text(
                 'Favorite Books',
                 style: FlutterFlowTheme.of(context).titleLarge.override(
-                      fontFamily: 'Inter Tight',
+                      fontFamily: 'Montserrat',
                       color: FlutterFlowTheme.of(context).alternate,
                       letterSpacing: 0.0,
                     ),
@@ -158,13 +158,13 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                             labelStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Livvic',
                                   letterSpacing: 0.0,
                                 ),
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Livvic',
                                   letterSpacing: 0.0,
                                 ),
                             enabledBorder: OutlineInputBorder(
@@ -252,7 +252,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Livvic',
                                     letterSpacing: 0.0,
                                   ),
                           validator: _model.searchBarTextControllerValidator
@@ -399,7 +399,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                                     .titleLarge
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter Tight',
+                                                                          'Montserrat',
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),
@@ -413,7 +413,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                                   .labelMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Inter',
+                                                                        'Livvic',
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -444,7 +444,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                                     .labelSmall
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter',
+                                                                          'Livvic',
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),
@@ -676,7 +676,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                                     .titleLarge
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter Tight',
+                                                                          'Montserrat',
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),
@@ -690,7 +690,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                                   .labelMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Inter',
+                                                                        'Livvic',
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -721,7 +721,7 @@ class _FavoritesWidgetState extends State<FavoritesWidget> {
                                                                     .labelSmall
                                                                     .override(
                                                                       fontFamily:
-                                                                          'Inter',
+                                                                          'Livvic',
                                                                       letterSpacing:
                                                                           0.0,
                                                                     ),

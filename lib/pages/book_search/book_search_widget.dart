@@ -89,7 +89,7 @@ class _BookSearchWidgetState extends State<BookSearchWidget> {
               title: Text(
                 'Search Books',
                 style: FlutterFlowTheme.of(context).titleLarge.override(
-                      fontFamily: 'Inter Tight',
+                      fontFamily: 'Montserrat',
                       color: FlutterFlowTheme.of(context).alternate,
                       letterSpacing: 0.0,
                     ),
@@ -155,13 +155,13 @@ class _BookSearchWidgetState extends State<BookSearchWidget> {
                             labelStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Livvic',
                                   letterSpacing: 0.0,
                                 ),
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Livvic',
                                   letterSpacing: 0.0,
                                 ),
                             enabledBorder: OutlineInputBorder(
@@ -249,7 +249,7 @@ class _BookSearchWidgetState extends State<BookSearchWidget> {
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Livvic',
                                     letterSpacing: 0.0,
                                   ),
                           validator: _model.searchBarTextControllerValidator
@@ -387,7 +387,7 @@ class _BookSearchWidgetState extends State<BookSearchWidget> {
                                                                 .titleLarge
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter Tight',
+                                                                      'Montserrat',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -400,7 +400,7 @@ class _BookSearchWidgetState extends State<BookSearchWidget> {
                                                               .labelMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Livvic',
                                                                 fontSize: 12.0,
                                                                 letterSpacing:
                                                                     0.0,
@@ -428,7 +428,7 @@ class _BookSearchWidgetState extends State<BookSearchWidget> {
                                                                 .labelSmall
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Livvic',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -645,7 +645,7 @@ class _BookSearchWidgetState extends State<BookSearchWidget> {
                                                                 .titleLarge
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter Tight',
+                                                                      'Montserrat',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -659,7 +659,7 @@ class _BookSearchWidgetState extends State<BookSearchWidget> {
                                                               .labelMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter',
+                                                                    'Livvic',
                                                                 fontSize: 12.0,
                                                                 letterSpacing:
                                                                     0.0,
@@ -688,7 +688,7 @@ class _BookSearchWidgetState extends State<BookSearchWidget> {
                                                                 .labelSmall
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Livvic',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),

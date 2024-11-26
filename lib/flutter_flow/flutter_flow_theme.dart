@@ -125,9 +125,9 @@ class LightModeTheme extends FlutterFlowTheme {
   @Deprecated('Use tertiary instead')
   Color get tertiaryColor => tertiary;
 
-  late Color primary = const Color(0xFF4B39EF);
+  late Color primary = const Color(0xFF2DB1FE);
   late Color secondary = const Color(0xFF39D2C0);
-  late Color tertiary = const Color(0xFFEE8B60);
+  late Color tertiary = const Color(0xFF66FB8F);
   late Color alternate = const Color(0xFFE0E3E7);
   late Color primaryText = const Color(0xFF14181B);
   late Color secondaryText = const Color(0xFF57636C);
@@ -181,107 +181,107 @@ class ThemeTypography extends Typography {
 
   final FlutterFlowTheme theme;
 
-  String get displayLargeFamily => 'Inter Tight';
+  String get displayLargeFamily => 'Montserrat';
   TextStyle get displayLarge => GoogleFonts.getFont(
-        'Inter Tight',
+        'Montserrat',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 64.0,
       );
-  String get displayMediumFamily => 'Inter Tight';
+  String get displayMediumFamily => 'Montserrat';
   TextStyle get displayMedium => GoogleFonts.getFont(
-        'Inter Tight',
+        'Montserrat',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 44.0,
       );
-  String get displaySmallFamily => 'Inter Tight';
+  String get displaySmallFamily => 'Montserrat';
   TextStyle get displaySmall => GoogleFonts.getFont(
-        'Inter Tight',
+        'Montserrat',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 36.0,
       );
-  String get headlineLargeFamily => 'Inter Tight';
+  String get headlineLargeFamily => 'Montserrat';
   TextStyle get headlineLarge => GoogleFonts.getFont(
-        'Inter Tight',
+        'Montserrat',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 32.0,
       );
-  String get headlineMediumFamily => 'Inter Tight';
+  String get headlineMediumFamily => 'Montserrat';
   TextStyle get headlineMedium => GoogleFonts.getFont(
-        'Inter Tight',
+        'Montserrat',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 28.0,
       );
-  String get headlineSmallFamily => 'Inter Tight';
+  String get headlineSmallFamily => 'Montserrat';
   TextStyle get headlineSmall => GoogleFonts.getFont(
-        'Inter Tight',
+        'Montserrat',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 24.0,
       );
-  String get titleLargeFamily => 'Inter Tight';
+  String get titleLargeFamily => 'Montserrat';
   TextStyle get titleLarge => GoogleFonts.getFont(
-        'Inter Tight',
+        'Montserrat',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 20.0,
       );
-  String get titleMediumFamily => 'Inter Tight';
+  String get titleMediumFamily => 'Montserrat';
   TextStyle get titleMedium => GoogleFonts.getFont(
-        'Inter Tight',
+        'Montserrat',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 18.0,
       );
-  String get titleSmallFamily => 'Inter Tight';
+  String get titleSmallFamily => 'Montserrat';
   TextStyle get titleSmall => GoogleFonts.getFont(
-        'Inter Tight',
+        'Montserrat',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 16.0,
       );
-  String get labelLargeFamily => 'Inter';
+  String get labelLargeFamily => 'Livvic';
   TextStyle get labelLarge => GoogleFonts.getFont(
-        'Inter',
+        'Livvic',
         color: theme.secondaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
-  String get labelMediumFamily => 'Inter';
+  String get labelMediumFamily => 'Livvic';
   TextStyle get labelMedium => GoogleFonts.getFont(
-        'Inter',
+        'Livvic',
         color: theme.secondaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
       );
-  String get labelSmallFamily => 'Inter';
+  String get labelSmallFamily => 'Livvic';
   TextStyle get labelSmall => GoogleFonts.getFont(
-        'Inter',
+        'Livvic',
         color: theme.secondaryText,
         fontWeight: FontWeight.normal,
         fontSize: 12.0,
       );
-  String get bodyLargeFamily => 'Inter';
+  String get bodyLargeFamily => 'Livvic';
   TextStyle get bodyLarge => GoogleFonts.getFont(
-        'Inter',
+        'Livvic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
-  String get bodyMediumFamily => 'Inter';
+  String get bodyMediumFamily => 'Livvic';
   TextStyle get bodyMedium => GoogleFonts.getFont(
-        'Inter',
+        'Livvic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
       );
-  String get bodySmallFamily => 'Inter';
+  String get bodySmallFamily => 'Livvic';
   TextStyle get bodySmall => GoogleFonts.getFont(
-        'Inter',
+        'Livvic',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 12.0,

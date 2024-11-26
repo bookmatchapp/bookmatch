@@ -93,7 +93,7 @@ class _LibraryListWidgetState extends State<LibraryListWidget> {
               title: Text(
                 'Libraries',
                 style: FlutterFlowTheme.of(context).titleLarge.override(
-                      fontFamily: 'Inter Tight',
+                      fontFamily: 'Montserrat',
                       letterSpacing: 0.0,
                     ),
               ),
@@ -145,13 +145,13 @@ class _LibraryListWidgetState extends State<LibraryListWidget> {
                             labelStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Livvic',
                                   letterSpacing: 0.0,
                                 ),
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  fontFamily: 'Livvic',
                                   letterSpacing: 0.0,
                                 ),
                             enabledBorder: OutlineInputBorder(
@@ -195,7 +195,7 @@ class _LibraryListWidgetState extends State<LibraryListWidget> {
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Livvic',
                                     letterSpacing: 0.0,
                                   ),
                           validator: _model.searchBarTextControllerValidator
@@ -328,7 +328,7 @@ class _LibraryListWidgetState extends State<LibraryListWidget> {
                                                                 .titleLarge
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter Tight',
+                                                                      'Montserrat',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -355,7 +355,7 @@ class _LibraryListWidgetState extends State<LibraryListWidget> {
                                                                 .labelSmall
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Livvic',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -516,7 +516,7 @@ class _LibraryListWidgetState extends State<LibraryListWidget> {
                                                                 .titleLarge
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter Tight',
+                                                                      'Montserrat',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -543,7 +543,7 @@ class _LibraryListWidgetState extends State<LibraryListWidget> {
                                                                 .labelSmall
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Livvic',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),

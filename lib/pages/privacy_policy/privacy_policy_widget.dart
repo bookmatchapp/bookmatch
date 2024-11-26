@@ -57,7 +57,7 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
           title: Text(
             'Privacy Policy',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Inter Tight',
+                  fontFamily: 'Montserrat',
                   letterSpacing: 0.0,
                 ),
           ),
@@ -77,7 +77,7 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                   Text(
                     'Bookmatch Privacy Policy',
                     style: FlutterFlowTheme.of(context).headlineSmall.override(
-                          fontFamily: 'Inter Tight',
+                          fontFamily: 'Montserrat',
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w600,
                         ),
@@ -85,7 +85,7 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                   Text(
                     'Last updated: November 17, 2024',
                     style: FlutterFlowTheme.of(context).bodySmall.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Livvic',
                           color: FlutterFlowTheme.of(context).secondaryText,
                           letterSpacing: 0.0,
                         ),
@@ -113,7 +113,7 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .titleMedium
                                   .override(
-                                    fontFamily: 'Inter Tight',
+                                    fontFamily: 'Montserrat',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     letterSpacing: 0.0,
@@ -125,7 +125,7 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Livvic',
                                     letterSpacing: 0.0,
                                   ),
                             ),
@@ -157,7 +157,7 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .titleMedium
                                   .override(
-                                    fontFamily: 'Inter Tight',
+                                    fontFamily: 'Montserrat',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     letterSpacing: 0.0,
@@ -169,7 +169,7 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Livvic',
                                     letterSpacing: 0.0,
                                   ),
                             ),
@@ -201,7 +201,7 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .titleMedium
                                   .override(
-                                    fontFamily: 'Inter Tight',
+                                    fontFamily: 'Montserrat',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     letterSpacing: 0.0,
@@ -213,7 +213,7 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Livvic',
                                     letterSpacing: 0.0,
                                   ),
                             ),
@@ -245,7 +245,7 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .titleMedium
                                   .override(
-                                    fontFamily: 'Inter Tight',
+                                    fontFamily: 'Montserrat',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     letterSpacing: 0.0,
@@ -257,7 +257,7 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Livvic',
                                     letterSpacing: 0.0,
                                   ),
                             ),
@@ -289,7 +289,7 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .titleMedium
                                   .override(
-                                    fontFamily: 'Inter Tight',
+                                    fontFamily: 'Montserrat',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     letterSpacing: 0.0,
@@ -301,7 +301,7 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Livvic',
                                     letterSpacing: 0.0,
                                   ),
                             ),
@@ -333,7 +333,7 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .titleMedium
                                   .override(
-                                    fontFamily: 'Inter Tight',
+                                    fontFamily: 'Montserrat',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     letterSpacing: 0.0,
@@ -345,7 +345,7 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Livvic',
                                     letterSpacing: 0.0,
                                   ),
                             ),
@@ -354,7 +354,7 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Livvic',
                                     color: FlutterFlowTheme.of(context).primary,
                                     letterSpacing: 0.0,
                                   ),
@@ -368,7 +368,7 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                     'By using Bookmatch, you agree to the collection and use of information in accordance with this Privacy Policy.',
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).bodySmall.override(
-                          fontFamily: 'Inter',
+                          fontFamily: 'Livvic',
                           color: FlutterFlowTheme.of(context).secondaryText,
                           letterSpacing: 0.0,
                         ),

@@ -130,7 +130,7 @@ class _BookCreateEditWidgetState extends State<BookCreateEditWidget>
                   Text(
                     widget.book != null ? 'Edit Book' : 'Add Book',
                     style: FlutterFlowTheme.of(context).headlineMedium.override(
-                          fontFamily: 'Inter Tight',
+                          fontFamily: 'Montserrat',
                           letterSpacing: 0.0,
                         ),
                   ),
@@ -397,7 +397,7 @@ class _BookCreateEditWidgetState extends State<BookCreateEditWidget>
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Livvic',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -430,14 +430,14 @@ class _BookCreateEditWidgetState extends State<BookCreateEditWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .labelMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Livvic',
                                                           letterSpacing: 0.0,
                                                         ),
                                                 errorStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Livvic',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .error,
@@ -522,7 +522,7 @@ class _BookCreateEditWidgetState extends State<BookCreateEditWidget>
                                                       .headlineMedium
                                                       .override(
                                                         fontFamily:
-                                                            'Inter Tight',
+                                                            'Montserrat',
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -555,14 +555,14 @@ class _BookCreateEditWidgetState extends State<BookCreateEditWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .labelMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Livvic',
                                                           letterSpacing: 0.0,
                                                         ),
                                                 errorStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Livvic',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .error,
@@ -647,7 +647,7 @@ class _BookCreateEditWidgetState extends State<BookCreateEditWidget>
                                                       .headlineMedium
                                                       .override(
                                                         fontFamily:
-                                                            'Inter Tight',
+                                                            'Montserrat',
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -681,7 +681,7 @@ class _BookCreateEditWidgetState extends State<BookCreateEditWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .labelLarge
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Livvic',
                                                           letterSpacing: 0.0,
                                                         ),
                                                 alignLabelWithHint: true,
@@ -689,14 +689,14 @@ class _BookCreateEditWidgetState extends State<BookCreateEditWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .labelMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Livvic',
                                                           letterSpacing: 0.0,
                                                         ),
                                                 errorStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Livvic',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .error,
@@ -780,7 +780,7 @@ class _BookCreateEditWidgetState extends State<BookCreateEditWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyLarge
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Livvic',
                                                         letterSpacing: 0.0,
                                                       ),
                                               maxLines: 9,
@@ -811,7 +811,7 @@ class _BookCreateEditWidgetState extends State<BookCreateEditWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Livvic',
                                                         letterSpacing: 0.0,
                                                       ),
                                             ),
@@ -833,21 +833,21 @@ class _BookCreateEditWidgetState extends State<BookCreateEditWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Livvic',
                                                         letterSpacing: 0.0,
                                                       ),
                                               searchTextStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Livvic',
                                                         letterSpacing: 0.0,
                                                       ),
                                               textStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Livvic',
                                                         letterSpacing: 0.0,
                                                       ),
                                               hintText: 'Select...',
@@ -908,7 +908,7 @@ class _BookCreateEditWidgetState extends State<BookCreateEditWidget>
                                                         .titleSmall
                                                         .override(
                                                           fontFamily:
-                                                              'Inter Tight',
+                                                              'Montserrat',
                                                           color: Colors.white,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -942,7 +942,7 @@ class _BookCreateEditWidgetState extends State<BookCreateEditWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Livvic',
                                                         letterSpacing: 0.0,
                                                       ),
                                             ),
@@ -963,21 +963,21 @@ class _BookCreateEditWidgetState extends State<BookCreateEditWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Livvic',
                                                         letterSpacing: 0.0,
                                                       ),
                                               searchTextStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Livvic',
                                                         letterSpacing: 0.0,
                                                       ),
                                               textStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        fontFamily: 'Livvic',
                                                         letterSpacing: 0.0,
                                                       ),
                                               hintText: 'Select...',
@@ -1038,7 +1038,7 @@ class _BookCreateEditWidgetState extends State<BookCreateEditWidget>
                                                         .titleSmall
                                                         .override(
                                                           fontFamily:
-                                                              'Inter Tight',
+                                                              'Montserrat',
                                                           color: Colors.white,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -1311,7 +1311,7 @@ class _BookCreateEditWidgetState extends State<BookCreateEditWidget>
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
-                                    fontFamily: 'Inter Tight',
+                                    fontFamily: 'Montserrat',
                                     color: Colors.white,
                                     letterSpacing: 0.0,
                                   ),

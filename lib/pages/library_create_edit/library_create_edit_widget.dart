@@ -100,7 +100,7 @@ class _LibraryCreateEditWidgetState extends State<LibraryCreateEditWidget>
               Text(
                 widget.library != null ? 'Edit Library' : 'Add Library',
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily: 'Inter Tight',
+                      fontFamily: 'Montserrat',
                       letterSpacing: 0.0,
                     ),
               ),
@@ -354,7 +354,7 @@ class _LibraryCreateEditWidgetState extends State<LibraryCreateEditWidget>
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Livvic',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -381,14 +381,14 @@ class _LibraryCreateEditWidgetState extends State<LibraryCreateEditWidget>
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium
                                                     .override(
-                                                      fontFamily: 'Inter',
+                                                      fontFamily: 'Livvic',
                                                       letterSpacing: 0.0,
                                                     ),
                                             errorStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
                                                     .override(
-                                                      fontFamily: 'Inter',
+                                                      fontFamily: 'Livvic',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -448,7 +448,7 @@ class _LibraryCreateEditWidgetState extends State<LibraryCreateEditWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .headlineMedium
                                               .override(
-                                                fontFamily: 'Inter Tight',
+                                                fontFamily: 'Montserrat',
                                                 fontSize: 16.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.normal,
@@ -475,7 +475,7 @@ class _LibraryCreateEditWidgetState extends State<LibraryCreateEditWidget>
                                                 FlutterFlowTheme.of(context)
                                                     .labelLarge
                                                     .override(
-                                                      fontFamily: 'Inter',
+                                                      fontFamily: 'Livvic',
                                                       letterSpacing: 0.0,
                                                     ),
                                             alignLabelWithHint: true,
@@ -483,14 +483,14 @@ class _LibraryCreateEditWidgetState extends State<LibraryCreateEditWidget>
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium
                                                     .override(
-                                                      fontFamily: 'Inter',
+                                                      fontFamily: 'Livvic',
                                                       letterSpacing: 0.0,
                                                     ),
                                             errorStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
                                                     .override(
-                                                      fontFamily: 'Inter',
+                                                      fontFamily: 'Livvic',
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -550,7 +550,7 @@ class _LibraryCreateEditWidgetState extends State<LibraryCreateEditWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(
-                                                fontFamily: 'Inter',
+                                                fontFamily: 'Livvic',
                                                 letterSpacing: 0.0,
                                               ),
                                           maxLines: 9,
@@ -689,7 +689,7 @@ class _LibraryCreateEditWidgetState extends State<LibraryCreateEditWidget>
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Inter Tight',
+                                    fontFamily: 'Montserrat',
                                     color: Colors.white,
                                     letterSpacing: 0.0,
                                   ),

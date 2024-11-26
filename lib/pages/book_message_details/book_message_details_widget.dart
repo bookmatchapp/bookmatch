@@ -197,7 +197,7 @@ class _BookMessageDetailsWidgetState extends State<BookMessageDetailsWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .headlineMedium
                                       .override(
-                                        fontFamily: 'Inter Tight',
+                                        fontFamily: 'Montserrat',
                                         color: Colors.white,
                                         letterSpacing: 0.0,
                                         lineHeight: 1.0,
@@ -249,7 +249,7 @@ class _BookMessageDetailsWidgetState extends State<BookMessageDetailsWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
-                                      fontFamily: 'Inter Tight',
+                                      fontFamily: 'Montserrat',
                                       color: FlutterFlowTheme.of(context)
                                           .alternate,
                                       letterSpacing: 0.0,
@@ -275,13 +275,13 @@ class _BookMessageDetailsWidgetState extends State<BookMessageDetailsWidget>
                               labelStyle: FlutterFlowTheme.of(context)
                                   .titleMedium
                                   .override(
-                                    fontFamily: 'Inter Tight',
+                                    fontFamily: 'Montserrat',
                                     letterSpacing: 0.0,
                                   ),
                               unselectedLabelStyle: FlutterFlowTheme.of(context)
                                   .titleMedium
                                   .override(
-                                    fontFamily: 'Inter Tight',
+                                    fontFamily: 'Montserrat',
                                     letterSpacing: 0.0,
                                   ),
                               labelColor: FlutterFlowTheme.of(context).primary,
@@ -372,7 +372,7 @@ class _BookMessageDetailsWidgetState extends State<BookMessageDetailsWidget>
                                                                 .titleLarge
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter Tight',
+                                                                      'Montserrat',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -385,7 +385,7 @@ class _BookMessageDetailsWidgetState extends State<BookMessageDetailsWidget>
                                                                 .labelMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Livvic',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -430,7 +430,7 @@ class _BookMessageDetailsWidgetState extends State<BookMessageDetailsWidget>
                                                                 .titleLarge
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter Tight',
+                                                                      'Montserrat',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -443,7 +443,7 @@ class _BookMessageDetailsWidgetState extends State<BookMessageDetailsWidget>
                                                                 .labelMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Livvic',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -489,7 +489,7 @@ class _BookMessageDetailsWidgetState extends State<BookMessageDetailsWidget>
                                                                 .titleLarge
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter Tight',
+                                                                      'Montserrat',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -502,7 +502,7 @@ class _BookMessageDetailsWidgetState extends State<BookMessageDetailsWidget>
                                                                 .labelMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Inter',
+                                                                      'Livvic',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -609,7 +609,7 @@ class _BookMessageDetailsWidgetState extends State<BookMessageDetailsWidget>
                                                               .titleMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Inter Tight',
+                                                                    'Montserrat',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .secondaryText,
@@ -627,7 +627,7 @@ class _BookMessageDetailsWidgetState extends State<BookMessageDetailsWidget>
                                                             context)
                                                         .labelLarge
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          fontFamily: 'Livvic',
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -722,7 +722,7 @@ class _BookMessageDetailsWidgetState extends State<BookMessageDetailsWidget>
                                                                   .titleMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Inter Tight',
+                                                                        'Montserrat',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .secondaryText,
@@ -741,7 +741,7 @@ class _BookMessageDetailsWidgetState extends State<BookMessageDetailsWidget>
                                                             .labelLarge
                                                             .override(
                                                               fontFamily:
-                                                                  'Inter',
+                                                                  'Livvic',
                                                               fontSize: 14.0,
                                                               letterSpacing:
                                                                   0.0,
