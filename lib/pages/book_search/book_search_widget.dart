@@ -377,7 +377,11 @@ class _BookSearchWidgetState extends State<BookSearchWidget> {
                                                                       0.0,
                                                                       8.0),
                                                           child: Text(
-                                                            allBooksItem.title,
+                                                            allBooksItem.title
+                                                                .maybeHandleOverflow(
+                                                              maxChars: 50,
+                                                              replacement: '…',
+                                                            ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .titleLarge

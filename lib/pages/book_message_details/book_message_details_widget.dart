@@ -587,7 +587,7 @@ class _BookMessageDetailsWidgetState extends State<BookMessageDetailsWidget>
                                                         MainAxisSize.max,
                                                     children: [
                                                       Icon(
-                                                        Icons.policy_outlined,
+                                                        Icons.location_pin,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -603,7 +603,7 @@ class _BookMessageDetailsWidgetState extends State<BookMessageDetailsWidget>
                                                                     0.0,
                                                                     8.0),
                                                         child: Text(
-                                                          'Borrowing Policy',
+                                                          'Location',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .titleMedium

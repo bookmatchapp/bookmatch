@@ -118,10 +118,15 @@ class _EditProfileAuthWidgetState extends State<EditProfileAuthWidget> {
                             child: CachedNetworkImage(
                               fadeInDuration: const Duration(milliseconds: 200),
                               fadeOutDuration: const Duration(milliseconds: 200),
-                              imageUrl: valueOrDefault<String>(
-                                currentUserPhoto,
-                                'https://images.unsplash.com/photo-1499887142886-791eca5918cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHwxN3x8dXNlcnxlbnwwfHx8fDE2OTc4MjQ2MjZ8MA&ixlib=rb-4.0.3&q=80&w=400',
-                              ),
+                              imageUrl: () {
+                                if (_model.uploadedFileUrl != '') {
+                                  return _model.uploadedFileUrl;
+                                } else if (currentUserPhoto != '') {
+                                  return currentUserPhoto;
+                                } else {
+                                  return 'https://st4.depositphotos.com/29453910/37778/v/450/depositphotos_377785318-stock-illustration-hand-drawn-modern-man-avatar.jpg';
+                                }
+                              }(),
                               width: 300.0,
                               height: 200.0,
                               fit: BoxFit.cover,
@@ -137,9 +142,15 @@ class _EditProfileAuthWidgetState extends State<EditProfileAuthWidget> {
                             child: CachedNetworkImage(
                               fadeInDuration: const Duration(milliseconds: 200),
                               fadeOutDuration: const Duration(milliseconds: 200),
-                              imageUrl: _model.uploadedFileUrl != ''
-                                  ? _model.uploadedFileUrl
-                                  : currentUserPhoto,
+                              imageUrl: () {
+                                if (_model.uploadedFileUrl != '') {
+                                  return _model.uploadedFileUrl;
+                                } else if (currentUserPhoto != '') {
+                                  return currentUserPhoto;
+                                } else {
+                                  return 'https://st4.depositphotos.com/29453910/37778/v/450/depositphotos_377785318-stock-illustration-hand-drawn-modern-man-avatar.jpg';
+                                }
+                              }(),
                               width: 300.0,
                               height: 200.0,
                               fit: BoxFit.cover,

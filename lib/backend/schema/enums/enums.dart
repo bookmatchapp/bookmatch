@@ -24,6 +24,9 @@ enum BookGenre {
   Self_help,
   Travel,
   True_Crime,
+  Mystery,
+  Fantasy,
+  Politics,
 }
 
 enum Libraries {

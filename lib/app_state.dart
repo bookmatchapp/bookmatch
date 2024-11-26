@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '/backend/backend.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
@@ -19,8 +18,11 @@ class FFAppState extends ChangeNotifier {
   Future initializePersistedState() async {
     prefs = await SharedPreferences.getInstance();
     _safeInit(() {
-      _favoriteBooks =
-          prefs.getStringList('ff_favoriteBooks') ?? _favoriteBooks;
+      _libraries = prefs
+              .getStringList('ff_libraries')
+              ?.map((path) => path.ref)
+              .toList() ??
+          _libraries;
     });
   }
 
@@ -41,22 +43,18 @@ class FFAppState extends ChangeNotifier {
   List<String> get favoriteBooks => _favoriteBooks;
   set favoriteBooks(List<String> value) {
     _favoriteBooks = value;
-    prefs.setStringList('ff_favoriteBooks', value);
   }
 
   void addToFavoriteBooks(String value) {
     favoriteBooks.add(value);
-    prefs.setStringList('ff_favoriteBooks', _favoriteBooks);
   }
 
   void removeFromFavoriteBooks(String value) {
     favoriteBooks.remove(value);
-    prefs.setStringList('ff_favoriteBooks', _favoriteBooks);
   }
 
   void removeAtIndexFromFavoriteBooks(int index) {
     favoriteBooks.removeAt(index);
-    prefs.setStringList('ff_favoriteBooks', _favoriteBooks);
   }
 
   void updateFavoriteBooksAtIndex(
@@ -64,18 +62,51 @@ class FFAppState extends ChangeNotifier {
     String Function(String) updateFn,
   ) {
     favoriteBooks[index] = updateFn(_favoriteBooks[index]);
-    prefs.setStringList('ff_favoriteBooks', _favoriteBooks);
   }
 
   void insertAtIndexInFavoriteBooks(int index, String value) {
     favoriteBooks.insert(index, value);
-    prefs.setStringList('ff_favoriteBooks', _favoriteBooks);
   }
 
   DocumentReference? _createdBook;
   DocumentReference? get createdBook => _createdBook;
   set createdBook(DocumentReference? value) {
     _createdBook = value;
+  }
+
+  List<DocumentReference> _libraries = [];
+  List<DocumentReference> get libraries => _libraries;
+  set libraries(List<DocumentReference> value) {
+    _libraries = value;
+    prefs.setStringList('ff_libraries', value.map((x) => x.path).toList());
+  }
+
+  void addToLibraries(DocumentReference value) {
+    libraries.add(value);
+    prefs.setStringList('ff_libraries', _libraries.map((x) => x.path).toList());
+  }
+
+  void removeFromLibraries(DocumentReference value) {
+    libraries.remove(value);
+    prefs.setStringList('ff_libraries', _libraries.map((x) => x.path).toList());
+  }
+
+  void removeAtIndexFromLibraries(int index) {
+    libraries.removeAt(index);
+    prefs.setStringList('ff_libraries', _libraries.map((x) => x.path).toList());
+  }
+
+  void updateLibrariesAtIndex(
+    int index,
+    DocumentReference Function(DocumentReference) updateFn,
+  ) {
+    libraries[index] = updateFn(_libraries[index]);
+    prefs.setStringList('ff_libraries', _libraries.map((x) => x.path).toList());
+  }
+
+  void insertAtIndexInLibraries(int index, DocumentReference value) {
+    libraries.insert(index, value);
+    prefs.setStringList('ff_libraries', _libraries.map((x) => x.path).toList());
   }
 }
 
