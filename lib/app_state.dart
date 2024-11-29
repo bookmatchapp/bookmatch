@@ -68,12 +68,6 @@ class FFAppState extends ChangeNotifier {
     favoriteBooks.insert(index, value);
   }
 
-  DocumentReference? _createdBook;
-  DocumentReference? get createdBook => _createdBook;
-  set createdBook(DocumentReference? value) {
-    _createdBook = value;
-  }
-
   List<DocumentReference> _libraries = [];
   List<DocumentReference> get libraries => _libraries;
   set libraries(List<DocumentReference> value) {
@@ -107,6 +101,64 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInLibraries(int index, DocumentReference value) {
     libraries.insert(index, value);
     prefs.setStringList('ff_libraries', _libraries.map((x) => x.path).toList());
+  }
+
+  List<DocumentReference> _filteredBooks = [];
+  List<DocumentReference> get filteredBooks => _filteredBooks;
+  set filteredBooks(List<DocumentReference> value) {
+    _filteredBooks = value;
+  }
+
+  void addToFilteredBooks(DocumentReference value) {
+    filteredBooks.add(value);
+  }
+
+  void removeFromFilteredBooks(DocumentReference value) {
+    filteredBooks.remove(value);
+  }
+
+  void removeAtIndexFromFilteredBooks(int index) {
+    filteredBooks.removeAt(index);
+  }
+
+  void updateFilteredBooksAtIndex(
+    int index,
+    DocumentReference Function(DocumentReference) updateFn,
+  ) {
+    filteredBooks[index] = updateFn(_filteredBooks[index]);
+  }
+
+  void insertAtIndexInFilteredBooks(int index, DocumentReference value) {
+    filteredBooks.insert(index, value);
+  }
+
+  List<String> _selectedBookGenres = [];
+  List<String> get selectedBookGenres => _selectedBookGenres;
+  set selectedBookGenres(List<String> value) {
+    _selectedBookGenres = value;
+  }
+
+  void addToSelectedBookGenres(String value) {
+    selectedBookGenres.add(value);
+  }
+
+  void removeFromSelectedBookGenres(String value) {
+    selectedBookGenres.remove(value);
+  }
+
+  void removeAtIndexFromSelectedBookGenres(int index) {
+    selectedBookGenres.removeAt(index);
+  }
+
+  void updateSelectedBookGenresAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    selectedBookGenres[index] = updateFn(_selectedBookGenres[index]);
+  }
+
+  void insertAtIndexInSelectedBookGenres(int index, String value) {
+    selectedBookGenres.insert(index, value);
   }
 }
 

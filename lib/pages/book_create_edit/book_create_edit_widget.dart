@@ -1252,9 +1252,6 @@ class _BookCreateEditWidgetState extends State<BookCreateEditWidget>
                                             }(),
                                           ),
                                           booksRecordReference);
-                                  FFAppState().createdBook =
-                                      _model.addBook?.reference;
-                                  safeSetState(() {});
 
                                   await _model.addBook!.reference
                                       .update(createBooksRecordData(

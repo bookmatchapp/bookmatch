@@ -409,6 +409,8 @@ class _AuthCreateWidgetState extends State<AuthCreateWidget>
                                       return;
                                     }
 
+                                    await authManager.sendEmailVerification();
+
                                     context.goNamedAuth(
                                       'AuthCreateProfile',
                                       context.mounted,

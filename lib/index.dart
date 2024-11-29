@@ -30,3 +30,9 @@ export '/pages/book_message_details/book_message_details_widget.dart'
     show BookMessageDetailsWidget;
 export '/pages/favorites_grid/favorites_grid_widget.dart'
     show FavoritesGridWidget;
+export '/pages/faq/faq_widget.dart' show FaqWidget;
+export '/pages/help_support/help_support_widget.dart' show HelpSupportWidget;
+export '/account_profile_creation/onboarding/onboarding_widget.dart'
+    show OnboardingWidget;
+export '/account_profile_creation/onboarding_slideshow/onboarding_slideshow_widget.dart'
+    show OnboardingSlideshowWidget;

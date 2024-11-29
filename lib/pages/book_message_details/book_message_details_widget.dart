@@ -1,9 +1,13 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/favorite_button/favorite_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
+import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'book_message_details_model.dart';
@@ -27,6 +31,7 @@ class _BookMessageDetailsWidgetState extends State<BookMessageDetailsWidget>
   late BookMessageDetailsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  LatLng? currentUserLocationValue;
 
   final animationsMap = <String, AnimationInfo>{};
 
@@ -35,6 +40,8 @@ class _BookMessageDetailsWidgetState extends State<BookMessageDetailsWidget>
     super.initState();
     _model = createModel(context, () => BookMessageDetailsModel());
 
+    getCurrentUserLocation(defaultLocation: const LatLng(0.0, 0.0), cached: true)
+        .then((loc) => safeSetState(() => currentUserLocationValue = loc));
     _model.tabBarController = TabController(
       vsync: this,
       length: 3,
@@ -118,6 +125,23 @@ class _BookMessageDetailsWidgetState extends State<BookMessageDetailsWidget>
 
   @override
   Widget build(BuildContext context) {
+    if (currentUserLocationValue == null) {
+      return Container(
+        color: FlutterFlowTheme.of(context).primaryBackground,
+        child: Center(
+          child: SizedBox(
+            width: 50.0,
+            height: 50.0,
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(
+                FlutterFlowTheme.of(context).primary,
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+
     return StreamBuilder<LibrariesRecord>(
       stream: LibrariesRecord.getDocument(widget.book!.library!),
       builder: (context, snapshot) {
@@ -145,6 +169,7 @@ class _BookMessageDetailsWidgetState extends State<BookMessageDetailsWidget>
           onTap: () => FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
+            resizeToAvoidBottomInset: false,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             appBar: PreferredSize(
               preferredSize: const Size.fromHeight(100.0),
@@ -175,7 +200,10 @@ class _BookMessageDetailsWidgetState extends State<BookMessageDetailsWidget>
                                 size: 30.0,
                               ),
                               onPressed: () async {
-                                context.pop();
+                                if (Navigator.of(context).canPop()) {
+                                  context.pop();
+                                }
+                                context.pushNamed('BookMessages');
                               },
                             ),
                           ),
@@ -202,6 +230,48 @@ class _BookMessageDetailsWidgetState extends State<BookMessageDetailsWidget>
                                         letterSpacing: 0.0,
                                         lineHeight: 1.0,
                                       ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 10.0, 0.0),
+                              child: wrapWithModel(
+                                model: _model.favoriteButtonModel,
+                                updateCallback: () => safeSetState(() {}),
+                                updateOnChange: true,
+                                child: FavoriteButtonWidget(
+                                  selected:
+                                      functions.checkIfBookIsInTheFavorites(
+                                          widget.book?.reference.id),
+                                  onSelected: () async {
+                                    await currentUserReference!.update({
+                                      ...mapToFirestore(
+                                        {
+                                          'favoriteBooks':
+                                              FieldValue.arrayUnion(
+                                                  [widget.book?.reference.id]),
+                                        },
+                                      ),
+                                    });
+                                    FFAppState().addToFavoriteBooks(
+                                        widget.book!.reference.id);
+                                    safeSetState(() {});
+                                  },
+                                  onUnSelected: () async {
+                                    await currentUserReference!.update({
+                                      ...mapToFirestore(
+                                        {
+                                          'favoriteBooks':
+                                              FieldValue.arrayRemove(
+                                                  [widget.book?.reference.id]),
+                                        },
+                                      ),
+                                    });
+                                    FFAppState().removeFromFavoriteBooks(
+                                        widget.book!.reference.id);
+                                    safeSetState(() {});
+                                  },
                                 ),
                               ),
                             ),
@@ -478,11 +548,9 @@ class _BookMessageDetailsWidgetState extends State<BookMessageDetailsWidget>
                                                     color: Colors.transparent,
                                                     child: ListTile(
                                                       title: Text(
-                                                        valueOrDefault<String>(
-                                                          widget.book
-                                                              ?.libraryName,
-                                                          'Library Name',
-                                                        ),
+                                                        functions.pascalToTitleCase(
+                                                            widget.book
+                                                                ?.libraryName)!,
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -644,6 +712,43 @@ class _BookMessageDetailsWidgetState extends State<BookMessageDetailsWidget>
                                             ),
                                           ).animateOnPageLoad(animationsMap[
                                               'containerOnPageLoadAnimation2']!),
+                                        ),
+                                        Expanded(
+                                          child: Builder(builder: (context) {
+                                            final googleMapMarker =
+                                                bookMessageDetailsLibrariesRecord
+                                                    .latLong;
+                                            return FlutterFlowGoogleMap(
+                                              controller:
+                                                  _model.googleMapsController,
+                                              onCameraIdle: (latLng) => _model
+                                                  .googleMapsCenter = latLng,
+                                              initialLocation:
+                                                  _model.googleMapsCenter ??=
+                                                      currentUserLocationValue!,
+                                              markers: [
+                                                if (googleMapMarker != null)
+                                                  FlutterFlowMarker(
+                                                    googleMapMarker
+                                                        .serialize(),
+                                                    googleMapMarker,
+                                                  ),
+                                              ],
+                                              markerColor:
+                                                  GoogleMarkerColor.violet,
+                                              mapType: MapType.normal,
+                                              style: GoogleMapStyle.standard,
+                                              initialZoom: 14.0,
+                                              allowInteraction: true,
+                                              allowZoom: true,
+                                              showZoomControls: true,
+                                              showLocation: true,
+                                              showCompass: false,
+                                              showMapToolbar: false,
+                                              showTraffic: false,
+                                              centerMapOnMarkerTap: true,
+                                            );
+                                          }),
                                         ),
                                       ],
                                     ),

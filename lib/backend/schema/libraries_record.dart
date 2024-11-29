@@ -46,6 +46,11 @@ class LibrariesRecord extends FirestoreRecord {
   Libraries? get code => _code;
   bool hasCode() => _code != null;
 
+  // "latLong" field.
+  LatLng? _latLong;
+  LatLng? get latLong => _latLong;
+  bool hasLatLong() => _latLong != null;
+
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _coverPhoto = snapshotData['cover_photo'] as String?;
@@ -53,6 +58,7 @@ class LibrariesRecord extends FirestoreRecord {
     _borrowingPolicy = snapshotData['borrowing_policy'] as String?;
     _location = snapshotData['location'] as String?;
     _code = deserializeEnum<Libraries>(snapshotData['code']);
+    _latLong = snapshotData['latLong'] as LatLng?;
   }
 
   static CollectionReference get collection =>
@@ -96,6 +102,7 @@ Map<String, dynamic> createLibrariesRecordData({
   String? borrowingPolicy,
   String? location,
   Libraries? code,
+  LatLng? latLong,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -105,6 +112,7 @@ Map<String, dynamic> createLibrariesRecordData({
       'borrowing_policy': borrowingPolicy,
       'location': location,
       'code': code,
+      'latLong': latLong,
     }.withoutNulls,
   );
 
@@ -121,7 +129,8 @@ class LibrariesRecordDocumentEquality implements Equality<LibrariesRecord> {
         e1?.description == e2?.description &&
         e1?.borrowingPolicy == e2?.borrowingPolicy &&
         e1?.location == e2?.location &&
-        e1?.code == e2?.code;
+        e1?.code == e2?.code &&
+        e1?.latLong == e2?.latLong;
   }
 
   @override
@@ -131,7 +140,8 @@ class LibrariesRecordDocumentEquality implements Equality<LibrariesRecord> {
         e?.description,
         e?.borrowingPolicy,
         e?.location,
-        e?.code
+        e?.code,
+        e?.latLong
       ]);
 
   @override

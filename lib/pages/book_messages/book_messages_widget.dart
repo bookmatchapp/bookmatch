@@ -1,7 +1,10 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/empty_list/empty_list_widget.dart';
+import '/components/favorite_button/favorite_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'book_messages_model.dart';
@@ -112,6 +115,11 @@ class _BookMessagesWidgetState extends State<BookMessagesWidget> {
                           builder: (context) {
                             final swipedBooks =
                                 bookMessagesBooksRecordList.toList();
+                            if (swipedBooks.isEmpty) {
+                              return const Center(
+                                child: EmptyListWidget(),
+                              );
+                            }
 
                             return ListView.builder(
                               padding: EdgeInsets.zero,
@@ -141,6 +149,67 @@ class _BookMessagesWidgetState extends State<BookMessagesWidget> {
                                           'book': swipedBooksItem,
                                         },
                                       );
+                                    },
+                                    onLongPress: () async {
+                                      var confirmDialogResponse =
+                                          await showDialog<bool>(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text(
+                                                        'Delete  ${swipedBooksItem.title}Message'),
+                                                    content: const Text(
+                                                        'Are you sure you want to delete this?'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext,
+                                                                false),
+                                                        child: const Text('Cancel'),
+                                                      ),
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext,
+                                                                true),
+                                                        child: const Text('Confirm'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              ) ??
+                                              false;
+                                      if (confirmDialogResponse) {
+                                        await currentUserReference!.update({
+                                          ...mapToFirestore(
+                                            {
+                                              'swipedBooks':
+                                                  FieldValue.arrayRemove([
+                                                swipedBooksItem.reference.id
+                                              ]),
+                                            },
+                                          ),
+                                        });
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              'Successfully deleted',
+                                              style: TextStyle(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                              ),
+                                            ),
+                                            duration:
+                                                const Duration(milliseconds: 4000),
+                                            backgroundColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondary,
+                                          ),
+                                        );
+                                      }
                                     },
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -173,40 +242,132 @@ class _BookMessagesWidgetState extends State<BookMessagesWidget> {
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,
                                                   children: [
-                                                    Container(
-                                                      width: 44.0,
-                                                      height: 80.0,
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                    Stack(
+                                                      children: [
+                                                        Container(
+                                                          width: 44.0,
+                                                          height: 80.0,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .accent1,
-                                                        shape:
-                                                            BoxShape.rectangle,
-                                                        border: Border.all(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          width: 2.0,
-                                                        ),
-                                                      ),
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsets.all(2.0),
-                                                        child: ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      0.0),
-                                                          child: Image.network(
-                                                            swipedBooksItem
-                                                                .coverPhoto,
-                                                            width: 44.0,
-                                                            height: 44.0,
-                                                            fit: BoxFit.cover,
+                                                            shape: BoxShape
+                                                                .rectangle,
+                                                            border: Border.all(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primary,
+                                                              width: 2.0,
+                                                            ),
+                                                          ),
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets.all(
+                                                                    2.0),
+                                                            child: ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          0.0),
+                                                              child:
+                                                                  Image.network(
+                                                                swipedBooksItem
+                                                                    .coverPhoto,
+                                                                width: 44.0,
+                                                                height: 44.0,
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
+                                                            ),
                                                           ),
                                                         ),
-                                                      ),
+                                                        Align(
+                                                          alignment:
+                                                              const AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        3.0,
+                                                                        20.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child:
+                                                                wrapWithModel(
+                                                              model: _model
+                                                                  .favoriteButtonModels
+                                                                  .getModel(
+                                                                swipedBooksItem
+                                                                    .reference
+                                                                    .id,
+                                                                swipedBooksIndex,
+                                                              ),
+                                                              updateCallback: () =>
+                                                                  safeSetState(
+                                                                      () {}),
+                                                              updateOnChange:
+                                                                  true,
+                                                              child:
+                                                                  FavoriteButtonWidget(
+                                                                key: Key(
+                                                                  'Keyzzl_${swipedBooksItem.reference.id}',
+                                                                ),
+                                                                selected: functions
+                                                                    .checkIfBookIsInTheFavorites(
+                                                                        swipedBooksItem
+                                                                            .reference
+                                                                            .id),
+                                                                onSelected:
+                                                                    () async {
+                                                                  await currentUserReference!
+                                                                      .update({
+                                                                    ...mapToFirestore(
+                                                                      {
+                                                                        'favoriteBooks':
+                                                                            FieldValue.arrayUnion([
+                                                                          swipedBooksItem
+                                                                              .reference
+                                                                              .id
+                                                                        ]),
+                                                                      },
+                                                                    ),
+                                                                  });
+                                                                  FFAppState().addToFavoriteBooks(
+                                                                      swipedBooksItem
+                                                                          .reference
+                                                                          .id);
+                                                                  safeSetState(
+                                                                      () {});
+                                                                },
+                                                                onUnSelected:
+                                                                    () async {
+                                                                  await currentUserReference!
+                                                                      .update({
+                                                                    ...mapToFirestore(
+                                                                      {
+                                                                        'favoriteBooks':
+                                                                            FieldValue.arrayRemove([
+                                                                          swipedBooksItem
+                                                                              .reference
+                                                                              .id
+                                                                        ]),
+                                                                      },
+                                                                    ),
+                                                                  });
+                                                                  FFAppState().removeFromFavoriteBooks(
+                                                                      swipedBooksItem
+                                                                          .reference
+                                                                          .id);
+                                                                  safeSetState(
+                                                                      () {});
+                                                                },
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
                                                     ),
                                                     Expanded(
                                                       child: Padding(

@@ -76,6 +76,11 @@ class UsersRecord extends FirestoreRecord {
   List<String> get swipedBooks => _swipedBooks ?? const [];
   bool hasSwipedBooks() => _swipedBooks != null;
 
+  // "birthDate" field.
+  DateTime? _birthDate;
+  DateTime? get birthDate => _birthDate;
+  bool hasBirthDate() => _birthDate != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -89,6 +94,7 @@ class UsersRecord extends FirestoreRecord {
     _role = deserializeEnum<Roles>(snapshotData['role']);
     _favoriteBooks = getDataList(snapshotData['favoriteBooks']);
     _swipedBooks = getDataList(snapshotData['swipedBooks']);
+    _birthDate = snapshotData['birthDate'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -135,6 +141,7 @@ Map<String, dynamic> createUsersRecordData({
   DateTime? lastActiveTime,
   String? title,
   Roles? role,
+  DateTime? birthDate,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -148,6 +155,7 @@ Map<String, dynamic> createUsersRecordData({
       'last_active_time': lastActiveTime,
       'title': title,
       'role': role,
+      'birthDate': birthDate,
     }.withoutNulls,
   );
 
@@ -171,7 +179,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.title == e2?.title &&
         e1?.role == e2?.role &&
         listEquality.equals(e1?.favoriteBooks, e2?.favoriteBooks) &&
-        listEquality.equals(e1?.swipedBooks, e2?.swipedBooks);
+        listEquality.equals(e1?.swipedBooks, e2?.swipedBooks) &&
+        e1?.birthDate == e2?.birthDate;
   }
 
   @override
@@ -187,7 +196,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.title,
         e?.role,
         e?.favoriteBooks,
-        e?.swipedBooks
+        e?.swipedBooks,
+        e?.birthDate
       ]);
 
   @override

@@ -66,7 +66,7 @@ class _FavoriteButtonWidgetState extends State<FavoriteButtonWidget> {
                 buttonSize: 40.0,
                 icon: const Icon(
                   Icons.favorite,
-                  color: Color(0xFFFF00BE),
+                  color: Color(0xFFFF161E),
                   size: 24.0,
                 ),
                 onPressed: () async {
