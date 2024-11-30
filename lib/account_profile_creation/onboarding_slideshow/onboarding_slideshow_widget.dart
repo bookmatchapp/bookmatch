@@ -583,6 +583,45 @@ class _OnboardingSlideshowWidgetState extends State<OnboardingSlideshowWidget>
                           ],
                         ),
                       ),
+                      if (_model.pageViewCurrentIndex == 3)
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              16.0, 12.0, 16.0, 0.0),
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              await _model.pageViewController?.nextPage(
+                                duration: const Duration(milliseconds: 300),
+                                curve: Curves.ease,
+                              );
+                            },
+                            text: 'Login/Signup',
+                            options: FFButtonOptions(
+                              width: double.infinity,
+                              height: 60.0,
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Montserrat',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    letterSpacing: 0.0,
+                                  ),
+                              elevation: 4.0,
+                              borderSide: const BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(50.0),
+                              hoverColor:
+                                  FlutterFlowTheme.of(context).primaryText,
+                            ),
+                          ),
+                        ),
                       if (_model.pageViewCurrentIndex <= 2)
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
