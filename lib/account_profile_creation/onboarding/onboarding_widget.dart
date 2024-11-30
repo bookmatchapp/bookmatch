@@ -303,7 +303,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                               context.pushNamed('AuthLogin');
                             }
                           },
-                          text: 'My Account',
+                          text: currentJwtToken != ''
+                              ? 'Account'
+                              : 'Login',
                           options: FFButtonOptions(
                             width: 230.0,
                             height: 52.0,

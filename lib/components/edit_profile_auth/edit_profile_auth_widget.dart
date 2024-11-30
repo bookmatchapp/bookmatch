@@ -343,6 +343,7 @@ class _EditProfileAuthWidgetState extends State<EditProfileAuthWidget> {
                         controller: _model.birthDateTextController,
                         focusNode: _model.birthDateFocusNode,
                         textCapitalization: TextCapitalization.words,
+                        readOnly: true,
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: 'Birth Date',

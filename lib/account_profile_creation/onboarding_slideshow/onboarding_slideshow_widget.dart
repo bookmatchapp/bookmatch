@@ -433,7 +433,7 @@ class _OnboardingSlideshowWidgetState extends State<OnboardingSlideshowWidget>
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          'Books that matches you',
+                                          'Bookmatch',
                                           textAlign: TextAlign.center,
                                           style: FlutterFlowTheme.of(context)
                                               .displaySmall
@@ -449,7 +449,7 @@ class _OnboardingSlideshowWidgetState extends State<OnboardingSlideshowWidget>
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 16.0, 0.0, 0.0),
                                           child: Text(
-                                            'I have some great book options here!',
+                                            'Where Readers Swipe Right for Their Next Favorite Book',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge
@@ -472,7 +472,7 @@ class _OnboardingSlideshowWidgetState extends State<OnboardingSlideshowWidget>
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          'Awesome Recipes',
+                                          'Swipe Left/Swip Right',
                                           textAlign: TextAlign.center,
                                           style: FlutterFlowTheme.of(context)
                                               .displaySmall
@@ -488,7 +488,7 @@ class _OnboardingSlideshowWidgetState extends State<OnboardingSlideshowWidget>
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 16.0, 0.0, 0.0),
                                           child: Text(
-                                            'I have some great food options here!! Yum yum!!',
+                                            'Swipe Left to Skip, Right to Discover Your Next Favorite Read!',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge
@@ -511,7 +511,7 @@ class _OnboardingSlideshowWidgetState extends State<OnboardingSlideshowWidget>
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          'Personalized recipe discovery',
+                                          'Search & Favorite',
                                           textAlign: TextAlign.center,
                                           style: FlutterFlowTheme.of(context)
                                               .displaySmall
@@ -527,7 +527,7 @@ class _OnboardingSlideshowWidgetState extends State<OnboardingSlideshowWidget>
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 16.0, 0.0, 0.0),
                                           child: Text(
-                                            'I have some great food options here!! Yum yum!!',
+                                            'Search. Swipe. Save Your Favorites!',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge
@@ -583,81 +583,84 @@ class _OnboardingSlideshowWidgetState extends State<OnboardingSlideshowWidget>
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            16.0, 12.0, 16.0, 0.0),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            await _model.pageViewController?.nextPage(
-                              duration: const Duration(milliseconds: 300),
-                              curve: Curves.ease,
-                            );
-                          },
-                          text: 'Next',
-                          options: FFButtonOptions(
-                            width: double.infinity,
-                            height: 60.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleMedium
-                                .override(
-                                  fontFamily: 'Montserrat',
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  letterSpacing: 0.0,
-                                ),
-                            elevation: 4.0,
-                            borderSide: const BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
+                      if (_model.pageViewCurrentIndex <= 2)
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              16.0, 12.0, 16.0, 0.0),
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              await _model.pageViewController?.nextPage(
+                                duration: const Duration(milliseconds: 300),
+                                curve: Curves.ease,
+                              );
+                            },
+                            text: 'Next',
+                            options: FFButtonOptions(
+                              width: double.infinity,
+                              height: 60.0,
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Montserrat',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    letterSpacing: 0.0,
+                                  ),
+                              elevation: 4.0,
+                              borderSide: const BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(50.0),
+                              hoverColor:
+                                  FlutterFlowTheme.of(context).primaryText,
                             ),
-                            borderRadius: BorderRadius.circular(50.0),
-                            hoverColor:
-                                FlutterFlowTheme.of(context).primaryText,
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            16.0, 12.0, 16.0, 44.0),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            await _model.pageViewController?.animateToPage(
-                              2,
-                              duration: const Duration(milliseconds: 500),
-                              curve: Curves.ease,
-                            );
-                          },
-                          text: 'Skip',
-                          options: FFButtonOptions(
-                            width: double.infinity,
-                            height: 60.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .override(
-                                  fontFamily: 'Montserrat',
-                                  letterSpacing: 0.0,
-                                ),
-                            elevation: 0.0,
-                            borderSide: const BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
+                      if (_model.pageViewCurrentIndex <= 2)
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              16.0, 12.0, 16.0, 44.0),
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              await _model.pageViewController?.animateToPage(
+                                2,
+                                duration: const Duration(milliseconds: 500),
+                                curve: Curves.ease,
+                              );
+                            },
+                            text: 'Skip',
+                            options: FFButtonOptions(
+                              width: double.infinity,
+                              height: 60.0,
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .override(
+                                    fontFamily: 'Montserrat',
+                                    letterSpacing: 0.0,
+                                  ),
+                              elevation: 0.0,
+                              borderSide: const BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(50.0),
+                              hoverColor:
+                                  FlutterFlowTheme.of(context).alternate,
                             ),
-                            borderRadius: BorderRadius.circular(50.0),
-                            hoverColor: FlutterFlowTheme.of(context).alternate,
                           ),
                         ),
-                      ),
                     ],
                   ),
                 ),
