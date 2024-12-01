@@ -583,16 +583,13 @@ class _OnboardingSlideshowWidgetState extends State<OnboardingSlideshowWidget>
                           ],
                         ),
                       ),
-                      if (_model.pageViewCurrentIndex == 3)
+                      if (_model.pageViewCurrentIndex == 2)
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 12.0, 16.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
-                              await _model.pageViewController?.nextPage(
-                                duration: const Duration(milliseconds: 300),
-                                curve: Curves.ease,
-                              );
+                              context.pushNamed('AuthLogin');
                             },
                             text: 'Login/Signup',
                             options: FFButtonOptions(
@@ -622,7 +619,7 @@ class _OnboardingSlideshowWidgetState extends State<OnboardingSlideshowWidget>
                             ),
                           ),
                         ),
-                      if (_model.pageViewCurrentIndex <= 2)
+                      if (_model.pageViewCurrentIndex <= 1)
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 12.0, 16.0, 0.0),
@@ -632,6 +629,9 @@ class _OnboardingSlideshowWidgetState extends State<OnboardingSlideshowWidget>
                                 duration: const Duration(milliseconds: 300),
                                 curve: Curves.ease,
                               );
+                              if (_model.pageViewCurrentIndex == 2) {
+                                context.pushNamed('AuthLogin');
+                              }
                             },
                             text: 'Next',
                             options: FFButtonOptions(
@@ -661,7 +661,7 @@ class _OnboardingSlideshowWidgetState extends State<OnboardingSlideshowWidget>
                             ),
                           ),
                         ),
-                      if (_model.pageViewCurrentIndex <= 2)
+                      if (_model.pageViewCurrentIndex <= 1)
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 12.0, 16.0, 44.0),
