@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -452,13 +453,31 @@ class _EditProfileAuthWidgetState extends State<EditProfileAuthWidget> {
                             ),
                           );
                         });
-                    safeSetState(() {
-                      _model.birthDateTextController?.text = dateTimeFormat(
-                        "yMMMd",
-                        _model.datePicked,
-                        locale: FFLocalizations.of(context).languageCode,
+                    if (functions.is13YearsOldBelow(_model.datePicked)) {
+                      safeSetState(() {
+                        _model.birthDateTextController?.text = dateTimeFormat(
+                          "yMMMd",
+                          _model.datePicked,
+                          locale: FFLocalizations.of(context).languageCode,
+                        );
+                      });
+                      FFAppState().is13To17YearsOld =
+                          functions.is13To17YearsOld(_model.datePicked!);
+                      safeSetState(() {});
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'Below 13 Years Old is not allowed.',
+                            style: TextStyle(
+                              color: FlutterFlowTheme.of(context).primaryText,
+                            ),
+                          ),
+                          duration: const Duration(milliseconds: 4000),
+                          backgroundColor: FlutterFlowTheme.of(context).error,
+                        ),
                       );
-                    });
+                    }
                   },
                 ),
               ],

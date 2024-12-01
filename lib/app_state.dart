@@ -160,6 +160,12 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInSelectedBookGenres(int index, String value) {
     selectedBookGenres.insert(index, value);
   }
+
+  bool _is13To17YearsOld = false;
+  bool get is13To17YearsOld => _is13To17YearsOld;
+  set is13To17YearsOld(bool value) {
+    _is13To17YearsOld = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

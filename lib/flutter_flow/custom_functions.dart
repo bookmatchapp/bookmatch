@@ -39,3 +39,30 @@ String? pascalToTitleCase(String? libName) {
 
   return titleCase;
 }
+
+bool is13YearsOldBelow(DateTime? birthDate) {
+  // check if birthDate is below 13 year old
+  if (birthDate == null) {
+    return false;
+  }
+
+  DateTime currentDate = DateTime.now();
+  DateTime thirteenYearsAgo = currentDate.subtract(Duration(days: 13 * 365));
+
+  return !birthDate.isAfter(thirteenYearsAgo);
+}
+
+bool is13To17YearsOld(DateTime birthDate) {
+  // check if birth date is 13 to 17 years old
+  // check if birthDate is between 13 to 17 years old
+  if (birthDate == null) {
+    return false;
+  }
+
+  DateTime currentDate = DateTime.now();
+  DateTime thirteenYearsAgo = currentDate.subtract(Duration(days: 13 * 365));
+  DateTime seventeenYearsAgo = currentDate.subtract(Duration(days: 17 * 365));
+
+  return !birthDate.isAfter(thirteenYearsAgo) &&
+      birthDate.isAfter(seventeenYearsAgo);
+}
